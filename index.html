@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BENJAMIN WAFO | Cybersécurité, réseaux et solutions numériques</title>
+<meta name="description" content="Portfolio de WAFO TALLA Anatole Benjamin : cybersécurité, réseaux, développement full-stack et solutions numériques.">
+<meta name="theme-color" content="#0a1428">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJCVyI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9IiMwYTE0MjgiLz48dGV4dCB4PSIzMiIgeT0iNDIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC13ZWlnaHQ9IjgwMCIgZmlsbD0iI2M5YTI0YiI+Qlc8L3RleHQ+PC9zdmc+Cg==" type="image/svg+xml">
+<style>
+/* ===== Variables : bleu nuit, blanc, cyan, or discret ===== */
+:root {
+  --navy-900: #0a1428;
+  --navy-800: #0f1d3a;
+  --navy-700: #16284d;
+  --cyan: #22d3ee;
+  --cyan-soft: rgba(34, 211, 238, 0.12);
+  --gold: #c9a24b;
+  --text: #f1f5fb;
+  --text-muted: #a9b8d0;
+  --border: rgba(159, 176, 203, 0.2);
+  --ok: #4ade80;
+  --danger: #ff8a8a;
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* ===== Base ===== */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  line-height: 1.7;
+  color: var(--text);
+  background: radial-gradient(1200px 600px at 80% -10%, rgba(34, 211, 238, 0.08), transparent 60%), var(--navy-900);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+.container { width: min(1040px, 100% - 32px); margin-inline: auto; }
+.container.narrow { width: min(780px, 100% - 32px); }
+a { color: var(--cyan); }
+a:hover { text-decoration: none; }
+img, svg { max-width: 100%; }
+[hidden] { display: none !important; }
+:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; border-radius: 6px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.muted { color: var(--text-muted); }
+.center { text-align: center; }
+
+.skip-link { position: absolute; left: 16px; top: -60px; background: var(--cyan); color: var(--navy-900); padding: 8px 14px; border-radius: 8px; font-weight: 600; z-index: 100; }
+.skip-link:focus { top: 12px; }
+
+/* ===== Header ===== */
+.site-header { position: sticky; top: 0; z-index: 50; background: rgba(10, 20, 40, 0.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; }
+.brand { color: var(--text); text-decoration: none; font-weight: 800; letter-spacing: 0.08em; white-space: nowrap; }
+.brand span { color: var(--gold); }
+.nav-list { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 18px; list-style: none; margin: 0; padding: 0; }
+.nav-list a:not(.btn) { color: var(--text-muted); text-decoration: none; font-size: 0.93rem; padding: 6px 2px; border-bottom: 2px solid transparent; }
+.nav-list a:not(.btn):hover, .nav-list a:not(.btn)[aria-current="page"] { color: var(--text); border-bottom-color: var(--cyan); }
+.nav-toggle { display: none; background: transparent; color: var(--text); border: 1px solid var(--border); border-radius: 10px; font-size: 1.3rem; padding: 6px 12px; cursor: pointer; }
+
+/* ===== Boutons ===== */
+.btn { display: inline-block; background: var(--cyan); color: var(--navy-900); font: inherit; font-weight: 700; text-decoration: none; padding: 12px 22px; border-radius: 999px; border: 2px solid var(--cyan); cursor: pointer; transition: transform 0.2s ease, background 0.2s ease; }
+.btn:hover { transform: translateY(-2px); background: #67e8f9; border-color: #67e8f9; }
+.btn[disabled] { opacity: 0.6; cursor: wait; transform: none; }
+.btn-small { padding: 8px 16px; font-size: 0.9rem; }
+.btn-ghost { background: transparent; color: var(--cyan); }
+.btn-ghost:hover { background: var(--cyan-soft); border-color: var(--cyan); }
+.btn-gold { background: var(--gold); border-color: var(--gold); color: var(--navy-900); }
+.btn-gold:hover { background: #dcb862; border-color: #dcb862; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+.center-actions { justify-content: center; }
+
+/* ===== Sections et titres ===== */
+.section { padding: 64px 0 80px; }
+.section-alt { background: rgba(15, 29, 58, 0.55); border-block: 1px solid var(--border); }
+.eyebrow { margin: 0 0 8px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.8rem; font-weight: 700; }
+.eyebrow a { color: var(--gold); text-decoration: none; }
+h1 { margin: 0 0 16px; font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.2; }
+.h2 { margin: 0 0 20px; font-size: 1.6rem; }
+.spaced { margin-top: 48px; }
+.lead { color: var(--text-muted); font-size: 1.1rem; max-width: 70ch; margin: 0 0 24px; }
+.note { color: var(--text-muted); font-size: 0.9rem; margin-top: 20px; }
+
+/* ===== Hero ===== */
+.hero { padding: 80px 0 64px; }
+.hero h1 { font-size: clamp(2rem, 5.5vw, 3.4rem); margin-bottom: 8px; }
+.hero-title { margin: 0 0 20px; font-size: clamp(1.1rem, 2.6vw, 1.5rem); color: var(--cyan); font-weight: 600; }
+.indicators { list-style: none; display: flex; flex-wrap: wrap; gap: 16px 40px; margin: 40px 0 0; padding: 24px 0 0; border-top: 1px solid var(--border); }
+.indicators li { display: flex; flex-direction: column; }
+.indicators strong { font-size: 1.8rem; color: var(--gold); line-height: 1.2; }
+.indicators span { color: var(--text-muted); font-size: 0.9rem; }
+
+/* ===== Grilles et cartes ===== */
+.grid { display: grid; gap: 20px; }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.card { background: linear-gradient(160deg, var(--navy-800), var(--navy-700)); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow); transition: transform 0.25s ease, border-color 0.25s ease; }
+.card:hover { border-color: rgba(34, 211, 238, 0.45); }
+.card h2, .card h3 { margin: 0 0 8px; line-height: 1.3; }
+.card h2 { font-size: 1.25rem; }
+.card h3 { font-size: 1.1rem; }
+.card p { margin: 0 0 12px; color: var(--text-muted); }
+.card-link { text-decoration: none; color: inherit; display: block; }
+.card-link:hover { transform: translateY(-3px); }
+.more { color: var(--cyan); font-weight: 600; }
+.card-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; }
+.institution { margin: 6px 0 14px; color: var(--gold) !important; font-weight: 600; }
+.project .badge { margin-bottom: 12px; display: inline-block; }
+.skill { margin-bottom: 20px; }
+
+.badge { font-size: 0.78rem; font-weight: 700; padding: 5px 12px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap; display: inline-block; }
+.badge-live, .badge-proto { color: var(--cyan); background: var(--cyan-soft); }
+.badge-done { color: var(--gold); background: rgba(201, 162, 75, 0.12); }
+.badge-wip { color: var(--text-muted); }
+
+.tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 14px 0; padding: 0; }
+.tags li { font-size: 0.82rem; color: var(--text); background: rgba(255, 255, 255, 0.06); border: 1px solid var(--border); padding: 4px 12px; border-radius: 999px; }
+
+.check-list { list-style: none; padding: 0; margin: 0 0 12px; }
+.check-list li { position: relative; padding-left: 26px; margin-bottom: 8px; color: var(--text); }
+.check-list li::before { content: "✓"; position: absolute; left: 0; color: var(--cyan); font-weight: 700; }
+.plain { list-style: none; padding: 0; margin: 0; }
+.plain li { margin-bottom: 10px; color: var(--text-muted); }
+
+/* ===== Timeline ===== */
+.timeline { list-style: none; margin: 32px 0 0; padding: 0 0 0 36px; position: relative; }
+.timeline::before { content: ""; position: absolute; left: 9px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(to bottom, var(--cyan), var(--gold)); opacity: 0.6; }
+.timeline-item { position: relative; margin-bottom: 28px; }
+.timeline-marker { position: absolute; left: -36px; top: 26px; width: 20px; height: 20px; border-radius: 50%; background: var(--navy-900); border: 3px solid var(--cyan); box-shadow: 0 0 0 5px var(--cyan-soft); }
+
+/* ===== Méthode ===== */
+.steps { list-style: none; counter-reset: s; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; padding: 0; margin: 0 0 40px; }
+.steps li { counter-increment: s; background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; }
+.steps li::before { content: counter(s); display: inline-flex; width: 28px; height: 28px; align-items: center; justify-content: center; border-radius: 50%; background: var(--gold); color: var(--navy-900); font-weight: 800; margin-bottom: 8px; }
+.steps h3 { margin: 0 0 6px; font-size: 1rem; }
+.steps p { margin: 0; color: var(--text-muted); font-size: 0.92rem; }
+
+/* ===== Compétences ===== */
+.legend { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 24px; padding: 0; margin: 0 0 20px; color: var(--text-muted); font-size: 0.9rem; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 28px; }
+.chips a { text-decoration: none; font-size: 0.85rem; padding: 6px 14px; border: 1px solid var(--border); border-radius: 999px; color: var(--text); }
+.chips a:hover { border-color: var(--cyan); background: var(--cyan-soft); }
+.skill-items { list-style: none; padding: 0; margin: 14px 0; }
+.skill-items li { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--border); }
+.level { font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap; align-self: center; }
+.level-pratique { color: var(--ok); }
+.level-notions { color: var(--cyan); }
+.level-apprentissage { color: var(--gold); }
+.proof { font-size: 0.92rem; }
+
+/* ===== Fiche projet ===== */
+.fiche { margin: 28px 0; }
+.fiche > div { padding: 18px 0; border-bottom: 1px solid var(--border); }
+.fiche dt { color: var(--gold); font-weight: 700; margin-bottom: 6px; }
+.fiche dd { margin: 0; color: var(--text); }
+.fiche ul { margin: 0; padding-left: 20px; }
+.fiche li { margin-bottom: 4px; }
+
+/* ===== Alertes ===== */
+.alert { border-radius: 12px; padding: 14px 18px; margin: 0 0 20px; border: 1px solid var(--border); }
+.alert-info { background: var(--cyan-soft); border-color: rgba(34, 211, 238, 0.4); }
+.alert-success { background: rgba(74, 222, 128, 0.12); border-color: rgba(74, 222, 128, 0.5); }
+.alert-error { background: rgba(255, 138, 138, 0.12); border-color: rgba(255, 138, 138, 0.5); }
+
+/* ===== Objectif ===== */
+.goal { margin-top: 40px; padding: 32px; border-radius: var(--radius); border: 1px solid rgba(201, 162, 75, 0.4); background: linear-gradient(135deg, rgba(201, 162, 75, 0.08), rgba(34, 211, 238, 0.06)); }
+.goal h2 { margin: 0 0 10px; font-size: 1.3rem; color: var(--gold); }
+.goal p { margin: 0 0 8px; }
+
+/* ===== Formulaires ===== */
+.two-col { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: start; }
+.side-card { margin-top: 24px; }
+.form { display: block; }
+.field { margin-bottom: 18px; border: 0; padding: 0; min-width: 0; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+label, legend, .legend-title { display: block; font-weight: 600; margin-bottom: 6px; padding: 0; }
+.legend-title { margin: 24px 0 12px; color: var(--gold); }
+input[type="text"], input[type="email"], input[type="tel"], select, textarea {
+  width: 100%; font: inherit; color: var(--text); background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border); border-radius: 10px; padding: 11px 14px;
+}
+select option { color: #0a1428; background: #fff; }
+textarea { resize: vertical; min-height: 120px; }
+input:focus, select:focus, textarea:focus { border-color: var(--cyan); outline: 2px solid var(--cyan); outline-offset: 1px; }
+.field.checkbox { display: grid; grid-template-columns: 22px 1fr; gap: 0 10px; align-items: start; }
+.field.checkbox input { width: 20px; height: 20px; margin-top: 4px; accent-color: var(--cyan); }
+.field.checkbox label { font-weight: 400; margin: 0; }
+.field.checkbox .field-error { grid-column: 2; }
+.field-error { color: var(--danger); font-size: 0.9rem; margin: 6px 0 0; }
+.hint { color: var(--text-muted); font-size: 0.88rem; margin: -8px 0 18px; }
+.form-status:empty { display: none; }
+.form-status { margin-bottom: 16px; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.pick-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+.pick { font: inherit; font-size: 0.9rem; color: var(--text); background: rgba(255, 255, 255, 0.06); border: 1px solid var(--border); border-radius: 10px; padding: 8px 14px; cursor: pointer; }
+.pick:hover { border-color: var(--cyan); }
+.pick[aria-pressed="true"] { background: var(--cyan); color: var(--navy-900); border-color: var(--cyan); font-weight: 700; }
+.todo { color: var(--gold); font-weight: 600; }
+
+/* ===== Texte juridique ===== */
+.prose h2 { margin: 32px 0 8px; font-size: 1.2rem; color: var(--gold); }
+.prose h3 { margin: 16px 0 4px; font-size: 1rem; }
+.prose p { color: var(--text-muted); margin: 0 0 12px; }
+
+/* ===== Footer ===== */
+.site-footer { border-top: 1px solid var(--border); padding: 40px 0 0; color: var(--text-muted); font-size: 0.92rem; }
+.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 28px; }
+.footer-brand { color: var(--text); font-weight: 700; margin: 0 0 4px; }
+.footer-title { color: var(--gold); font-weight: 700; margin: 0 0 8px; }
+.footer-links { list-style: none; padding: 0; margin: 0; }
+.footer-links li { margin-bottom: 6px; }
+.site-footer p { margin: 0 0 6px; }
+.footer-bottom { border-top: 1px solid var(--border); margin-top: 28px; padding: 18px 0; text-align: center; }
+
+/* ===== Animation d'apparition ===== */
+.js .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.js .reveal.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+  .js .reveal { opacity: 1; transform: none; }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .grid-3 { grid-template-columns: 1fr; }
+  .two-col { grid-template-columns: 1fr; gap: 24px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .nav-toggle { display: inline-block; }
+  .main-nav { display: none; position: absolute; top: 64px; left: 0; right: 0; background: var(--navy-900); border-bottom: 1px solid var(--border); padding: 12px 16px 20px; }
+  .main-nav.is-open { display: block; }
+  .nav-list { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .nav-list a:not(.btn) { display: block; padding: 10px 0; font-size: 1rem; }
+  .header-inner { position: relative; }
+}
+@media (max-width: 640px) {
+  .grid-2, .field-row, .footer-grid { grid-template-columns: 1fr; }
+  .section { padding: 44px 0 60px; }
+  .hero { padding: 52px 0 40px; }
+  .timeline { padding-left: 30px; }
+  .timeline-marker { left: -30px; }
+  .card, .goal { padding: 20px; }
+  .skill-items li { flex-direction: column; gap: 4px; }
+  .actions .btn { flex: 1 1 100%; text-align: center; }
+}
+
+/* ===== Correctifs ===== */
+.fiche .tags { padding-left: 0; margin: 12px 0 0; }
+.fiche .tags li { margin-bottom: 0; }
+
+
+.sec-head{margin-bottom:8px}
+details.proj{margin-bottom:16px}
+details.proj summary{cursor:pointer;list-style:none;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 16px;align-items:center}
+details.proj summary::-webkit-details-marker{display:none}
+details.proj summary h3{margin:0;font-size:1.25rem}
+details.proj[open] summary{margin-bottom:16px}
+.summary-hint{color:var(--cyan);font-weight:600;font-size:.9rem}
+.phone-big{font-size:1.4rem;font-weight:800}
+.nav-list a.active:not(.btn){color:var(--text);border-bottom-color:var(--cyan)}
+
+</style>
+</head>
+<body>
+<a class="skip-link" href="#accueil">Aller au contenu</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="#accueil">BENJAMIN <span>WAFO</span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu"><span class="sr-only">Menu</span><span aria-hidden="true">☰</span></button>
+    <nav id="menu" class="main-nav" aria-label="Navigation principale">
+      <ul class="nav-list">
+        <li><a href="#a-propos">À propos</a></li>
+        <li><a href="#experience">Expérience</a></li>
+        <li><a href="#competences">Compétences</a></li>
+        <li><a href="#projets">Projets</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#elimax">Elimax SARL</a></li>
+        <li><a href="#cv">CV</a></li>
+        <li><a class="btn btn-small" href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="accueil" class="hero">
+  <div class="container">
+    <p class="eyebrow">Étudiant en Master 2 professionnel en cybersécurité · ENSPD</p>
+    <h1>WAFO TALLA Anatole Benjamin</h1>
+    <p class="hero-title">Cybersécurité, réseaux et solutions numériques</p>
+    <p class="lead">Je suis WAFO TALLA Anatole Benjamin, spécialisé en cybersécurité, réseaux, développement full-stack et conception de solutions numériques. Je conçois et sécurise des applications et des architectures informatiques en reliant les besoins métiers aux exigences techniques, opérationnelles et de sécurité.</p>
+    <div class="actions">
+      <a class="btn" href="#projets">Voir mes projets</a>
+      <a class="btn btn-ghost" href="#cv">Consulter le CV</a>
+      <a class="btn btn-ghost" href="#services">Mes services</a>
+      <a class="btn btn-gold" href="#contact">Me contacter</a>
+    </div>
+    <ul class="indicators" aria-label="Repères">
+      <li><strong>1,5 an</strong><span>d&#39;expérience chez Elimax SARL</span></li><li><strong>3</strong><span>projets présentés (prototypes)</span></li><li><strong>M2</strong><span>cybersécurité, en cours à l&#39;ENSPD</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="a-propos" class="section section-alt">
+  <div class="container">
+    <p class="eyebrow">À propos</p>
+    <h2 class="h2">Parcours académique</h2>
+    <p class="lead">Mon approche : analyser un problème, concevoir une solution, développer un prototype, identifier ses risques et préparer son évolution vers un produit fiable.</p>
+    <ol class="timeline">
+      
+      <li class="timeline-item"><div class="timeline-marker" aria-hidden="true"></div>
+        <article class="card">
+          <header class="card-head"><h3>Master 2 professionnel en cybersécurité</h3><span class="badge badge-live">En cours</span></header>
+          <p class="institution">École Nationale Supérieure Polytechnique de Douala (ENSPD)</p>
+          <p>Étudiant en Master 2 professionnel en cybersécurité, je renforce mes compétences en sécurité des systèmes d&#39;information, protection des infrastructures, analyse des risques et défense des environnements numériques.</p><p>Cette formation complète mon expérience pratique en développement de solutions numériques, réseaux, sécurisation des applications et déploiement de systèmes informatiques.</p>
+          <ul class="tags"><li>Sécurité des SI</li><li>Analyse des risques</li><li>Cyberdéfense</li><li>Protection des infrastructures</li></ul>
+        </article>
+      </li>
+      
+      <li class="timeline-item"><div class="timeline-marker" aria-hidden="true"></div>
+        <article class="card">
+          <header class="card-head"><h3>Licence en Réseaux et Sécurité Informatique</h3><span class="badge badge-done">Diplôme obtenu</span></header>
+          <p class="institution">Keyce Informatique</p>
+          <p>J&#39;y ai acquis les bases en infrastructures réseau, systèmes informatiques, administration et sécurité des environnements numériques. Ce parcours est le socle technique sur lequel je développe mes compétences en cybersécurité, développement full-stack, DevOps et architecture des systèmes.</p>
+          <ul class="tags"><li>Réseaux</li><li>Systèmes</li><li>Administration</li><li>Sécurité</li></ul>
+        </article>
+      </li>
+      
+    </ol>
+    <h3 class="spaced">Ma méthode de travail</h3>
+    <ol class="steps"><li><h3>Comprendre le besoin</h3><p>Identifier le problème réel de l&#39;organisation avant de choisir une technologie.</p></li><li><h3>Concevoir</h3><p>Définir les acteurs, les flux de données et l&#39;architecture.</p></li><li><h3>Prototyper</h3><p>Construire une démonstration utilisable pour valider l&#39;idée.</p></li><li><h3>Analyser les risques</h3><p>Repérer les menaces, limiter l&#39;exposition, documenter les limites.</p></li><li><h3>Préparer l&#39;évolution</h3><p>Distinguer ce qui est démontré de ce qui reste à faire avant une exploitation réelle.</p></li></ol>
+    <aside class="goal"><h3>Objectif professionnel</h3>
+      <p>Évoluer vers des fonctions d'ingénierie en cybersécurité, de cyberdéfense et de conception d'architectures sécurisées, tout en continuant à développer des solutions utiles aux organisations.</p></aside>
+  </div>
+</section>
+
+<section id="experience" class="section">
+  <div class="container">
+    <p class="eyebrow">Expérience professionnelle</p>
+    <h2 class="h2">Elimax SARL</h2>
+    <article class="card">
+      <header class="card-head"><h3>Activités chez Elimax SARL</h3><span class="badge badge-live">Depuis environ un an et demi</span></header>
+      <p>Je travaille chez Elimax SARL depuis environ un an et demi, dans le cadre de projets de développement de solutions numériques, de cybersécurité et de projets informatiques.</p>
+      <ul class="tags"><li>Développement de solutions numériques</li><li>Cybersécurité</li><li>Projets informatiques</li></ul>
+    </article>
+    <h3 class="spaced">Cadre et précisions</h3>
+    <ul class="check-list"><li>Elimax SARL est l&#39;entreprise de mon grand frère. Je n&#39;en suis pas le propriétaire juridique.</li><li>Ce portfolio représente ma marque personnelle ; Elimax SARL est un cadre professionnel dans lequel je mène certains projets et opportunités.</li><li>Les projets sont présentés selon mes contributions réelles et les autorisations obtenues.</li><li>Aucun nom de client, contrat, logo ou résultat commercial n&#39;est publié sans autorisation.</li></ul>
+  </div>
+</section>
+
+<section id="competences" class="section section-alt">
+  <div class="container">
+    <p class="eyebrow">Compétences techniques</p>
+    <h2 class="h2">Ce que je pratique, ce que je découvre</h2>
+    <p class="lead">Chaque compétence indique son niveau réel. Je ne présente pas comme maîtrisé ce que je suis encore en train d'apprendre.</p>
+    <ul class="legend"><li><span class="level level-pratique">Pratiqué</span> Utilisé sur des projets réels ou des prototypes</li><li><span class="level level-notions">Notions</span> Connaissances de base ou théoriques</li><li><span class="level level-apprentissage">En apprentissage</span> En cours d&#39;acquisition</li></ul>
+    
+    <article class="card skill" id="cyber">
+      <h3>Cybersécurité et cyberdéfense</h3><p>Protéger les systèmes, comprendre les menaces et sensibiliser les utilisateurs.</p>
+      <ul class="skill-items"><li><span>Filtrage réseau (iptables)</span><span class="level level-pratique">Pratiqué</span></li><li><span>Prévention d&#39;intrusion (Fail2ban)</span><span class="level level-pratique">Pratiqué</span></li><li><span>Principes Zero Trust</span><span class="level level-notions">Notions</span></li><li><span>Cadres de gouvernance et conformité (GRC)</span><span class="level level-notions">Notions</span></li><li><span>SIEM et détection</span><span class="level level-apprentissage">En apprentissage</span></li><li><span>MITRE ATT&amp;CK</span><span class="level level-apprentissage">En apprentissage</span></li></ul>
+      <p class="proof"><strong>Mise en pratique :</strong> Appliqué dans la configuration de mes environnements Linux et dans ce portfolio.</p>
+    </article>
+    
+    <article class="card skill" id="audit">
+      <h3>Audit de sécurité et tests d&#39;intrusion autorisés</h3><p>Évaluer l&#39;exposition d&#39;un système, uniquement avec autorisation explicite, périmètre convenu et règles d&#39;engagement.</p>
+      <ul class="skill-items"><li><span>Méthodologie de test d&#39;intrusion</span><span class="level level-notions">Notions</span></li><li><span>Metasploit</span><span class="level level-notions">Notions</span></li><li><span>Burp Suite</span><span class="level level-apprentissage">En apprentissage</span></li><li><span>PortSwigger Web Security Academy</span><span class="level level-apprentissage">En apprentissage</span></li></ul>
+      <p class="proof"><strong>Mise en pratique :</strong> Pratique d&#39;apprentissage sur des laboratoires dédiés. Aucun test sur un système sans autorisation.</p>
+    </article>
+    
+    <article class="card skill" id="reseaux">
+      <h3>Réseaux et systèmes</h3><p>Comprendre, segmenter et sécuriser les infrastructures.</p>
+      <ul class="skill-items"><li><span>Protocoles réseau</span><span class="level level-pratique">Pratiqué</span></li><li><span>Nmap</span><span class="level level-pratique">Pratiqué</span></li><li><span>Wireshark</span><span class="level level-pratique">Pratiqué</span></li><li><span>Virtualisation (VMware)</span><span class="level level-pratique">Pratiqué</span></li><li><span>Administration Linux (Ubuntu)</span><span class="level level-pratique">Pratiqué</span></li><li><span>Segmentation, VLAN et VPN</span><span class="level level-notions">Notions</span></li></ul>
+      <p class="proof"><strong>Mise en pratique :</strong> Socle acquis à la Licence en Réseaux et Sécurité Informatique (Keyce) et en laboratoire.</p>
+    </article>
+    
+    <article class="card skill" id="fullstack">
+      <h3>Développement full-stack</h3><p>Concevoir des applications web utiles, avec la sécurité intégrée dès la conception.</p>
+      <ul class="skill-items"><li><span>HTML, CSS, JavaScript</span><span class="level level-pratique">Pratiqué</span></li><li><span>Applications web monopages</span><span class="level level-pratique">Pratiqué</span></li><li><span>Python et Flask</span><span class="level level-apprentissage">En apprentissage</span></li><li><span>SQLite et requêtes paramétrées</span><span class="level level-apprentissage">En apprentissage</span></li></ul>
+      <p class="proof"><strong>Mise en pratique :</strong> Voir les prototypes BUNEC et EduCore. Mes projets actuels stockent leurs données dans le navigateur ; ce portfolio utilise un vrai serveur.</p>
+    </article>
+    
+    <article class="card skill" id="devops">
+      <h3>DevOps et déploiement</h3><p>Préparer des environnements fiables et reproductibles.</p>
+      <ul class="skill-items"><li><span>Environnements Linux</span><span class="level level-pratique">Pratiqué</span></li><li><span>Variables d&#39;environnement et secrets hors du code</span><span class="level level-apprentissage">En apprentissage</span></li><li><span>Déploiement derrière HTTPS</span><span class="level level-apprentissage">En apprentissage</span></li><li><span>Sauvegarde et restauration</span><span class="level level-apprentissage">En apprentissage</span></li></ul>
+      <p class="proof"><strong>Mise en pratique :</strong> Procédures documentées pour ce portfolio (installation, déploiement, sauvegarde).</p>
+    </article>
+    
+    <article class="card skill" id="archi">
+      <h3>Architecture des systèmes</h3><p>Transformer un besoin métier en prototype démontrable, puis en solution pouvant évoluer.</p>
+      <ul class="skill-items"><li><span>Modélisation de flux multi-acteurs</span><span class="level level-pratique">Pratiqué</span></li><li><span>Gestion des rôles et permissions</span><span class="level level-pratique">Pratiqué</span></li><li><span>Passage du prototype au produit</span><span class="level level-apprentissage">En apprentissage</span></li></ul>
+      <p class="proof"><strong>Mise en pratique :</strong> Parcours hôpital, officier, mairie, BUNEC, citoyen dans BUNEC ; rôles dans EduCore.</p>
+    </article>
+    
+    <article class="card skill" id="donnees">
+      <h3>Protection des données et sécurité applicative</h3><p>Réduire les risques applicatifs et limiter les données collectées.</p>
+      <ul class="skill-items"><li><span>OWASP Top 10</span><span class="level level-notions">Notions</span></li><li><span>Validation côté serveur, CSRF, CSP</span><span class="level level-apprentissage">En apprentissage</span></li><li><span>Hachage et signatures numériques</span><span class="level level-notions">Notions</span></li></ul>
+      <p class="proof"><strong>Mise en pratique :</strong> Mesures appliquées et testées sur ce portfolio (liste ci-dessous).</p>
+    </article>
+    
+  </div>
+</section>
+
+<section id="projets" class="section">
+  <div class="container">
+    <p class="eyebrow">Projets et réalisations</p>
+    <h2 class="h2">Des prototypes documentés</h2>
+    <p class="lead">Chaque fiche indique ce qui fonctionne, ce qui est simulé et ce qui reste à faire. Aucun projet n'est présenté comme déployé ou adopté sans preuve. Cliquez sur un projet pour ouvrir sa fiche.</p>
+    
+    <details class="card proj" id="bunec">
+      <summary>
+        <div><h3>BUNEC</h3><p class="institution" style="margin:4px 0 0">Gestion et suivi numérique des dossiers d&#39;état civil</p></div>
+        <div><span class="badge badge-proto">Prototype de démonstration</span> <span class="summary-hint">Voir la fiche ▾</span></div>
+      </summary>
+      
+      <dl class="fiche">
+        <div><dt>1. Résumé</dt><dd>Prototype d&#39;application de gestion et de suivi des dossiers d&#39;état civil, avec un parcours de transmission entre les acteurs concernés, de la traçabilité et une vérification par QR code.</dd></div>
+        <div><dt>2. Contexte et problème à résoudre</dt><dd>Les dossiers d&#39;état civil circulent entre plusieurs acteurs (hôpital, officier d&#39;état civil, mairie, BUNEC, citoyen). Le suivi d&#39;un dossier et la vérification d&#39;un document sont difficiles.</dd></div>
+        <div><dt>3. Objectifs</dt><dd><ul><li>Montrer un parcours numérique complet d&#39;un dossier d&#39;état civil</li><li>Rendre chaque dossier traçable</li><li>Permettre la vérification d&#39;un document par QR code</li></ul></dd></div>
+        <div><dt>4. Ma contribution personnelle</dt><dd>Conception fonctionnelle du parcours et développement du prototype.</dd></div>
+        <div><dt>5. Architecture et technologies</dt><dd>Application web monopage en JavaScript natif. Les données sont stockées dans le navigateur (localStorage). Pas de serveur ni de base de données.<ul class="tags"><li>JavaScript</li><li>HTML</li><li>CSS</li><li>localStorage</li></ul></dd></div>
+        <div><dt>6. Fonctionnalités réalisées</dt><dd><ul><li>Accès multi-rôles</li><li>Parcours multi-institutions : hôpital, officier, mairie, BUNEC, citoyen</li><li>Identifiants uniques (UUID) pour suivre chaque document</li><li>QR code de vérification</li><li>Signature cryptographique simulée</li></ul></dd></div>
+        <div><dt>7. Mesures de sécurité</dt><dd><ul><li>Identifiants UUID difficiles à deviner</li><li>Signature cryptographique simulée : elle illustre le principe et n&#39;a aucune valeur juridique</li></ul><p class="note">La sécurité d&#39;une exploitation réelle n&#39;est pas implémentée : pas d&#39;authentification serveur, pas de chiffrement des données stockées.</p></dd></div>
+        <div><dt>8. Tests effectués</dt><dd>Aucun résultat de test formel n&#39;est publié à ce jour.</dd></div>
+        <div><dt>9. Captures d'écran et démonstration</dt><dd>Captures d&#39;écran et démonstration : à ajouter.</dd></div>
+        <div><dt>10. Dépôt de code</dt><dd>Code non public.</dd></div>
+        <div><dt>11. Limites et pistes d'amélioration</dt><dd><ul><li>Prototype : il n&#39;est ni déployé en production ni adopté officiellement par une institution</li><li>Données conservées localement dans le navigateur</li><li>Signature simulée, non valable légalement</li><li>Aucune connexion avec des systèmes existants</li></ul></dd></div>
+        <div><dt>12. Statut</dt><dd>Prototype de démonstration</dd></div>
+      </dl>
+      <a class="btn btn-small" href="#contact">Demander une démonstration</a>
+    </details>
+    
+    <details class="card proj" id="cybercare">
+      <summary>
+        <div><h3>CyberCare</h3><p class="institution" style="margin:4px 0 0">Sensibilisation et accompagnement en cybersécurité</p></div>
+        <div><span class="badge badge-wip">Fiche en cours de rédaction</span> <span class="summary-hint">Voir la fiche ▾</span></div>
+      </summary>
+      <div class="alert alert-info">Cette fiche est en cours de rédaction. Les éléments non confirmés ne sont volontairement pas affichés.</div>
+      <dl class="fiche">
+        <div><dt>1. Résumé</dt><dd>Solution de sensibilisation et d&#39;accompagnement en cybersécurité : scénarios de sensibilisation au phishing, contenus pédagogiques et suivi des signalements.</dd></div>
+        <div><dt>2. Contexte et problème à résoudre</dt><dd>Le phishing et l&#39;ingénierie sociale touchent les particuliers et les organisations, qui manquent souvent d&#39;exemples concrets pour reconnaître une fraude.</dd></div>
+        <div><dt>3. Objectifs</dt><dd><ul><li>Faire vivre une simulation de phishing pédagogique</li><li>Expliquer ensuite les indices de fraude et les bonnes pratiques</li></ul></dd></div>
+        <div><dt>4. Ma contribution personnelle</dt><dd>À préciser.</dd></div>
+        <div><dt>5. Architecture et technologies</dt><dd>À préciser.</dd></div>
+        <div><dt>6. Fonctionnalités réalisées</dt><dd>À préciser.</dd></div>
+        <div><dt>7. Mesures de sécurité</dt><dd><ul><li>Les démonstrations sont conçues pour n&#39;utiliser que des données fictives et ne jamais collecter de vrai mot de passe, code OTP ou donnée bancaire.</li></ul></dd></div>
+        <div><dt>8. Tests effectués</dt><dd>Aucun résultat de test publié à ce jour.</dd></div>
+        <div><dt>9. Captures d'écran et démonstration</dt><dd>Captures d&#39;écran et démonstration : à ajouter.</dd></div>
+        <div><dt>10. Dépôt de code</dt><dd>Code non public.</dd></div>
+        <div><dt>11. Limites et pistes d'amélioration</dt><dd><ul><li>Cette fiche est incomplète : les éléments non confirmés ne sont volontairement pas affichés</li></ul></dd></div>
+        <div><dt>12. Statut</dt><dd>Fiche en cours de rédaction</dd></div>
+      </dl>
+      <a class="btn btn-small" href="#contact">Demander une démonstration</a>
+    </details>
+    
+    <details class="card proj" id="educore">
+      <summary>
+        <div><h3>EduCore</h3><p class="institution" style="margin:4px 0 0">Gestion scolaire et suivi des paiements</p></div>
+        <div><span class="badge badge-proto">Prototype de démonstration</span> <span class="summary-hint">Voir la fiche ▾</span></div>
+      </summary>
+      
+      <dl class="fiche">
+        <div><dt>1. Résumé</dt><dd>Prototype de gestion scolaire avec trois établissements de démonstration (primaire, secondaire, université), des rôles distincts et un suivi des paiements de scolarité en mode démonstration.</dd></div>
+        <div><dt>2. Contexte et problème à résoudre</dt><dd>La gestion des élèves, des notes et des paiements de scolarité repose souvent sur des documents papier ou des outils dispersés.</dd></div>
+        <div><dt>3. Objectifs</dt><dd><ul><li>Organiser les informations scolaires par rôle</li><li>Suivre les paiements de scolarité</li><li>Produire des documents vérifiables (reçus, quitus, cartes)</li></ul></dd></div>
+        <div><dt>4. Ma contribution personnelle</dt><dd>Conception fonctionnelle et développement du prototype.</dd></div>
+        <div><dt>5. Architecture et technologies</dt><dd>Application web en HTML, CSS et JavaScript. Les données sont stockées dans le navigateur (localStorage). Pas de serveur ni de base de données.<ul class="tags"><li>JavaScript</li><li>HTML</li><li>CSS</li><li>localStorage</li></ul></dd></div>
+        <div><dt>6. Fonctionnalités réalisées</dt><dd><ul><li>Trois établissements de démonstration</li><li>Gestion des rôles</li><li>Paiements de scolarité en mode démonstration (en ligne et à la caisse)</li></ul></dd></div>
+        <div><dt>7. Mesures de sécurité</dt><dd><ul><li>Aucune donnée réelle d&#39;élève n&#39;est utilisée</li></ul><p class="note">Les paiements sont simulés : aucune banque ni service de paiement mobile n&#39;est connecté.</p></dd></div>
+        <div><dt>8. Tests effectués</dt><dd>Aucun résultat de test formel n&#39;est publié à ce jour.</dd></div>
+        <div><dt>9. Captures d'écran et démonstration</dt><dd>Captures d&#39;écran et démonstration : à ajouter.</dd></div>
+        <div><dt>10. Dépôt de code</dt><dd>Code non public.</dd></div>
+        <div><dt>11. Limites et pistes d'amélioration</dt><dd><ul><li>Prototype de démonstration, non déployé</li><li>Paiements simulés, sans intégration bancaire</li><li>Données conservées localement dans le navigateur</li><li>Notes, bulletins, reçus, quitus, documents, carte étudiante et QR de vérification : en cours d&#39;évolution</li></ul></dd></div>
+        <div><dt>12. Statut</dt><dd>Prototype de démonstration</dd></div>
+      </dl>
+      <a class="btn btn-small" href="#contact">Demander une démonstration</a>
+    </details>
+    
+  </div>
+</section>
+
+<section id="services" class="section section-alt">
+  <div class="container">
+    <p class="eyebrow">Services professionnels</p>
+    <h2 class="h2">Six offres, un devis sans engagement</h2>
+    <p class="lead">Certaines prestations peuvent être réalisées dans le cadre d'Elimax SARL : le cadre contractuel est précisé dans chaque devis.</p>
+    <div class="alert alert-info"><strong>Tests d'intrusion :</strong> réalisés uniquement avec une autorisation écrite explicite, un périmètre convenu et des règles d'engagement adaptées.</div>
+    <div class="grid grid-2">
+      
+      <article class="card"><h3>Audit et sécurisation</h3><p>Analyse du périmètre autorisé, identification des risques, recommandations de correction et rapport de synthèse.</p>
+        <ul class="check-list"><li>Périmètre et règles d&#39;engagement écrits</li><li>Liste priorisée des risques</li><li>Rapport technique et synthèse pour décideurs</li></ul>
+        <a class="btn btn-small" href="#contact">Demander un devis</a></article>
+      
+      <article class="card"><h3>Sécurité applicative</h3><p>Revue de l&#39;authentification, des autorisations, de la validation des données, de la configuration et des risques applicatifs.</p>
+        <ul class="check-list"><li>Contrôle des accès</li><li>Validation des entrées</li><li>Recommandations de correction</li></ul>
+        <a class="btn btn-small" href="#contact">Demander un devis</a></article>
+      
+      <article class="card"><h3>Réseaux et infrastructures</h3><p>Étude de l&#39;architecture, segmentation, contrôle des accès, sécurisation des équipements et recommandations d&#39;amélioration.</p>
+        <ul class="check-list"><li>Revue d&#39;architecture</li><li>Segmentation et filtrage</li><li>Plan d&#39;amélioration</li></ul>
+        <a class="btn btn-small" href="#contact">Demander un devis</a></article>
+      
+      <article class="card"><h3>Développement de solutions numériques</h3><p>Conception et développement d&#39;applications web adaptées aux besoins métier, avec prise en compte de la sécurité, de la maintenabilité et de l&#39;évolutivité.</p>
+        <ul class="check-list"><li>Analyse du besoin</li><li>Prototype démontrable</li><li>Sécurité intégrée dès la conception</li></ul>
+        <a class="btn btn-small" href="#contact">Demander un devis</a></article>
+      
+      <article class="card"><h3>DevOps et déploiement</h3><p>Préparation du déploiement, gestion de configuration, automatisation, journalisation et pratiques opérationnelles adaptées.</p>
+        <ul class="check-list"><li>Environnements séparés</li><li>Gestion des secrets</li><li>Sauvegarde et retour arrière</li></ul>
+        <a class="btn btn-small" href="#contact">Demander un devis</a></article>
+      
+      <article class="card"><h3>Sensibilisation à la cybersécurité</h3><p>Ateliers de sensibilisation, simulations pédagogiques autorisées et accompagnement des équipes face aux risques numériques.</p>
+        <ul class="check-list"><li>Ateliers pour non-spécialistes</li><li>Simulations avec données fictives</li><li>Bonnes pratiques à retenir</li></ul>
+        <a class="btn btn-small" href="#contact">Demander un devis</a></article>
+      
+    </div>
+  </div>
+</section>
+
+<section id="elimax" class="section">
+  <div class="container narrow">
+    <p class="eyebrow">Partenariat professionnel</p>
+    <h2 class="h2">Ma collaboration avec Elimax SARL</h2>
+    <p class="lead">Elimax SARL est l&#39;entreprise de mon grand frère. Je travaille avec elle depuis environ un an et demi et je l&#39;utilise comme cadre professionnel pour certains projets et opportunités.</p>
+    <h3 class="spaced">Ce que cela permet</h3>
+    <ul class="check-list"><li>Prestations de services informatiques</li><li>Solutions numériques et projets informatiques</li><li>Collaboration possible avec des organisations publiques ou privées</li></ul>
+    <h3 class="spaced">Distinction claire</h3>
+    <ul class="check-list"><li>Ce portfolio est ma marque personnelle, distincte de l&#39;entreprise.</li><li>Je ne suis pas le propriétaire juridique d&#39;Elimax SARL.</li><li>Les projets sont présentés selon mes contributions réelles et les autorisations obtenues.</li><li>Aucun logo, contrat, nom de client ou résultat commercial n&#39;est publié sans autorisation.</li></ul>
+  </div>
+</section>
+
+<section id="cv" class="section section-alt">
+  <div class="container narrow">
+    <p class="eyebrow">CV et documents</p>
+    <h2 class="h2">Curriculum vitæ</h2>
+    <p class="lead">Version française au format PDF, sans donnée personnelle superflue.</p>
+    <div class="actions">
+      <a class="btn" href="data:application/pdf;base64,JVBERi0xLjQKJZOMi54gUmVwb3J0TGFiIEdlbmVyYXRlZCBQREYgZG9jdW1lbnQgKG9wZW5zb3VyY2UpCjEgMCBvYmoKPDwKL0YxIDIgMCBSIC9GMiAzIDAgUiAvRjMgNCAwIFIKPj4KZW5kb2JqCjIgMCBvYmoKPDwKL0Jhc2VGb250IC9IZWx2ZXRpY2EgL0VuY29kaW5nIC9XaW5BbnNpRW5jb2RpbmcgL05hbWUgL0YxIC9TdWJ0eXBlIC9UeXBlMSAvVHlwZSAvRm9udAo+PgplbmRvYmoKMyAwIG9iago8PAovQmFzZUZvbnQgL0hlbHZldGljYS1Cb2xkIC9FbmNvZGluZyAvV2luQW5zaUVuY29kaW5nIC9OYW1lIC9GMiAvU3VidHlwZSAvVHlwZTEgL1R5cGUgL0ZvbnQKPj4KZW5kb2JqCjQgMCBvYmoKPDwKL0Jhc2VGb250IC9IZWx2ZXRpY2EtT2JsaXF1ZSAvRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZyAvTmFtZSAvRjMgL1N1YnR5cGUgL1R5cGUxIC9UeXBlIC9Gb250Cj4+CmVuZG9iago1IDAgb2JqCjw8Ci9Db250ZW50cyAxMCAwIFIgL01lZGlhQm94IFsgMCAwIDU5NS4yNzU2IDg0MS44ODk4IF0gL1BhcmVudCA5IDAgUiAvUmVzb3VyY2VzIDw8Ci9Gb250IDEgMCBSIC9Qcm9jU2V0IFsgL1BERiAvVGV4dCAvSW1hZ2VCIC9JbWFnZUMgL0ltYWdlSSBdCj4+IC9Sb3RhdGUgMCAvVHJhbnMgPDwKCj4+IAogIC9UeXBlIC9QYWdlCj4+CmVuZG9iago2IDAgb2JqCjw8Ci9Db250ZW50cyAxMSAwIFIgL01lZGlhQm94IFsgMCAwIDU5NS4yNzU2IDg0MS44ODk4IF0gL1BhcmVudCA5IDAgUiAvUmVzb3VyY2VzIDw8Ci9Gb250IDEgMCBSIC9Qcm9jU2V0IFsgL1BERiAvVGV4dCAvSW1hZ2VCIC9JbWFnZUMgL0ltYWdlSSBdCj4+IC9Sb3RhdGUgMCAvVHJhbnMgPDwKCj4+IAogIC9UeXBlIC9QYWdlCj4+CmVuZG9iago3IDAgb2JqCjw8Ci9MYW5nIChmci1GUikgL1BhZ2VNb2RlIC9Vc2VOb25lIC9QYWdlcyA5IDAgUiAvVHlwZSAvQ2F0YWxvZwo+PgplbmRvYmoKOCAwIG9iago8PAovQXV0aG9yIChXQUZPIFRBTExBIEFuYXRvbGUgQmVuamFtaW4pIC9DcmVhdGlvbkRhdGUgKEQ6MjAyNjEwMjAxMDE1NTArMDEnMDAnKSAvQ3JlYXRvciAoXCh1bnNwZWNpZmllZFwpKSAvS2V5d29yZHMgKCkgL01vZERhdGUgKEQ6MjAyNjEwMjAxMDE1NTArMDEnMDAnKSAvUHJvZHVjZXIgKFJlcG9ydExhYiBQREYgTGlicmFyeSAtIFwob3BlbnNvdXJjZVwpKSAKICAvU3ViamVjdCAoQ3VycmljdWx1bSB2aXRcMzQ2KSAvVGl0bGUgKENWIC0gV0FGTyBUQUxMQSBBbmF0b2xlIEJlbmphbWluKSAvVHJhcHBlZCAvRmFsc2UKPj4KZW5kb2JqCjkgMCBvYmoKPDwKL0NvdW50IDIgL0tpZHMgWyA1IDAgUiA2IDAgUiBdIC9UeXBlIC9QYWdlcwo+PgplbmRvYmoKMTAgMCBvYmoKPDwKL0ZpbHRlciBbIC9BU0NJSTg1RGVjb2RlIC9GbGF0ZURlY29kZSBdIC9MZW5ndGggMjM4OQo+PgpzdHJlYW0KR2F0bTw+QkFMaiZxOVNZa2JraHBgRjRsMyFtV3RBTixxIzMrVmxIKWc+WlpwTkY8ZU0uNU1UbmNgYzZvKlxQPGM3KDBBJE4vVkFHXT4rQEEyQGQrYGZBWEwnJyZgLWtyY0AxT2oyMUYwUzlENEpka1FmWUJBXyUqb3VeJT1mbEI3NUtzJ2wnNCduaEVxc1xhN2puMnAiTE0hVUFDTzZPSlNXO1YhNGpgZFY0T191QF8jcCNQXz9JRDssJFluJm5UQWdEJClXQEZHUTxAYWpDcDEoWFw5ZVM7Qy02aHE+ZXVvUDdqTVhbbjtkQztjXV5DRys6MDdkVWlxYiZKbFBjYHRVZ0QqT2BBbk1UZTMnYWJyXUgsUjlhUVs0by9AaSdPPGlIWUpGMlA9M0ZfLUBFSWlnPEAzaScsRmQ1b01AblJZP1RULXAkbnBmOkhzblVnOVAkbjllWHNeYDFkOSJaJzc6JCZ0JDU+ZkMoZkpDU0FoQFwsTixWN3JTN05EPlNKSkNHaV5jckhkcjhmNmZeR2dZNnBiI3A2RipHMGFtNi9kY0ddJSlMP18+QWo5N2s+R3A6OHRZTENUTFZ1WkheanEuWTpSIixrKzVjYEhCPkRQUSYkMVByV2ovVVRdcz9iOz5iNXE3KmRBJFZjYkA1JnJDYTxgOjRvcihaQDw3M0o7KVphdC0ldDVwWDpCRUMlblRQJSUhJVtKRjMjZHRFZCZBKlxpN1onI1lrIipgMWgkSjRqaz5iTjNoLCFsMy1GLD9lNWFDVmtQcGsvaklYTG89WkFNTlJCbktkXl9ua2hdI2NkVmVIUE9NRDluJj4rSENTUE9dPGVaSkFiXy8tPUctSTY3UzE6dFA9aTJ1a0E6IyUvWSM7ckQ5a29LLGIkblRRcVM8IVFjO21Wc1QhbmheRUMvbV1dNERDY1ZRUiVJKnFcKDxILyVbIztZJUovMEVhUUNMJVckP0twRkRhajJXX3RhUnFITF8hR05QJzIxI2tEZiFpPVRmSGhcOWFxMzloLGc3MDxbI2tUaTRJZUwlJDw8dF9cIydYcFhbMFpGVWFvPnAqaTwrOTBUKS1BSkhhZVFSW28rVCYzakg4RkxTZSdLJWA9cjAoISxvUTAlcDY/JiFHRT8xLFxydFVQNWBHLWlONjg1bmk+Oy43aCdhalAoWjtNVjQhTD1zbWZeLG5DMjNfZyNWdEFYJ2R0RScxWT9MPUtMVHRXJUAkLF9yXEgsXyRJWjo6Pkc8N0lWM0RRY2BrJ1dEVENVIktacjxoTE1yVz9hKElnJXJIRWUrR0QyQSdZYHBNPVtYNHMjcmJCTkpXJlRbZl1gJ28/ZzY4JFhWT0MvZmVubiU4WSdsRipYTU5BTlo2a0BnPE1SOSMlQz08XjpXL1dwRC1XSiVZalFOK2dTS0VUblgrWGYuX09KK0Q9TTxoMDxSZC1QSCZRcilSK088LFBTLkYncCNDPVohclYqVjI/R0BidFU4YkNfZnE5WlBhNzJYWGVcNVcmMFJyTSVLIjFnJUNALUNnIUVVYT9kYSRzVyZdLEhdWjxaMG5nSGZCVDNzWy89XXEyb09AJi1wZC1GVE8rPTZSJkRuZWonbjZMTUkwLCs2LXQnIXUsXzhqXGVPNy9tZVBAQDYnOio0STdEZSFPL0UuMGMxOG88X1VrU0hwaTJnamZ1RDJmWD87bVdRWWlRTShNKTdiPi5sLm1DNlskJDMtaTtGYjhjLUtVNFFYKGZjTUxbIjEzIzFHIz5dKGhXaikjZE9HXVM5WWJAXGIyZDRORlErUzhdcj01NjwoTVRKOmZnTV10cylEMEpeLlZscHRxNzJpIkIzYGQ7MkZOK3QxUUVcI2ZcTTJNXWpzPXIzaFMxWGFMMkRqa2pVbCNOV1FwLDxDLUtbLW0mUmRPNWRDUVMwWWZMbVFdRWRnR1Y8YDtNPT5zVUBpYydbZ2ZoaU0iPU1dNztxa3BYVT8pXXREakRTL3I6Vlk8LUY0OVtnWW8xZDknNj9lLlhSLjBAZj5FYkxYPD1WI1I6cU9ncmVeRFkoIUdiZToyWjNwS2BwQjdGZCxYY0RicFRFZy9PKWdsVCdSLTkjTSZmNzpUYzM/QF9zZVw8cVkqSjQ8P0g5SzonJi1OSTtMZGEzLTIuaWZwQT9tYWVUcy1FRSNFZlNfOD1DXi5iZWAhYmRaWzAwJFNLRyNZcVkncVlXO0pALUU/KVUvYm9la19ac2tcWjlvWDJLI1BCVWU/NDpjZUJiPCZRWkRhSlpVPGQwWVpDa2thUyRoYl5HZkBENGYsKyhNQ1NhPyRYKT8mNXBKYGtoOENNVldBYElSZiwlajYqUW5rWHFlQVB0RXM4SGNzKmQjIiJOT2FpWVREI0JObi8pNVhxXjE1VEZHLEljVVprUytnMiwzPlVaVTQiaC9PNzJkLDYnQUxEP1NUQ1ZRJE4pIUlqRU5dOVBAPyhISythTiNlPiZUYUsyWSxWZ0NQIzVoTCNgOVByMVhIKUwxXkdlNjFAKU4tTTNYRlxDRV9fTU5oci9GZGwnYE9FJ1JkLEtmRD82YTZzbzxFNHRLbDBCSVpeYmo9IlMlVDEmImdgKVc7JUV0IkheXihDS3BfPyJfX0FVNlU9OnRaNkhmKkk+UypAIlIkb0NTKi5LWlY0PUFCN2g+U2ssaG1oOGMlXWhoLFJqcCpQRE1ndDpdZlEqbmJiQiVVXik3Qz1jUmoyRVkhVDg/KmA/Y2QsRCMqPi8zOjdnNG5hPzdZZjd1YGoxU3RpM0FTclVbXDZRTDx0ZTMwY2MqJ1JFOSJNY09kXDU7bmxMUSc1Y2VMUDZmSUlpOjIlQXBpQU0uYytMO1BtaSRqTk8nSzwiQm1qMGhdTEU2OyU2IUlyLV0uPDtLXVBBQ0M3KUkoaklEOFZwamhVJWBUTmtjND8/LiVLJ2EzRzxBVl9vSU9zJVBjNyQyWllYRz8odDBaNFBxYlZ0Z0tLaWBDWz49Y0drOnVGdCkrT0AnKFNBQWMjJnUiRFBZYiZWX2MlZFZoMSRUVTBHYU9SNichL0coL29PZjI4a0Y/JmJYKldJIydsZy5aYGpoQjkkT1dHa0E3STYvTTk4UFBAQGJTQ0wtXCNuVSd0YDtjRjAocEAnRVElPGZyWFItdUpoJCFbOyElYSZiYUonbFlRKjx+PmVuZHN0cmVhbQplbmRvYmoKMTEgMCBvYmoKPDwKL0ZpbHRlciBbIC9BU0NJSTg1RGVjb2RlIC9GbGF0ZURlY29kZSBdIC9MZW5ndGggNDE5Cj4+CnN0cmVhbQpHYXJWSjYjTTwvJkE3VWwzQDdgb1lxXz5GLyUpOVNDKmVtRkxpRlYvXzU9WXRnPkApYEQ7KGwnYUJqLjlCMDxMLykoZGM2WjNNRmNnY21NSU5kOzNfO0xzLlBhI1xLPWZOMlddViZAVFBOXzZEJSt0ailsOyoqZWJJMi9uXEc9VyInPyJlN0ZtVXFQcmsoakcoKE1BQDArK2xtTUohMVxNXCZKWykjJlIobDVPIWdrbko1SGI7bGNIVUhXQ2NxPW1aZV82Yj5Fb21vP1BibkAublFXL21uR1lcNGYpZHNdLzpfKDA0bzJvaF1AQkI/YzlaKkBINyNmT1Y8R3B1SyZGSU11YSxdIjNvJ1JuUEU0ZD9HWHJhREBoa0BQLE5LQUxlOl9ZZDNoR0Q8YlpWMDE4VW0sSWQsIWFiZ0g4MEpoTjh1LiVSamRKcmEuRzRQPzg2WDROYWckW0dOP2ssY25pWVNTMSojXUZVJlpdcmgzJE1Vaig0KiJsJkBVL2oqT2BVRCpMX1YuaklXdDIkKUVRPio/SjFeSy0tTic6V2RAaCN+PmVuZHN0cmVhbQplbmRvYmoKeHJlZgowIDEyCjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDA2MSAwMDAwMCBuIAowMDAwMDAwMTEyIDAwMDAwIG4gCjAwMDAwMDAyMTkgMDAwMDAgbiAKMDAwMDAwMDMzMSAwMDAwMCBuIAowMDAwMDAwNDQ2IDAwMDAwIG4gCjAwMDAwMDA2NTAgMDAwMDAgbiAKMDAwMDAwMDg1NCAwMDAwMCBuIAowMDAwMDAwOTM2IDAwMDAwIG4gCjAwMDAwMDEyNTIgMDAwMDAgbiAKMDAwMDAwMTMxNyAwMDAwMCBuIAowMDAwMDAzNzk4IDAwMDAwIG4gCnRyYWlsZXIKPDwKL0lEIApbPDQ1M2E5ZjBhNzNjZjljYjkyYWI2MGNmNGE5NzAwYTYyPjw0NTNhOWYwYTczY2Y5Y2I5MmFiNjBjZjRhOTcwMGE2Mj5dCiUgUmVwb3J0TGFiIGdlbmVyYXRlZCBQREYgZG9jdW1lbnQgLS0gZGlnZXN0IChvcGVuc291cmNlKQoKL0luZm8gOCAwIFIKL1Jvb3QgNyAwIFIKL1NpemUgMTIKPj4Kc3RhcnR4cmVmCjQzMDgKJSVFT0YK" download="CV-WAFO-TALLA-Anatole-Benjamin-FR.pdf">Télécharger le CV (PDF)</a>
+    </div>
+    <p class="note">Une version anglaise pourra être ajoutée ultérieurement.</p>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <div class="container narrow">
+    <p class="eyebrow">Contact</p>
+    <h2 class="h2">Me contacter</h2>
+    <p class="lead">Recrutement, collaboration, demande de prestation ou de démonstration, partenariat : appelez-moi directement.</p>
+    <div class="card">
+      <h3>Téléphone</h3>
+      <ul class="plain"><li><a class="phone-big" href="tel:+237691801583">691 801 583</a></li><li><a class="phone-big" href="tel:+237679126746">679 126 746</a></li></ul>
+      <p class="note">Le formulaire de contact et la prise de rendez-vous en ligne nécessitent le serveur du portfolio (version complète) : ils ne sont volontairement pas simulés dans cette page autonome.</p>
+    </div>
+  </div>
+</section>
+
+<section id="legal" class="section section-alt">
+  <div class="container narrow prose">
+    <p class="eyebrow">Informations légales</p>
+    <h2 class="h2">Mentions légales et confidentialité</h2>
+    <h3>Éditeur</h3>
+    <p>WAFO TALLA Anatole Benjamin, personne physique. Téléphone : 691 801 583, 679 126 746. E-mail : <span class="todo">à compléter avant la mise en ligne</span>. Directeur de la publication : WAFO TALLA Anatole Benjamin.</p>
+    <h3>Hébergement</h3>
+    <p><span class="todo">À compléter avant la mise en ligne (nom et adresse de l'hébergeur).</span></p>
+    <h3>Entreprise associée</h3>
+    <p>Elimax SARL est une entreprise distincte de l'éditeur. L'éditeur n'en est pas le propriétaire juridique. Aucun logo, contrat ou nom de client n'est publié sans autorisation.</p>
+    <h3>Responsabilité</h3>
+    <p>Les projets présentés sont, sauf mention contraire, des prototypes de démonstration. Aucune garantie d'absence totale de faille de sécurité n'est donnée.</p>
+    <h3>Données personnelles et cookies</h3>
+    <p>Cette page ne collecte aucune donnée, ne dépose aucun cookie et n'utilise aucun traceur ni service externe.</p>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-bottom" style="border-top:0;margin-top:0">
+    <p class="footer-brand">WAFO TALLA Anatole Benjamin</p>
+    <p class="muted">Cybersecurity, Engineering &amp; Digital Solutions</p>
+    <p>© <span id="annee">2026</span> WAFO TALLA Anatole Benjamin. Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  var y = document.getElementById("annee"); if (y) y.textContent = new Date().getFullYear();
+  var btn = document.querySelector(".nav-toggle"), menu = document.getElementById("menu");
+  function set(open) { menu.classList.toggle("is-open", open); btn.setAttribute("aria-expanded", open ? "true" : "false"); }
+  btn.addEventListener("click", function () { set(!menu.classList.contains("is-open")); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") set(false); });
+  menu.addEventListener("click", function (e) { if (e.target.tagName === "A") set(false); });
+  // Ouvre la fiche d'un projet quand on arrive dessus par un lien
+  function openFromHash() {
+    var el = location.hash ? document.getElementById(location.hash.slice(1)) : null;
+    if (el && el.tagName === "DETAILS") el.open = true;
+  }
+  window.addEventListener("hashchange", openFromHash); openFromHash();
+  // Met en évidence la rubrique visible dans le menu
+  var links = [].slice.call(document.querySelectorAll(".nav-list a:not(.btn)"));
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) links.forEach(function (a) { a.classList.toggle("active", a.getAttribute("href") === "#" + en.target.id); });
+      });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    document.querySelectorAll("main section[id]").forEach(function (s) { io.observe(s); });
+  }
+})();
+</script>
+</body>
+</html>
