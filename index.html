@@ -1529,6 +1529,29 @@ details.proj[open] summary{margin-bottom:16px}
         })();
         </script>
       </section>
+      <!-- FECAFOOT_DOCUMENTS_CLICK_FIX_V1 -->
+      <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const root = document.getElementById('fecafoot');
+        if (!root) return;
+
+        const button = root.querySelector('[data-fecafoot-show="documents"]');
+        if (!button || button.dataset.documentsFixReady === 'true') return;
+
+        button.dataset.documentsFixReady = 'true';
+        button.addEventListener('click', () => {
+          const panel = root.querySelector('[data-fecafoot-panel="documents"]');
+          if (!panel) return;
+
+          root.querySelectorAll('[data-fecafoot-panel]').forEach(section => {
+            section.hidden = section !== panel;
+          });
+          root.querySelectorAll('[data-fecafoot-show]').forEach(tab => {
+            tab.setAttribute('aria-pressed', String(tab === button));
+          });
+        });
+      });
+      </script>
       <section data-fecafoot-panel="documents" hidden>
 
       <section aria-labelledby="fecafoot-documents-titre" style="margin-top:36px;">
