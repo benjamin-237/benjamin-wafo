@@ -1,0 +1,22 @@
+# Sauvegardes locales à la racine
+/*.bak*
+/*.avant*
+/*sauvegarde*
+/*backup*
+
+# Environnement Python local
+/.venv-educore-pdf/
+
+# Vidéos originales : conserver les versions compressées pour le site
+/media/cybetcare/videos/
+/media/educore/videos/
+/media/fecafoot/videos/
+
+# BUNEC : exclure les vidéos originales, mais conserver les versions
+# compressées et les miniatures utilisées par le portfolio
+/media/bunec/videos/*
+!/media/bunec/videos/compressees/
+!/media/bunec/videos/miniatures/
+# Sauvegardes temporaires dans les médias
+/media/**/*.bak
+/media/**/*.bak_*

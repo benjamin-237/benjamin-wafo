@@ -223,3 +223,47 @@ function bindAjax(form, onSuccess) {
   });
   observer.observe(form, { childList: true, subtree: true, characterData: true });
 })();
+
+
+/* ===== Agrandissement des captures EDUCORE ===== */
+(function () {
+  "use strict";
+  var gallery = document.getElementById("educore-gallery");
+  var overlay = document.getElementById("educore-lightbox");
+  var enlarged = document.getElementById("educore-lightbox-image");
+  var caption = document.getElementById("educore-lightbox-caption");
+  if (!gallery || !overlay || !enlarged || !caption) return;
+
+  var closeButton = overlay.querySelector(".educore-lightbox-close");
+  var lastTrigger = null;
+
+  function closeImage() {
+    if (overlay.hidden) return;
+    overlay.hidden = true;
+    enlarged.src = "";
+    enlarged.alt = "";
+    caption.textContent = "";
+    document.body.classList.remove("educore-lightbox-open");
+    if (lastTrigger) lastTrigger.focus();
+  }
+
+  gallery.addEventListener("click", function (event) {
+    var button = event.target.closest(".educore-gallery-item");
+    if (!button) return;
+    lastTrigger = button;
+    enlarged.src = button.getAttribute("data-full-image");
+    enlarged.alt = button.getAttribute("data-image-alt") || "";
+    caption.textContent = enlarged.alt;
+    overlay.hidden = false;
+    document.body.classList.add("educore-lightbox-open");
+    closeButton.focus();
+  });
+
+  closeButton.addEventListener("click", closeImage);
+  overlay.addEventListener("click", function (event) {
+    if (event.target === overlay) closeImage();
+  });
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") closeImage();
+  });
+})();

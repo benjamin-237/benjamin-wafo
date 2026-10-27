@@ -242,3 +242,1897 @@ input:focus, select:focus, textarea:focus { border-color: var(--cyan); outline: 
 /* ===== Correctifs ===== */
 .fiche .tags { padding-left: 0; margin: 12px 0 0; }
 .fiche .tags li { margin-bottom: 0; }
+
+
+/* ===== Galerie des captures EDUCORE ===== */
+.educore-gallery { margin-top: 24px; }
+.educore-gallery-intro { color: var(--text-muted); }
+.educore-gallery-group { margin-top: 24px; }
+.educore-gallery-group h4 { margin-bottom: 12px; }
+.educore-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 16px;
+}
+.educore-gallery-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  padding: 10px;
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  background: rgba(255,255,255,.035);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  cursor: zoom-in;
+  transition: border-color .2s ease, transform .2s ease;
+}
+.educore-gallery-item:hover,
+.educore-gallery-item:focus-visible {
+  border-color: var(--cyan);
+  transform: translateY(-2px);
+}
+.educore-gallery-item img {
+  display: block;
+  width: 100%;
+  height: 155px;
+  object-fit: contain;
+  background: rgba(0,0,0,.16);
+  border-radius: 7px;
+}
+.educore-gallery-item span { font-size: .92rem; font-weight: 600; }
+.educore-lightbox[hidden] { display: none; }
+.educore-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px 24px;
+  background: rgba(4, 9, 22, .94);
+}
+.educore-lightbox figure {
+  max-width: min(1200px, 100%);
+  max-height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.educore-lightbox figure img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100vh - 125px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+.educore-lightbox figcaption { color: #fff; text-align: center; }
+.educore-lightbox-close {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255,255,255,.45);
+  border-radius: 50%;
+  background: rgba(255,255,255,.1);
+  color: #fff;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+}
+body.educore-lightbox-open { overflow: hidden; }
+@media (max-width: 640px) {
+  .educore-gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .educore-gallery-item { padding: 7px; }
+  .educore-gallery-item img { height: 115px; }
+  .educore-lightbox { padding: 56px 10px 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .educore-gallery-item { transition: none; }
+}
+
+
+/* EDUCORE : titres au-dessus des captures */
+#educore-gallery .educore-gallery-item {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 12px;
+    text-align: center;
+}
+
+#educore-gallery .educore-gallery-item span {
+    order: -1;
+    display: block;
+    font-weight: 600;
+    line-height: 1.4;
+    min-height: 2.8em;
+}
+
+#educore-gallery .educore-gallery-item img {
+    display: block;
+    width: 100%;
+    height: 210px;
+    object-fit: contain;
+    background: #f3f4f6;
+    border-radius: 8px;
+    cursor: zoom-in;
+}
+
+#educore-gallery .educore-gallery-item:focus-visible {
+    outline: 3px solid var(--cyan, #0891b2);
+    outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+    #educore-gallery .educore-gallery-item img {
+        height: 180px;
+    }
+}
+
+
+/* EDUCORE : petites vignettes, agrandissement uniquement au clic */
+#educore-gallery .educore-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 16px;
+}
+
+#educore-gallery .educore-gallery-item {
+    width: 100%;
+    min-width: 0;
+    cursor: zoom-in;
+}
+
+#educore-gallery .educore-gallery-item img {
+    width: 100%;
+    height: 125px;
+    object-fit: contain;
+    display: block;
+}
+
+@media (min-width: 900px) {
+    #educore-gallery .educore-gallery-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    #educore-gallery .educore-gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    #educore-gallery .educore-gallery-item img {
+        height: 100px;
+    }
+}
+
+/* EDUCORE : présentation finale de la galerie */
+#educore-gallery {
+    display: block;
+    margin-top: 32px;
+    padding: 24px;
+    border: 1px solid var(--border, #d8dee8);
+    border-radius: 16px;
+    background: var(--surface, #fff);
+}
+
+#educore-gallery > #educore-gallery-title {
+    margin: 0 0 12px;
+    padding: 0 0 14px;
+    border-bottom: 3px solid var(--primary, #2457a7);
+    font-size: clamp(1.35rem, 2.5vw, 1.8rem);
+    line-height: 1.3;
+    font-weight: 800;
+}
+
+#educore-gallery > .educore-gallery-intro {
+    margin: 0 0 24px;
+    line-height: 1.6;
+}
+
+#educore-gallery .educore-gallery-group {
+    display: block;
+    margin-top: 26px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border, #d8dee8);
+}
+
+#educore-gallery .educore-gallery-group h4 {
+    display: block;
+    margin: 0 0 16px;
+    padding: 10px 14px;
+    border-left: 5px solid var(--primary, #2457a7);
+    border-radius: 4px;
+    background: var(--surface-alt, #f2f5fa);
+    font-size: 1.05rem;
+    font-weight: 800;
+    line-height: 1.4;
+}
+
+#educore-gallery .educore-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    align-items: start;
+}
+
+#educore-gallery .educore-gallery-item {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 8px;
+    width: 100%;
+    min-width: 0;
+    padding: 10px;
+    border: 1px solid var(--border, #d8dee8);
+    border-radius: 10px;
+    background: var(--card, #fff);
+    text-align: center;
+    cursor: zoom-in;
+    overflow: hidden;
+}
+
+#educore-gallery .educore-gallery-item span {
+    order: -1;
+    display: block;
+    min-height: 2.8em;
+    margin: 0;
+    font-size: 0.88rem;
+    font-weight: 800;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+#educore-gallery .educore-gallery-item img {
+    display: block;
+    width: 100%;
+    height: 115px;
+    margin: 0;
+    object-fit: contain;
+    background: #f1f3f6;
+    border-radius: 6px;
+    cursor: zoom-in;
+}
+
+#educore-gallery .educore-gallery-item:hover,
+#educore-gallery .educore-gallery-item:focus-visible {
+    border-color: var(--primary, #2457a7);
+    outline: 2px solid var(--primary, #2457a7);
+    outline-offset: 2px;
+}
+
+#educore-lightbox[hidden] {
+    display: none !important;
+}
+
+#educore-lightbox.educore-lightbox {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 99999 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding: 60px 24px 24px;
+    background: rgba(0, 0, 0, 0.92);
+}
+
+#educore-lightbox figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    margin: 0;
+}
+
+#educore-lightbox #educore-lightbox-image {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 95vw;
+    max-height: calc(100vh - 145px);
+    object-fit: contain;
+    background: transparent;
+    border-radius: 6px;
+}
+
+#educore-lightbox #educore-lightbox-caption {
+    max-width: 90vw;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+}
+
+#educore-lightbox .educore-lightbox-close {
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    z-index: 1;
+    width: 44px;
+    height: 44px;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+body.educore-lightbox-open {
+    overflow: hidden !important;
+}
+
+@media (max-width: 900px) {
+    #educore-gallery .educore-gallery-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    #educore-gallery {
+        padding: 14px;
+    }
+    #educore-gallery .educore-gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+    #educore-gallery .educore-gallery-item {
+        padding: 7px;
+    }
+    #educore-gallery .educore-gallery-item img {
+        height: 95px;
+    }
+    #educore-gallery .educore-gallery-item span {
+        font-size: 0.8rem;
+    }
+    #educore-lightbox.educore-lightbox {
+        padding: 56px 10px 16px;
+    }
+    #educore-lightbox #educore-lightbox-image {
+        max-width: 96vw;
+        max-height: calc(100vh - 130px);
+    }
+}
+
+
+
+
+/* PRESENTATION PORTFOLIO : vignettes et hierarchie */
+.card.proj {
+  margin-block: 22px;
+  border-radius: 16px;
+  overflow: clip;
+}
+
+.card.proj > summary {
+  cursor: pointer;
+  padding: 20px 22px;
+  border-radius: 12px;
+  line-height: 1.55;
+  transition: background-color .2s ease, color .2s ease;
+}
+
+.card.proj > summary:hover {
+  background: rgba(100, 116, 139, .09);
+}
+
+.card.proj[open] > summary {
+  border-bottom: 1px solid rgba(100, 116, 139, .25);
+  margin-bottom: 22px;
+  font-weight: 750;
+}
+
+.card.proj > summary:focus-visible {
+  outline: 3px solid #648cff;
+  outline-offset: 3px;
+}
+
+.card.proj > h3,
+.card.proj > h4,
+.card.proj h3 {
+  line-height: 1.4;
+  margin-top: 28px;
+  margin-bottom: 16px;
+  letter-spacing: .01em;
+}
+
+.card.proj .grid {
+  column-gap: 22px !important;
+  row-gap: 26px !important;
+}
+
+.card.proj figure.card {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 13px !important;
+  margin: 0 !important;
+  border: 1px solid rgba(100, 116, 139, .22);
+  border-radius: 13px;
+  background: var(--card-bg, #fff);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, .055);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.card.proj figure.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 9px 24px rgba(15, 23, 42, .10);
+}
+
+/* Les titres des captures se placent au-dessus des images. */
+.card.proj figure > figcaption {
+  order: -1;
+  padding: 2px 2px 5px !important;
+  font-size: .92rem;
+  font-weight: 750;
+  line-height: 1.45;
+  color: var(--text, #243047);
+}
+
+/* Vignettes : petites dans la galerie, agrandissement au clic. */
+.card.proj img[role="button"] {
+  display: block !important;
+  width: 100% !important;
+  height: 112px !important;
+  min-height: 0 !important;
+  max-height: 112px !important;
+  object-fit: contain !important;
+  object-position: center;
+  padding: 4px;
+  background: #f3f5f9;
+  border: 1px solid rgba(100, 116, 139, .16);
+  border-radius: 9px;
+  cursor: zoom-in;
+}
+
+.card.proj img[role="button"]:hover {
+  border-color: #7895db;
+}
+
+.card.proj img[role="button"]:focus-visible {
+  outline: 3px solid #648cff;
+  outline-offset: 3px;
+}
+
+/* Galerie EDUCORE : conserver ses titres et ses espacements. */
+#educore-gallery .educore-gallery-group {
+  margin-top: 30px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(100, 116, 139, .22);
+}
+
+#educore-gallery .educore-gallery-grid {
+  column-gap: 20px;
+  row-gap: 24px;
+}
+
+#educore-gallery .educore-gallery-item img {
+  height: 112px;
+  max-height: 112px;
+}
+
+@media (max-width: 760px) {
+  .card.proj > summary {
+    padding: 16px;
+  }
+
+  .card.proj .grid.grid-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .card.proj .grid {
+    column-gap: 12px !important;
+    row-gap: 18px !important;
+  }
+
+  .card.proj img[role="button"] {
+    height: 96px !important;
+    max-height: 96px !important;
+  }
+
+  .card.proj figure > figcaption {
+    font-size: .84rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .card.proj .grid.grid-3 {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+/* PORTFOLIO_GALERIES_HARMONISEES_V1 */
+/* Harmonisation visuelle des captures sans supprimer les règles historiques. */
+
+.card.proj {
+  overflow: hidden;
+}
+
+.card.proj h3,
+.card.proj h4 {
+  line-height: 1.4;
+  margin-top: 28px;
+  margin-bottom: 14px;
+}
+
+.card.proj figure.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+  min-width: 0;
+  padding: 12px !important;
+  margin: 0 !important;
+  border-radius: 12px;
+}
+
+.card.proj figure.card figcaption {
+  order: -1;
+  display: block;
+  margin: 0;
+  padding: 2px 2px 5px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.card.proj img[role="button"] {
+  display: block;
+  width: 100% !important;
+  height: 120px !important;
+  min-height: 0 !important;
+  max-height: 120px !important;
+  object-fit: contain !important;
+  object-position: center;
+  padding: 4px;
+  box-sizing: border-box;
+  background: #f3f5f9;
+  border: 1px solid rgba(100, 116, 139, 0.2);
+  border-radius: 7px;
+  cursor: zoom-in;
+}
+
+.card.proj img[role="button"]:hover {
+  border-color: #7895db;
+}
+
+.card.proj img[role="button"]:focus-visible {
+  outline: 3px solid #648cff;
+  outline-offset: 3px;
+}
+
+/* Galerie EDUCORE : mêmes proportions, en conservant ses titres de groupe. */
+#educore-gallery .educore-gallery-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: start;
+  column-gap: 16px;
+  row-gap: 20px;
+}
+
+#educore-gallery .educore-gallery-item {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 9px;
+  min-width: 0;
+}
+
+#educore-gallery .educore-gallery-item span {
+  order: -1;
+  display: block;
+  min-height: 2.8em;
+  margin: 0;
+  font-size: 0.88rem;
+  font-weight: 750;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+#educore-gallery .educore-gallery-item img {
+  width: 100%;
+  height: 120px;
+  max-height: 120px;
+  object-fit: contain;
+  box-sizing: border-box;
+  background: #f3f5f9;
+  border-radius: 7px;
+}
+
+#educore-gallery .educore-gallery-group {
+  margin-top: 26px;
+  padding-top: 18px;
+}
+
+@media (max-width: 900px) {
+  #educore-gallery .educore-gallery-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .card.proj img[role="button"] {
+    height: 105px !important;
+    max-height: 105px !important;
+  }
+
+  #educore-gallery .educore-gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  #educore-gallery .educore-gallery-item img {
+    height: 105px;
+    max-height: 105px;
+  }
+}
+
+@media (max-width: 420px) {
+  .card.proj figure.card {
+    padding: 8px !important;
+  }
+
+  .card.proj img[role="button"] {
+    height: 95px !important;
+    max-height: 95px !important;
+  }
+
+  #educore-gallery .educore-gallery-item img {
+    height: 95px;
+    max-height: 95px;
+  }
+}
+
+
+
+/* PORTFOLIO_PROJETS_ISOLES_V1 */
+/* EDUCORE : vignettes harmonisées, alignées et espacées */
+#educore-gallery {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 24px auto;
+}
+
+#educore-gallery h2,
+#educore-gallery h3,
+#educore-gallery h4 {
+  margin-top: 30px;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+#educore-gallery .educore-gallery-item {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 10px;
+  min-width: 0;
+  width: 100%;
+  margin: 0;
+  padding: 12px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#educore-gallery .educore-gallery-item img {
+  display: block;
+  width: 100%;
+  height: 155px;
+  max-height: 155px;
+  object-fit: contain;
+  object-position: center;
+  margin: 0 auto;
+  border-radius: 6px;
+  cursor: zoom-in;
+}
+
+#educore-gallery .educore-gallery-item span {
+  display: block;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+/* Grilles homogènes et espace constant entre les captures */
+#educore-gallery .educore-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 22px;
+  align-items: start;
+  margin: 18px 0 32px;
+}
+
+@media (max-width: 600px) {
+  #educore-gallery .educore-gallery-item {
+    padding: 8px;
+  }
+
+  #educore-gallery .educore-gallery-item img {
+    height: 145px;
+    max-height: 145px;
+  }
+
+  #educore-gallery .educore-gallery-grid {
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+}
+
+/* Lorsqu'un projet est ouvert, masquer les trois autres */
+body.portfolio-projet-actif #cybercare,
+body.portfolio-projet-actif #bunec,
+body.portfolio-projet-actif #fecafoot,
+body.portfolio-projet-actif #educore {
+  display: none;
+}
+
+body.portfolio-projet-actif #cybercare[open],
+body.portfolio-projet-actif #bunec[open],
+body.portfolio-projet-actif #fecafoot[open],
+body.portfolio-projet-actif #educore[open] {
+  display: block;
+}
+
+
+
+/* PORTFOLIO_EDUCORE_FINITIONS_V2 */
+/* EDUCORE : mêmes proportions que les autres galeries */
+#educore-gallery {
+  width: 100%;
+  max-width: 100%;
+  margin: 30px 0;
+  padding: 22px;
+  box-sizing: border-box;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--navy-800);
+}
+
+#educore-gallery > h3 {
+  margin: 0 0 12px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--cyan);
+  line-height: 1.4;
+}
+
+#educore-gallery > .educore-gallery-intro {
+  margin: 0 0 24px;
+  color: var(--text-muted);
+}
+
+#educore-gallery .educore-gallery-group {
+  margin: 28px 0 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+#educore-gallery .educore-gallery-group h4 {
+  margin: 0 0 16px;
+  padding: 10px 14px;
+  border-left: 4px solid var(--cyan);
+  border-radius: 4px;
+  background: rgba(34, 211, 238, 0.08);
+  color: var(--text);
+  line-height: 1.45;
+}
+
+#educore-gallery .educore-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: start;
+  column-gap: 18px;
+  row-gap: 22px;
+  margin: 0;
+}
+
+#educore-gallery .educore-gallery-item {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 9px;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--text);
+  text-align: center;
+  overflow: hidden;
+}
+
+#educore-gallery .educore-gallery-item span {
+  order: -1;
+  display: block;
+  min-height: 2.8em;
+  margin: 0;
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+#educore-gallery .educore-gallery-item img {
+  display: block;
+  width: 100%;
+  height: 120px;
+  min-height: 0;
+  max-height: 120px;
+  margin: 0;
+  padding: 4px;
+  box-sizing: border-box;
+  object-fit: contain;
+  object-position: center;
+  background: #f3f5f9;
+  border: 1px solid rgba(100, 116, 139, 0.2);
+  border-radius: 7px;
+  cursor: zoom-in;
+}
+
+#educore-gallery .educore-gallery-item:hover,
+#educore-gallery .educore-gallery-item:focus-visible {
+  border-color: var(--cyan);
+}
+
+@media (max-width: 900px) {
+  #educore-gallery .educore-gallery-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  #educore-gallery {
+    padding: 14px;
+  }
+
+  #educore-gallery .educore-gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 12px;
+    row-gap: 16px;
+  }
+
+  #educore-gallery .educore-gallery-item {
+    padding: 8px;
+  }
+
+  #educore-gallery .educore-gallery-item img {
+    height: 105px;
+    max-height: 105px;
+  }
+
+  #educore-gallery .educore-gallery-item span {
+    font-size: 0.82rem;
+  }
+}
+
+@media (max-width: 380px) {
+  #educore-gallery .educore-gallery-item img {
+    height: 90px;
+    max-height: 90px;
+  }
+}
+
+
+/* PORTFOLIO_UNIFORMISATION_PROJETS_V1 */
+/* Boutons de retour cohérents dans chaque fiche */
+.portfolio-project-actions {
+  display: flex;
+  justify-content: flex-start;
+  margin: 14px 0 22px;
+}
+.portfolio-back-to-projects {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 10px 16px;
+  border: 1px solid var(--cyan, #22d3ee);
+  border-radius: 9px;
+  background: rgba(34, 211, 238, 0.09);
+  color: var(--text, #f1f5f9);
+  font-weight: 700;
+  cursor: pointer;
+}
+.portfolio-back-to-projects:hover,
+.portfolio-back-to-projects:focus-visible {
+  background: rgba(34, 211, 238, 0.18);
+  outline: 2px solid var(--cyan, #22d3ee);
+  outline-offset: 2px;
+}
+
+/* EDUCORE : documents séparés et cartes PDF compactes */
+#educore-documents {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: 24px 0 30px !important;
+  padding: 20px !important;
+  border: 1px solid var(--border, #334155);
+  border-radius: 14px;
+  background: var(--navy-800, #0f172a);
+}
+#educore-documents > h3 {
+  margin-top: 0;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--cyan, #22d3ee);
+}
+#educore-documents > div {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  align-items: stretch;
+  gap: 14px !important;
+}
+#educore-documents article {
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 16px !important;
+  border-color: var(--border, #334155) !important;
+  background: rgba(255,255,255,0.035);
+}
+#educore-documents article h4 {
+  margin-top: 0;
+  line-height: 1.4;
+}
+#educore-documents article p:last-child {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 0;
+}
+#educore-documents article .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+}
+
+/* EDUCORE : mêmes proportions de vignettes que les autres projets */
+#educore-gallery .educore-gallery-item img {
+  width: 100%;
+  height: 120px !important;
+  min-height: 0 !important;
+  max-height: 120px !important;
+  object-fit: contain !important;
+}
+@media (max-width: 640px) {
+  #educore-documents {
+    padding: 14px !important;
+  }
+  #educore-documents > div {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  #educore-gallery .educore-gallery-item img {
+    height: 105px !important;
+    max-height: 105px !important;
+  }
+}
+@media (max-width: 380px) {
+  #educore-gallery .educore-gallery-item img {
+    height: 90px !important;
+    max-height: 90px !important;
+  }
+}
+
+
+/* PORTFOLIO_EDUCORE_TAILLE_FINALE_V1 */
+/* Dernière règle prioritaire : miniatures compactes et régulières */
+#educore-gallery .educore-gallery-grid,
+#educore-gallery .educore-gallery-group .educore-gallery-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 12px !important;
+  align-items: start !important;
+}
+
+#educore-gallery .educore-gallery-item {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  min-width: 0 !important;
+  padding: 8px !important;
+  overflow: hidden !important;
+}
+
+#educore-gallery .educore-gallery-item img,
+#educore-gallery .educore-gallery-item img[role="button"] {
+  display: block !important;
+  width: 100% !important;
+  height: 100px !important;
+  min-height: 0 !important;
+  max-height: 100px !important;
+  object-fit: contain !important;
+  margin: 0 auto 8px !important;
+}
+
+#educore-gallery .educore-gallery-item span {
+  display: block !important;
+  font-size: 0.84rem !important;
+  line-height: 1.35 !important;
+  overflow-wrap: anywhere !important;
+}
+
+#educore-documents {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 900px) {
+  #educore-gallery .educore-gallery-grid,
+  #educore-gallery .educore-gallery-group .educore-gallery-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 600px) {
+  #educore-gallery .educore-gallery-grid,
+  #educore-gallery .educore-gallery-group .educore-gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  #educore-gallery .educore-gallery-item img,
+  #educore-gallery .educore-gallery-item img[role="button"] {
+    height: 90px !important;
+    max-height: 90px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  #educore-gallery .educore-gallery-item img,
+  #educore-gallery .educore-gallery-item img[role="button"] {
+    height: 78px !important;
+    max-height: 78px !important;
+  }
+}
+
+
+/* PORTFOLIO_EDUCORE_VIGNETTES_STABLES_V1 */
+/* Uniformisation des miniatures uniquement : la visionneuse reste intacte. */
+#educore-gallery .educore-gallery-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 12px !important;
+  align-items: start !important;
+}
+
+#educore-gallery .educore-gallery-item {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  overflow: hidden !important;
+}
+
+#educore-gallery .educore-gallery-item img {
+  display: block !important;
+  width: 100% !important;
+  height: 100px !important;
+  min-height: 0 !important;
+  max-height: 100px !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+#educore-gallery .educore-gallery-item span {
+  display: block !important;
+  overflow-wrap: anywhere !important;
+}
+
+@media (max-width: 900px) {
+  #educore-gallery .educore-gallery-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 600px) {
+  #educore-gallery .educore-gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  #educore-gallery .educore-gallery-item img {
+    height: 90px !important;
+    max-height: 90px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  #educore-gallery .educore-gallery-item img {
+    height: 78px !important;
+    max-height: 78px !important;
+  }
+}
+/* FIN PORTFOLIO_EDUCORE_VIGNETTES_STABLES_V1 */
+
+
+/* RESTAURATION TITRES GALERIES CYBERCARE BUNEC FECAFOOT */
+/* EDUCORE reste inchangé : titres visibles au-dessus des vignettes. */
+details#cybercare :has(> figcaption),
+details#bunec :has(> figcaption),
+details#fecafoot :has(> figcaption) {
+  display: flex;
+  flex-direction: column;
+}
+
+details#cybercare figcaption,
+details#bunec figcaption,
+details#fecafoot figcaption {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  order: -1;
+  padding: 0 0 8px !important;
+  margin: 0 !important;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+}
+
+details#cybercare figcaption + img,
+details#bunec figcaption + img,
+details#fecafoot figcaption + img {
+  width: 100%;
+  height: 120px !important;
+  min-height: 0 !important;
+  object-fit: contain !important;
+}
+
+
+/* CORRECTION DEFINITIVE TITRES GALERIES */
+/* CYBERCARE, BUNEC et FECAFOOT uniquement : EDUCORE reste intact. */
+details#cybercare figure,
+details#bunec figure,
+details#fecafoot figure {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+}
+
+details#cybercare figure figcaption,
+details#bunec figure figcaption,
+details#fecafoot figure figcaption {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  order: -1 !important;
+  position: relative !important;
+  color: #1f2937 !important;
+  background: transparent !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 0 4px 8px !important;
+  margin: 0 !important;
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+  text-align: center !important;
+  overflow: visible !important;
+}
+
+details#cybercare figure img,
+details#bunec figure img,
+details#fecafoot figure img {
+  width: 100% !important;
+  height: 120px !important;
+  min-height: 0 !important;
+  object-fit: contain !important;
+}
+
+
+/* BUNEC_VIDEO_GALLERY_V1 — Galerie vidéo BUNEC uniquement */
+.bunec-video-gallery {
+  margin-top: 36px;
+}
+.bunec-video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+.bunec-video-item {
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid rgba(127, 127, 127, .25);
+  border-radius: 12px;
+  background: var(--card, #fff);
+}
+.bunec-video-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 8px;
+  background: #101827;
+  cursor: pointer;
+}
+.bunec-video-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+}
+.bunec-video-play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  color: white;
+  background: rgba(0, 0, 0, .76);
+  font-size: 20px;
+}
+.bunec-video-card:hover .bunec-video-play {
+  background: #087fce;
+}
+.bunec-video-item h4 {
+  margin: 14px 0 8px;
+  font-size: 1.08rem;
+  font-weight: 800;
+  line-height: 1.45;
+  color: #00bfff !important;
+}
+.bunec-video-item p {
+  margin: 0;
+  font-size: .9rem;
+}
+.bunec-video-dialog {
+  width: min(900px, 94vw);
+  max-width: 94vw;
+  padding: 18px;
+  border: 1px solid rgba(127, 127, 127, .35);
+  border-radius: 14px;
+  background: var(--card, #fff);
+  color: inherit;
+}
+.bunec-video-dialog::backdrop {
+  background: rgba(0, 0, 0, .8);
+}
+.bunec-video-dialog-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.bunec-video-dialog-head h3 {
+  margin: 0;
+}
+.bunec-video-close {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+.bunec-video-dialog video {
+  display: block;
+  width: 100%;
+  max-height: 75vh;
+  background: #000;
+}
+@media (max-width: 760px) {
+  .bunec-video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+}
+@media (max-width: 480px) {
+  .bunec-video-grid { grid-template-columns: 1fr; }
+}
+
+
+/* BUNEC_RUBRIQUES_NAV_V1 */
+#bunec .bunec-rubric-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 22px 0;
+}
+#bunec .bunec-rubric-nav button {
+  border: 1px solid var(--cyan, #22d3ee);
+  border-radius: 9px;
+  padding: 10px 15px;
+  background: rgba(34, 211, 238, 0.08);
+  color: var(--text, #f1f5f9);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+#bunec .bunec-rubric-nav button[aria-pressed="true"] {
+  background: var(--cyan, #22d3ee);
+  color: #082f49;
+}
+#bunec [data-bunec-panel][hidden] {
+  display: none !important;
+}
+#bunec .bunec-bottom-actions {
+  justify-content: flex-end;
+  margin-top: 28px;
+}
+@media (max-width: 600px) {
+  #bunec .bunec-rubric-nav button {
+    flex: 1 1 calc(50% - 10px);
+  }
+}
+/* FIN BUNEC_RUBRIQUES_NAV_V1 */
+
+
+/* CYBERCARE_VIDEO_CSS_V1 */
+.cybercare-video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 20px;
+  margin: 20px 0 28px;
+}
+
+.cybercare-video-item {
+  min-width: 0;
+  margin: 0;
+  padding: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(127, 127, 127, 0.25);
+  border-radius: 12px;
+  background: var(--card, #fff);
+}
+
+.cybercare-video-item video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #111;
+}
+
+.cybercare-video-item h4 {
+  margin: 14px 0 4px;
+  font-size: 1.08rem;
+  font-weight: 800;
+  line-height: 1.45;
+  color: #00bfff;
+  overflow-wrap: anywhere;
+}
+
+
+
+/* CYBERCARE_COMPLETE_PRESENTATION_V2 */
+#cybercare .cybercare-medias {
+  margin-top: 30px;
+  padding-top: 26px;
+  border-top: 1px solid rgba(127, 127, 127, .3);
+}
+#cybercare .cybercare-medias > h3,
+#cybercare .cybercare-medias .cybercare-video-gallery > h3 {
+  margin-top: 30px;
+  margin-bottom: 12px;
+}
+#cybercare .cybercare-capture-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: 20px;
+  margin: 18px 0 28px;
+}
+#cybercare .cybercare-capture-grid > figure {
+  min-width: 0;
+  padding: 12px;
+  border-radius: 12px;
+}
+#cybercare .cybercare-capture-grid img {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  background: #f3f4f6;
+  border-radius: 8px;
+  cursor: zoom-in;
+}
+#cybercare .cybercare-capture-grid figcaption {
+  padding-top: 10px;
+  line-height: 1.5;
+}
+#cybercare .cybercare-conference-card {
+  margin-top: 32px;
+  padding: 20px;
+  border-radius: 14px;
+}
+#cybercare .cybercare-video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: 20px;
+  margin: 20px 0 28px;
+}
+#cybercare .cybercare-video-item {
+  min-width: 0;
+  margin: 0;
+  padding: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(127, 127, 127, .25);
+  border-radius: 12px;
+  background: var(--card, #fff);
+}
+#cybercare .cybercare-video-card {
+  position: relative;
+  display: flex;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 8px;
+  background: #111827;
+  cursor: pointer;
+}
+#cybercare .cybercare-video-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .2s ease;
+}
+#cybercare .cybercare-video-card:hover img {
+  transform: scale(1.035);
+}
+#cybercare .cybercare-video-play {
+  position: absolute;
+  display: grid;
+  width: 54px;
+  height: 54px;
+  place-items: center;
+  padding-left: 3px;
+  border-radius: 50%;
+  color: white;
+  background: rgba(0, 191, 255, .92);
+  font-size: 23px;
+  box-shadow: 0 3px 18px rgba(0, 0, 0, .3);
+}
+#cybercare .cybercare-video-placeholder {
+  color: white;
+  font-weight: 800;
+}
+#cybercare .cybercare-video-item h4 {
+  margin: 14px 0 8px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: 1.45;
+  color: #00bfff;
+  overflow-wrap: anywhere;
+}
+#cybercare .cybercare-video-item p {
+  margin: 0 0 4px;
+  font-size: .9rem;
+  line-height: 1.5;
+}
+#cybercare .cybercare-video-dialog {
+  width: min(960px, calc(100% - 28px));
+  max-width: 960px;
+  max-height: 90vh;
+  padding: 18px;
+  border: 1px solid rgba(127, 127, 127, .35);
+  border-radius: 14px;
+  color: inherit;
+  background: var(--card, #fff);
+}
+#cybercare .cybercare-video-dialog[open] {
+  display: block;
+}
+#cybercare .cybercare-video-dialog::backdrop {
+  background: rgba(0, 0, 0, .82);
+}
+#cybercare .cybercare-video-dialog-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+#cybercare .cybercare-video-dialog-head h3 {
+  margin: 0;
+}
+#cybercare .cybercare-video-close {
+  flex-shrink: 0;
+  padding: 9px 12px;
+  border: 0;
+  border-radius: 8px;
+  color: white;
+  background: #1f2937;
+  cursor: pointer;
+}
+#cybercare #cybercare-video-player {
+  display: block;
+  width: 100%;
+  max-height: 70vh;
+  border-radius: 8px;
+  background: #000;
+}
+#cybercare .cybercare-documents-grid {
+  gap: 20px;
+  margin: 18px 0 28px;
+}
+#cybercare .cybercare-document-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 18px;
+  border-radius: 12px;
+}
+#cybercare .cybercare-document-card h4 {
+  margin: 0;
+}
+#cybercare .cybercare-document-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+}
+#cybercare .cybercare-document-actions a {
+  overflow-wrap: anywhere;
+}
+@media (max-width: 600px) {
+  #cybercare .cybercare-video-dialog-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  #cybercare .cybercare-video-close {
+    align-self: flex-end;
+  }
+}
+
+
+/* CYBERCARE_RUBRIQUES_NAV_V1 */
+#cybercare .cybercare-rubric-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 22px 0;
+}
+#cybercare .cybercare-rubric-nav button {
+  border: 1px solid var(--cyan, #22d3ee);
+  border-radius: 9px;
+  padding: 10px 15px;
+  background: rgba(34, 211, 238, .08);
+  color: var(--text, #f1f5f9);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease;
+}
+#cybercare .cybercare-rubric-nav button[aria-pressed="true"] {
+  background: var(--cyan, #22d3ee);
+  color: #082f49;
+}
+#cybercare [data-cybercare-panel][hidden] {
+  display: none !important;
+}
+@media (max-width: 600px) {
+  #cybercare .cybercare-rubric-nav button {
+    flex: 1 1 calc(50% - 10px);
+  }
+}
+/* FIN CYBERCARE_RUBRIQUES_NAV_V1 */
+
+
+/* FECAFOOT_RUBRIQUES_STYLE_V1 */
+#fecafoot .fecafoot-rubric-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 22px 0;
+}
+#fecafoot .fecafoot-rubric-nav button {
+  border: 1px solid var(--cyan, #22d3ee);
+  border-radius: 9px;
+  padding: 10px 15px;
+  background: rgba(34, 211, 238, .08);
+  color: var(--text, #f1f5f9);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+#fecafoot .fecafoot-rubric-nav button[aria-pressed="true"] {
+  background: var(--cyan, #22d3ee);
+  color: #082f49;
+}
+#fecafoot [data-fecafoot-panel][hidden] {
+  display: none !important;
+}
+#fecafoot .fecafoot-video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: 20px;
+  margin: 20px 0 28px;
+}
+#fecafoot .fecafoot-video-item {
+  min-width: 0;
+  margin: 0;
+  padding: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(127, 127, 127, .25);
+  border-radius: 12px;
+  background: var(--card, #fff);
+}
+#fecafoot .fecafoot-video-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 150px;
+  padding: 18px;
+  border: 0;
+  border-radius: 8px;
+  color: #f8fafc;
+  background: #111827;
+  cursor: pointer;
+  text-align: center;
+}
+#fecafoot .fecafoot-video-card:hover {
+  background: #172554;
+}
+#fecafoot .fecafoot-video-play {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 auto;
+  place-items: center;
+  padding-left: 3px;
+  border-radius: 50%;
+  color: white;
+  background: rgba(0, 191, 255, .92);
+  font-size: 22px;
+}
+#fecafoot .fecafoot-video-card-label {
+  font-weight: 750;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+#fecafoot .fecafoot-video-item h4 {
+  margin: 14px 0 8px;
+  color: var(--cyan, #0891b2);
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+#fecafoot .fecafoot-video-item p {
+  margin: 0 0 4px;
+  font-size: .9rem;
+  line-height: 1.5;
+}
+#fecafoot .fecafoot-video-dialog {
+  width: min(960px, calc(100% - 28px));
+  max-width: 960px;
+  max-height: 90vh;
+  padding: 18px;
+  border: 1px solid rgba(127, 127, 127, .35);
+  border-radius: 14px;
+  color: inherit;
+  background: var(--card, #fff);
+}
+#fecafoot .fecafoot-video-dialog::backdrop {
+  background: rgba(0, 0, 0, .82);
+}
+#fecafoot .fecafoot-video-dialog-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+#fecafoot .fecafoot-video-dialog-head h3 {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+#fecafoot .fecafoot-video-close {
+  flex-shrink: 0;
+  padding: 9px 12px;
+  border: 0;
+  border-radius: 8px;
+  color: white;
+  background: #1f2937;
+  cursor: pointer;
+}
+#fecafoot #fecafoot-video-player {
+  display: block;
+  width: 100%;
+  max-height: 70vh;
+  border-radius: 8px;
+  background: #000;
+}
+@media (max-width: 600px) {
+  #fecafoot .fecafoot-rubric-nav button {
+    flex: 1 1 calc(50% - 10px);
+  }
+  #fecafoot .fecafoot-video-dialog-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  #fecafoot .fecafoot-video-close {
+    align-self: flex-end;
+  }
+}
+/* FIN FECAFOOT_RUBRIQUES_STYLE_V1 */
+
+
+
+/* EDUCORE_RUBRIQUES_NAV_V1 */
+#educore .educore-rubric-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 22px 0;
+}
+
+#educore .educore-rubric-nav button {
+  padding: 10px 16px;
+  border: 1px solid var(--border, #29445b);
+  border-radius: 10px;
+  background: var(--card, #10243a);
+  color: var(--text, #f4f7fb);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#educore .educore-rubric-nav button[aria-pressed="true"] {
+  border-color: #00bfff;
+  color: #00bfff;
+}
+
+#educore [data-educore-panel][hidden] {
+  display: none !important;
+}
+
+@media (max-width: 600px) {
+  #educore .educore-rubric-nav button {
+    flex: 1 1 calc(50% - 10px);
+  }
+}
+
+
+/* EDUCORE_VIDEO_GALLERY_V1 */
+#educore .educore-video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+#educore .educore-video-item {
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid rgba(127, 127, 127, .25);
+  border-radius: 12px;
+  background: var(--card, #10243a);
+}
+
+#educore .educore-video-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 8px;
+  background: #101827;
+  cursor: pointer;
+}
+
+#educore .educore-video-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+}
+
+#educore .educore-video-play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(0, 0, 0, .76);
+  font-size: 20px;
+}
+
+#educore .educore-video-card:hover .educore-video-play {
+  background: #087fce;
+}
+
+#educore .educore-video-item h4 {
+  margin: 14px 0 8px;
+  font-size: 1.08rem;
+  font-weight: 800;
+  line-height: 1.45;
+  color: #00bfff !important;
+}
+
+#educore .educore-video-item p {
+  margin: 0;
+  font-size: .9rem;
+}
+
+#educore .educore-video-dialog {
+  width: min(900px, 94vw);
+  max-width: 94vw;
+  padding: 18px;
+  border: 1px solid rgba(127, 127, 127, .35);
+  border-radius: 14px;
+  background: var(--card, #10243a);
+  color: inherit;
+}
+
+#educore .educore-video-dialog::backdrop {
+  background: rgba(0, 0, 0, .8);
+}
+
+#educore .educore-video-dialog-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+#educore .educore-video-dialog-head h3 {
+  margin: 0;
+}
+
+#educore .educore-video-close {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+#educore .educore-video-dialog video {
+  display: block;
+  width: 100%;
+  max-height: 75vh;
+  background: #000;
+}
+
+@media (max-width: 760px) {
+  #educore .educore-video-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  #educore .educore-video-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* FIN EDUCORE_VIDEO_GALLERY_V1 */
+

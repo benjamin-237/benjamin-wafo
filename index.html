@@ -265,6 +265,7 @@ details.proj[open] summary{margin-bottom:16px}
 .nav-list a.active:not(.btn){color:var(--text);border-bottom-color:var(--cyan)}
 
 </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <a class="skip-link" href="#accueil">Aller au contenu</a>
@@ -293,7 +294,7 @@ details.proj[open] summary{margin-bottom:16px}
   <div class="container">
     <p class="eyebrow">Étudiant en Master 2 professionnel en cybersécurité · ENSPD</p>
     <h1>WAFO TALLA Anatole Benjamin</h1>
-    <p class="hero-title">Cybersécurité, réseaux et solutions numériques</p>
+    <p class="hero-title">Cybersécurité • Développement full-stack • DevOps • Solutions numériques</p>
     <p class="lead">Je suis WAFO TALLA Anatole Benjamin, spécialisé en cybersécurité, réseaux, développement full-stack et conception de solutions numériques. Je conçois et sécurise des applications et des architectures informatiques en reliant les besoins métiers aux exigences techniques, opérationnelles et de sécurité.</p>
     <div class="actions">
       <a class="btn" href="#projets">Voir mes projets</a>
@@ -345,12 +346,31 @@ details.proj[open] summary{margin-bottom:16px}
     <p class="eyebrow">Expérience professionnelle</p>
     <h2 class="h2">Elimax SARL</h2>
     <article class="card">
-      <header class="card-head"><h3>Activités chez Elimax SARL</h3><span class="badge badge-live">Depuis environ un an et demi</span></header>
-      <p>Je travaille chez Elimax SARL depuis environ un an et demi, dans le cadre de projets de développement de solutions numériques, de cybersécurité et de projets informatiques.</p>
-      <ul class="tags"><li>Développement de solutions numériques</li><li>Cybersécurité</li><li>Projets informatiques</li></ul>
+      <header class="card-head">
+        <h3>Pilotage de projets informatiques, développement numérique et cybersécurité</h3>
+        <span class="badge badge-live">Depuis environ un an et demi</span>
+      </header>
+      <p>Dans le cadre de mes activités chez Elimax SARL, j’interviens dans la conception de solutions numériques, le pilotage technique de projets informatiques et l’élaboration de réponses adaptées aux besoins des organisations publiques et privées. Je contribue également à la préparation des dossiers de soumission aux marchés publics et à l’étude des opportunités professionnelles dans le domaine des technologies de l’information.</p>
+
+      <h3 class="spaced">Principaux domaines d’intervention</h3>
+      <ul class="check-list">
+        <li><strong>Développement de solutions numériques :</strong> conception, développement et amélioration d’applications et de plateformes adaptées aux besoins métiers.</li>
+        <li><strong>Pilotage technique de projets :</strong> analyse des besoins, définition des solutions, organisation des travaux techniques et suivi de la mise en œuvre.</li>
+        <li><strong>Cybersécurité et réseaux :</strong> prise en compte des enjeux de sécurité informatique, de protection des systèmes et de fiabilité des infrastructures.</li>
+        <li><strong>Marchés publics et appels d’offres :</strong> contribution à l’identification des opportunités, à la préparation des propositions techniques et à la définition des solutions informatiques proposées.</li>
+        <li><strong>Partenariats professionnels :</strong> contribution à des collaborations et à des projets nécessitant des compétences numériques et informatiques.</li>
+      </ul>
+
+      <h3 class="spaced">Cadre professionnel</h3>
+      <p>Cette expérience me permet de mobiliser mes compétences techniques dans un environnement professionnel, de contribuer à des projets concrets et de développer une approche orientée vers les besoins des organisations, la faisabilité des solutions et la qualité de leur réalisation.</p>
+      <ul class="tags">
+        <li>Développement numérique</li>
+        <li>Gestion de projets</li>
+        <li>Cybersécurité</li>
+        <li>Marchés publics</li>
+      </ul>
     </article>
-    <h3 class="spaced">Cadre et précisions</h3>
-    <ul class="check-list"><li>Elimax SARL est l&#39;entreprise de mon grand frère. Je n&#39;en suis pas le propriétaire juridique.</li><li>Ce portfolio représente ma marque personnelle ; Elimax SARL est un cadre professionnel dans lequel je mène certains projets et opportunités.</li><li>Les projets sont présentés selon mes contributions réelles et les autorisations obtenues.</li><li>Aucun nom de client, contrat, logo ou résultat commercial n&#39;est publié sans autorisation.</li></ul>
+    <p class="note">Les projets et références présentés reflètent mes contributions réelles et sont publiés sous réserve des autorisations applicables.</p>
   </div>
 </section>
 
@@ -415,74 +435,1423 @@ details.proj[open] summary{margin-bottom:16px}
     <details class="card proj" id="bunec">
       <summary>
         <div><h3>BUNEC</h3><p class="institution" style="margin:4px 0 0">Gestion et suivi numérique des dossiers d&#39;état civil</p></div>
-        <div><span class="badge badge-proto">Prototype de démonstration</span> <span class="summary-hint">Voir la fiche ▾</span></div>
+        <div><span class="badge badge-proto">Prototype interactif</span> <span class="summary-hint">Voir la fiche ▾</span></div>
       </summary>
-      
+
+      <script>
+      (() => {
+        function initBunecRubrics() {
+          const root = document.getElementById('bunec');
+          if (!root || root.dataset.rubricsReady === 'true') return;
+
+          const buttons = root.querySelectorAll('[data-bunec-show]');
+          const panels = root.querySelectorAll('[data-bunec-panel]');
+          if (!buttons.length || !panels.length) return;
+
+          buttons.forEach(button => {
+            button.addEventListener('click', function (event) {
+              event.preventDefault();
+              const selected = this.getAttribute('data-bunec-show');
+
+              panels.forEach(panel => {
+                panel.hidden = panel.getAttribute('data-bunec-panel') !== selected;
+              });
+
+              buttons.forEach(item => {
+                item.setAttribute('aria-pressed', String(item === this));
+              });
+            });
+          });
+
+          root.dataset.rubricsReady = 'true';
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initBunecRubrics);
+        } else {
+          initBunecRubrics();
+        }
+      })();
+      </script>
+<nav class="bunec-rubric-nav" aria-label="Rubriques du projet BUNEC">
+        <button type="button" data-bunec-show="presentation" aria-pressed="true">Présentation</button>
+        <button type="button" data-bunec-show="captures" aria-pressed="false">Captures d’écran</button>
+        <button type="button" data-bunec-show="videos" aria-pressed="false">Vidéos</button>
+        <button type="button" data-bunec-show="documents" aria-pressed="false">Documents</button>
+      </nav>
+      <section data-bunec-panel="presentation">
+
+      <div style="margin-top:22px;">
+        <p class="lead">JUBINEC est un prototype de gestion et de suivi numérique des dossiers d’état civil. Cette fiche présente les cinq espaces du parcours, les captures d’écran et les documents associés au projet.</p>
+      </div>
       <dl class="fiche">
-        <div><dt>1. Résumé</dt><dd>Prototype d&#39;application de gestion et de suivi des dossiers d&#39;état civil, avec un parcours de transmission entre les acteurs concernés, de la traçabilité et une vérification par QR code.</dd></div>
-        <div><dt>2. Contexte et problème à résoudre</dt><dd>Les dossiers d&#39;état civil circulent entre plusieurs acteurs (hôpital, officier d&#39;état civil, mairie, BUNEC, citoyen). Le suivi d&#39;un dossier et la vérification d&#39;un document sont difficiles.</dd></div>
-        <div><dt>3. Objectifs</dt><dd><ul><li>Montrer un parcours numérique complet d&#39;un dossier d&#39;état civil</li><li>Rendre chaque dossier traçable</li><li>Permettre la vérification d&#39;un document par QR code</li></ul></dd></div>
-        <div><dt>4. Ma contribution personnelle</dt><dd>Conception fonctionnelle du parcours et développement du prototype.</dd></div>
-        <div><dt>5. Architecture et technologies</dt><dd>Application web monopage en JavaScript natif. Les données sont stockées dans le navigateur (localStorage). Pas de serveur ni de base de données.<ul class="tags"><li>JavaScript</li><li>HTML</li><li>CSS</li><li>localStorage</li></ul></dd></div>
-        <div><dt>6. Fonctionnalités réalisées</dt><dd><ul><li>Accès multi-rôles</li><li>Parcours multi-institutions : hôpital, officier, mairie, BUNEC, citoyen</li><li>Identifiants uniques (UUID) pour suivre chaque document</li><li>QR code de vérification</li><li>Signature cryptographique simulée</li></ul></dd></div>
-        <div><dt>7. Mesures de sécurité</dt><dd><ul><li>Identifiants UUID difficiles à deviner</li><li>Signature cryptographique simulée : elle illustre le principe et n&#39;a aucune valeur juridique</li></ul><p class="note">La sécurité d&#39;une exploitation réelle n&#39;est pas implémentée : pas d&#39;authentification serveur, pas de chiffrement des données stockées.</p></dd></div>
-        <div><dt>8. Tests effectués</dt><dd>Aucun résultat de test formel n&#39;est publié à ce jour.</dd></div>
-        <div><dt>9. Captures d'écran et démonstration</dt><dd>Captures d&#39;écran et démonstration : à ajouter.</dd></div>
+        <div><dt>1. Résumé</dt><dd>Prototype de gestion et de suivi des dossiers d’état civil, avec un parcours entre plusieurs acteurs, une traçabilité et une vérification par QR code.</dd></div>
+        <div><dt>2. Contexte et problème</dt><dd>Le parcours des dossiers d’état civil implique plusieurs acteurs : hôpital, officier d’état civil, mairie, BUNEC et citoyen. Le prototype illustre leur circulation numérique.</dd></div>
+        <div><dt>3. Objectifs</dt><dd><ul><li>Illustrer un parcours numérique d’un dossier d’état civil.</li><li>Présenter le suivi des dossiers entre acteurs.</li><li>Montrer un mécanisme de vérification par QR code.</li></ul></dd></div>
+        <div><dt>4. Ma contribution</dt><dd>Conception fonctionnelle du parcours et développement du prototype.</dd></div>
+        <div><dt>5. Architecture et technologies</dt><dd>Application web monopage en JavaScript natif. Les données sont conservées dans le navigateur avec localStorage ; le prototype ne repose pas sur un serveur ni une base de données.<ul class="tags"><li>JavaScript</li><li>HTML</li><li>CSS</li><li>localStorage</li></ul></dd></div>
+        <div><dt>6. Fonctionnalités présentées</dt><dd><ul><li>Parcours multi-acteurs et espaces dédiés.</li><li>Suivi des dossiers dans le prototype.</li><li>Identifiants uniques pour les documents.</li><li>QR code de vérification.</li><li>Signature cryptographique simulée, sans valeur juridique.</li></ul></dd></div>
+        <div><dt>7. Limites de sécurité</dt><dd>Le prototype ne constitue pas un système de production sécurisé : l’authentification serveur et le chiffrement des données stockées ne sont pas implémentés.</dd></div>
+        <div><dt>8. Tests effectués</dt><dd>Aucun résultat de test formel n’est publié à ce jour.</dd></div>
+        <div><dt>9. Captures d’écran</dt><dd>Les captures sont classées par espace. Clique sur une image pour l’agrandir ; utilise Échap ou le bouton de fermeture pour revenir à la fiche.</dd></div>
         <div><dt>10. Dépôt de code</dt><dd>Code non public.</dd></div>
-        <div><dt>11. Limites et pistes d'amélioration</dt><dd><ul><li>Prototype : il n&#39;est ni déployé en production ni adopté officiellement par une institution</li><li>Données conservées localement dans le navigateur</li><li>Signature simulée, non valable légalement</li><li>Aucune connexion avec des systèmes existants</li></ul></dd></div>
-        <div><dt>12. Statut</dt><dd>Prototype de démonstration</dd></div>
+        <div><dt>11. Limites et améliorations</dt><dd><ul><li>Prototype de démonstration, non déployé en production.</li><li>Données conservées localement dans le navigateur.</li><li>Signature simulée, sans valeur juridique.</li><li>Pas de connexion aux systèmes institutionnels existants.</li></ul></dd></div>
+        <div><dt>12. Statut</dt><dd>Prototype de démonstration.</dd></div>
       </dl>
-      <a class="btn btn-small" href="#contact">Demander une démonstration</a>
+      </section>
+      <section data-bunec-panel="captures" hidden>
+      <section aria-labelledby="bunec-galeries-titre" style="margin-top:32px;">
+        <h3 id="bunec-galeries-titre">Captures d’écran par espace</h3>
+
+<section aria-labelledby="bunec-declaration-titre" style="margin-top:26px;"><h4 id="bunec-declaration-titre">01 — Espace Déclaration</h4><div class="grid grid-3" style="gap:20px;">
+<figure class="card" style="margin:0;padding:12px;"><img src="media/bunec/declaration/page%20d%20accueil%202.png" alt="Accueil de l’espace Déclaration" role="button" tabindex="0" aria-label="Agrandir : Accueil de l’espace Déclaration" loading="lazy" style="display:block;width:100%;height:220px;object-fit:contain;cursor:zoom-in;border-radius:6px;"><figcaption style="padding-top:10px;">Accueil de l’espace Déclaration</figcaption></figure>
+<figure class="card" style="margin:0;padding:12px;"><img src="media/bunec/declaration/page%20de%20connexion%20.png" alt="Page de connexion" role="button" tabindex="0" aria-label="Agrandir : Page de connexion" loading="lazy" style="display:block;width:100%;height:220px;object-fit:contain;cursor:zoom-in;border-radius:6px;"><figcaption style="padding-top:10px;">Page de connexion</figcaption></figure>
+<figure class="card" style="margin:0;padding:12px;"><img src="media/bunec/declaration/type%20de%20declaration.png" alt="Choix du type de déclaration" role="button" tabindex="0" aria-label="Agrandir : Choix du type de déclaration" loading="lazy" style="display:block;width:100%;height:220px;object-fit:contain;cursor:zoom-in;border-radius:6px;"><figcaption style="padding-top:10px;">Choix du type de déclaration</figcaption></figure>
+<figure class="card" style="margin:0;padding:12px;"><img src="media/bunec/declaration/declaration.png" alt="Formulaire de déclaration" role="button" tabindex="0" aria-label="Agrandir : Formulaire de déclaration" loading="lazy" style="display:block;width:100%;height:220px;object-fit:contain;cursor:zoom-in;border-radius:6px;"><figcaption style="padding-top:10px;">Formulaire de déclaration</figcaption></figure>
+<figure class="card" style="margin:0;padding:12px;"><img src="media/bunec/declaration/declaration%20confirmation%20scan%20qr.png" alt="Confirmation et scan du QR code" role="button" tabindex="0" aria-label="Agrandir : Confirmation et scan du QR code" loading="lazy" style="display:block;width:100%;height:220px;object-fit:contain;cursor:zoom-in;border-radius:6px;"><figcaption style="padding-top:10px;">Confirmation et scan du QR code</figcaption></figure>
+</div></section>
+<section aria-labelledby="bunec-officier-titre" style="margin-top:26px;"><h4 id="bunec-officier-titre">02 — Espace Officier d’état civil</h4><div class="grid grid-3" style="gap:20px;">
+<figure class="card" style="margin:0;padding:12px;"><img src="media/bunec/officier/officier%20tableau%20de%20bord-arrive%20acte%20.png" alt="Tableau de bord et actes reçus" role="button" tabindex="0" aria-label="Agrandir : Tableau de bord et actes reçus" loading="lazy" style="display:block;width:100%;height:220px;object-fit:contain;cursor:zoom-in;border-radius:6px;"><figcaption style="padding-top:10px;">Tableau de bord et actes reçus</figcaption></figure>
+<figure class="card" style="margin:0;padding:12px;"><img src="media/bunec/officier/declaration%20chez%20officier.png" alt="Déclaration chez l’officier" role="button" tabindex="0" aria-label="Agrandir : Déclaration chez l’officier" loading="lazy" style="display:block;width:100%;height:220px;object-fit:contain;cursor:zoom-in;border-radius:6px;"><figcaption style="padding-top:10px;">Déclaration chez l’officier</figcaption></figure>
+<figure class="card" style="margin:0;padding:12px;"><img src="media/bunec/officier/acte%201.png" alt="Saisie de l’acte — écran 1" role="button" tabindex="0" aria-label="Agrandir : Saisie de l’acte — écran 1" loading="lazy" style="display:block;width:100%;height:220px;object-fit:contain;cursor:zoom-in;border-radius:6px;"><figcaption style="padding-top:10px;">Saisie de l’acte — écran 1</figcaption></figure>
+<figure class="card" style="margin:0;padding:12px;"><img src="media/bunec/officier/acte%202.png" alt="Saisie de l’acte — écran 2" role="button" tabindex="0" aria-label="Agrandir : Saisie de l’acte — écran 2" loading="lazy" style="display:block;width:100%;height:220px;object-fit:contain;cursor:zoom-in;border-radius:6px;"><figcaption style="padding-top:10px;">Saisie de l’acte — écran 2</figcaption></figure>
+<figure class="card" style="margin:0;padding:12px;"><img src="media/bunec/officier/remplissage%20de%20l%20acte%201.png" alt="Remplissage de l’acte" role="button" tabindex="0" aria-label="Agrandir : Remplissage de l’acte" loading="lazy" style="display:block;width:100%;height:220px;object-fit:contain;cursor:zoom-in;border-radius:6px;"><figcaption style="padding-top:10px;">Remplissage de l’acte</figcaption></figure>
+</div></section>
+<section aria-labelledby="bunec-mairie-titre" style="margin-top:26px;"><h4 id="bunec-mairie-titre">03 — Espace Mairie</h4><div class="grid grid-3" style="gap:20px;">
+<figure class="card" style="margin:0;padding:12px;"><img src="media/bunec/mairie/tableau%20de%20bord%20mairie%20.png" alt="Tableau de bord de la mairie" role="button" tabindex="0" aria-label="Agrandir : Tableau de bord de la mairie" loading="lazy" style="display:block;width:100%;height:220px;object-fit:contain;cursor:zoom-in;border-radius:6px;"><figcaption style="padding-top:10px;">Tableau de bord de la mairie</figcaption></figure>
+<figure class="card" style="margin:0;padding:12px;"><img src="media/bunec/mairie/generation%20de%20l%20acte%20de%20la%20mairie.png" alt="Génération de l’acte" role="button" tabindex="0" aria-label="Agrandir : Génération de l’acte" loading="lazy" style="display:block;width:100%;height:220px;object-fit:contain;cursor:zoom-in;border-radius:6px;"><figcaption style="padding-top:10px;">Génération de l’acte</figcaption></figure>
+<figure class="card" style="margin:0;padding:12px;"><img src="media/bunec/mairie/archivage%20de%20l%20acte%20.png" alt="Archivage de l’acte" role="button" tabindex="0" aria-label="Agrandir : Archivage de l’acte" loading="lazy" style="display:block;width:100%;height:220px;object-fit:contain;cursor:zoom-in;border-radius:6px;"><figcaption style="padding-top:10px;">Archivage de l’acte</figcaption></figure>
+</div></section>
+<section aria-labelledby="bunec-bunec-titre" style="margin-top:26px;"><h4 id="bunec-bunec-titre">04 — Espace BUNEC</h4><div class="grid grid-3" style="gap:20px;">
+<figure class="card" style="margin:0;padding:12px;"><img src="media/bunec/bunec/tableau%20de%20bord%20bunec.png" alt="Tableau de bord BUNEC" role="button" tabindex="0" aria-label="Agrandir : Tableau de bord BUNEC" loading="lazy" style="display:block;width:100%;height:220px;object-fit:contain;cursor:zoom-in;border-radius:6px;"><figcaption style="padding-top:10px;">Tableau de bord BUNEC</figcaption></figure>
+<figure class="card" style="margin:0;padding:12px;"><img src="media/bunec/bunec/recherche%20nationale.png" alt="Recherche nationale" role="button" tabindex="0" aria-label="Agrandir : Recherche nationale" loading="lazy" style="display:block;width:100%;height:220px;object-fit:contain;cursor:zoom-in;border-radius:6px;"><figcaption style="padding-top:10px;">Recherche nationale</figcaption></figure>
+<figure class="card" style="margin:0;padding:12px;"><img src="media/bunec/bunec/archivages%20nationales.png" alt="Archives nationales" role="button" tabindex="0" aria-label="Agrandir : Archives nationales" loading="lazy" style="display:block;width:100%;height:220px;object-fit:contain;cursor:zoom-in;border-radius:6px;"><figcaption style="padding-top:10px;">Archives nationales</figcaption></figure>
+<figure class="card" style="margin:0;padding:12px;"><img src="media/bunec/bunec/souches%20admin.png" alt="Gestion des souches administratives" role="button" tabindex="0" aria-label="Agrandir : Gestion des souches administratives" loading="lazy" style="display:block;width:100%;height:220px;object-fit:contain;cursor:zoom-in;border-radius:6px;"><figcaption style="padding-top:10px;">Gestion des souches administratives</figcaption></figure>
+<figure class="card" style="margin:0;padding:12px;"><img src="media/bunec/bunec/statistiques.png" alt="Statistiques" role="button" tabindex="0" aria-label="Agrandir : Statistiques" loading="lazy" style="display:block;width:100%;height:220px;object-fit:contain;cursor:zoom-in;border-radius:6px;"><figcaption style="padding-top:10px;">Statistiques</figcaption></figure>
+<figure class="card" style="margin:0;padding:12px;"><img src="media/bunec/bunec/logs%20et%20audit.png" alt="Journaux et audit" role="button" tabindex="0" aria-label="Agrandir : Journaux et audit" loading="lazy" style="display:block;width:100%;height:220px;object-fit:contain;cursor:zoom-in;border-radius:6px;"><figcaption style="padding-top:10px;">Journaux et audit</figcaption></figure>
+<figure class="card" style="margin:0;padding:12px;"><img src="media/bunec/bunec/ia%20et%20machine%20mearning.png" alt="Interface IA et apprentissage automatique" role="button" tabindex="0" aria-label="Agrandir : Interface IA et apprentissage automatique" loading="lazy" style="display:block;width:100%;height:220px;object-fit:contain;cursor:zoom-in;border-radius:6px;"><figcaption style="padding-top:10px;">Interface IA et apprentissage automatique</figcaption></figure>
+</div></section>
+<section aria-labelledby="bunec-citoyen-titre" style="margin-top:26px;"><h4 id="bunec-citoyen-titre">05 — Espace Citoyen</h4><div class="grid grid-3" style="gap:20px;">
+<figure class="card" style="margin:0;padding:12px;"><img src="media/bunec/citoyen/dossiers.png" alt="Mes dossiers" role="button" tabindex="0" aria-label="Agrandir : Mes dossiers" loading="lazy" style="display:block;width:100%;height:220px;object-fit:contain;cursor:zoom-in;border-radius:6px;"><figcaption style="padding-top:10px;">Mes dossiers</figcaption></figure>
+<figure class="card" style="margin:0;padding:12px;"><img src="media/bunec/citoyen/mes%20actes.png" alt="Mes actes" role="button" tabindex="0" aria-label="Agrandir : Mes actes" loading="lazy" style="display:block;width:100%;height:220px;object-fit:contain;cursor:zoom-in;border-radius:6px;"><figcaption style="padding-top:10px;">Mes actes</figcaption></figure>
+<figure class="card" style="margin:0;padding:12px;"><img src="media/bunec/citoyen/acte%20au%20citoyen.png" alt="Acte destiné au citoyen" role="button" tabindex="0" aria-label="Agrandir : Acte destiné au citoyen" loading="lazy" style="display:block;width:100%;height:220px;object-fit:contain;cursor:zoom-in;border-radius:6px;"><figcaption style="padding-top:10px;">Acte destiné au citoyen</figcaption></figure>
+<figure class="card" style="margin:0;padding:12px;"><img src="media/bunec/citoyen/acte%20citoyen%202.png" alt="Consultation d’un acte" role="button" tabindex="0" aria-label="Agrandir : Consultation d’un acte" loading="lazy" style="display:block;width:100%;height:220px;object-fit:contain;cursor:zoom-in;border-radius:6px;"><figcaption style="padding-top:10px;">Consultation d’un acte</figcaption></figure>
+<figure class="card" style="margin:0;padding:12px;"><img src="media/bunec/citoyen/qr%20code.png" alt="QR code de vérification" role="button" tabindex="0" aria-label="Agrandir : QR code de vérification" loading="lazy" style="display:block;width:100%;height:220px;object-fit:contain;cursor:zoom-in;border-radius:6px;"><figcaption style="padding-top:10px;">QR code de vérification</figcaption></figure>
+<figure class="card" style="margin:0;padding:12px;"><img src="media/bunec/citoyen/verification%20authentification%201.png" alt="Vérification de l’authenticité — écran 1" role="button" tabindex="0" aria-label="Agrandir : Vérification de l’authenticité — écran 1" loading="lazy" style="display:block;width:100%;height:220px;object-fit:contain;cursor:zoom-in;border-radius:6px;"><figcaption style="padding-top:10px;">Vérification de l’authenticité — écran 1</figcaption></figure>
+<figure class="card" style="margin:0;padding:12px;"><img src="media/bunec/citoyen/verification%20de%20l%20authentification%202.png" alt="Vérification de l’authenticité — écran 2" role="button" tabindex="0" aria-label="Agrandir : Vérification de l’authenticité — écran 2" loading="lazy" style="display:block;width:100%;height:220px;object-fit:contain;cursor:zoom-in;border-radius:6px;"><figcaption style="padding-top:10px;">Vérification de l’authenticité — écran 2</figcaption></figure>
+</div></section>
+
+      </section>
+
+      <!-- BUNEC_VIDEO_GALLERY_V1 -->
+      </section>
+      <section data-bunec-panel="videos" hidden>
+      <section class="bunec-video-gallery" aria-labelledby="bunec-videos-title">
+        <h3 id="bunec-videos-title">Démonstrations vidéo</h3>
+        <p>Découvrez le parcours numérique de JUBINEC, de la déclaration jusqu’à l’espace citoyen.</p>
+        <div class="bunec-video-grid">
+          
+      <article class="bunec-video-item">
+        <button class="bunec-video-card" type="button"
+          data-video-src="media/bunec/videos/compressees/presentation%20general.mp4" data-video-title="Présentation générale de JUBINEC"
+          aria-label="Lire la vidéo : Présentation générale de JUBINEC">
+          <img src="media/bunec/videos/miniatures/presentation-generale.jpg" alt="" loading="lazy">
+          <span class="bunec-video-play" aria-hidden="true">▶</span>
+        </button>
+        <h4>Présentation générale de JUBINEC</h4>
+        <p>Cliquer sur la vignette pour regarder la démonstration.</p>
+      </article>
+      <article class="bunec-video-item">
+        <button class="bunec-video-card" type="button"
+          data-video-src="media/bunec/videos/compressees/ESPACE-DECLARATION%20.mp4" data-video-title="Espace Déclaration"
+          aria-label="Lire la vidéo : Espace Déclaration">
+          <img src="media/bunec/videos/miniatures/espace-declaration.jpg" alt="" loading="lazy">
+          <span class="bunec-video-play" aria-hidden="true">▶</span>
+        </button>
+        <h4>Espace Déclaration</h4>
+        <p>Cliquer sur la vignette pour regarder la démonstration.</p>
+      </article>
+      <article class="bunec-video-item">
+        <button class="bunec-video-card" type="button"
+          data-video-src="media/bunec/videos/compressees/OFFICIER.mp4" data-video-title="Espace Officier d’état civil"
+          aria-label="Lire la vidéo : Espace Officier d’état civil">
+          <img src="media/bunec/videos/miniatures/officier.jpg" alt="" loading="lazy">
+          <span class="bunec-video-play" aria-hidden="true">▶</span>
+        </button>
+        <h4>Espace Officier d’état civil</h4>
+        <p>Cliquer sur la vignette pour regarder la démonstration.</p>
+      </article>
+      <article class="bunec-video-item">
+        <button class="bunec-video-card" type="button"
+          data-video-src="media/bunec/videos/compressees/MAIRIE.mp4" data-video-title="Espace Mairie"
+          aria-label="Lire la vidéo : Espace Mairie">
+          <img src="media/bunec/videos/miniatures/mairie.jpg" alt="" loading="lazy">
+          <span class="bunec-video-play" aria-hidden="true">▶</span>
+        </button>
+        <h4>Espace Mairie</h4>
+        <p>Cliquer sur la vignette pour regarder la démonstration.</p>
+      </article>
+      <article class="bunec-video-item">
+        <button class="bunec-video-card" type="button"
+          data-video-src="media/bunec/videos/compressees/BUNEC.mp4" data-video-title="Espace BUNEC central"
+          aria-label="Lire la vidéo : Espace BUNEC central">
+          <img src="media/bunec/videos/miniatures/bunec.jpg" alt="" loading="lazy">
+          <span class="bunec-video-play" aria-hidden="true">▶</span>
+        </button>
+        <h4>Espace BUNEC central</h4>
+        <p>Cliquer sur la vignette pour regarder la démonstration.</p>
+      </article>
+      <article class="bunec-video-item">
+        <button class="bunec-video-card" type="button"
+          data-video-src="media/bunec/videos/compressees/CITOYEN.mp4" data-video-title="Espace Citoyen"
+          aria-label="Lire la vidéo : Espace Citoyen">
+          <img src="media/bunec/videos/miniatures/citoyen.jpg" alt="" loading="lazy">
+          <span class="bunec-video-play" aria-hidden="true">▶</span>
+        </button>
+        <h4>Espace Citoyen</h4>
+        <p>Cliquer sur la vignette pour regarder la démonstration.</p>
+      </article>
+        </div>
+      </section>
+
+      <dialog class="bunec-video-dialog" id="bunec-video-dialog"
+        aria-labelledby="bunec-video-dialog-title">
+        <div class="bunec-video-dialog-head">
+          <h3 id="bunec-video-dialog-title">Démonstration vidéo</h3>
+          <button type="button" class="bunec-video-close" aria-label="Fermer la vidéo">✕ Fermer</button>
+        </div>
+        <video id="bunec-video-player" controls playsinline preload="metadata"></video>
+      </dialog>
+
+      <script>
+      (() => {
+        const dialog = document.getElementById('bunec-video-dialog');
+        if (!dialog || dialog.dataset.ready === 'true') return;
+        dialog.dataset.ready = 'true';
+        const player = document.getElementById('bunec-video-player');
+        const heading = document.getElementById('bunec-video-dialog-title');
+
+        document.querySelectorAll('.bunec-video-card').forEach(button => {
+          button.addEventListener('click', () => {
+            player.src = button.dataset.videoSrc;
+            heading.textContent = button.dataset.videoTitle;
+            dialog.showModal();
+            player.play().catch(() => {});
+          });
+        });
+
+        function stopVideo() {
+          player.pause();
+          player.removeAttribute('src');
+          player.load();
+        }
+
+        dialog.querySelector('.bunec-video-close').addEventListener('click', () => dialog.close());
+        dialog.addEventListener('close', stopVideo);
+        dialog.addEventListener('click', event => {
+          if (event.target === dialog) dialog.close();
+        });
+      })();
+      </script>
+
+      </section>
+      <section data-bunec-panel="documents" hidden>
+      <section aria-labelledby="bunec-documents-titre" style="margin-top:36px;">
+        <h3 id="bunec-documents-titre">Documents du projet</h3>
+        <div class="grid grid-3" style="gap:20px;">
+
+<article class="card" style="margin:0;padding:18px;"><h4>Présentation du projet JUBINEC</h4><p>Document de présentation du projet.</p><p><a class="btn btn-small" href="media/bunec/presentation%20du%20projet.pdf" target="_blank" rel="noopener">Ouvrir le PDF</a></p><p><a href="media/bunec/presentation%20du%20projet.pdf" download>Télécharger le PDF</a></p></article>
+<article class="card" style="margin:0;padding:18px;"><h4>Fonctionnalités de JUBINEC</h4><p>Présentation des fonctionnalités du prototype.</p><p><a class="btn btn-small" href="media/bunec/fonctionnalites.pdf" target="_blank" rel="noopener">Ouvrir le PDF</a></p><p><a href="media/bunec/fonctionnalites.pdf" download>Télécharger le PDF</a></p></article>
+<article class="card" style="margin:0;padding:18px;"><h4>Offre technique — ELIMAX SARL</h4><p>Document technique destiné à la demande technique.</p><p><a class="btn btn-small" href="media/bunec/OFFRE%20TECHNIQUE%20BUNEC%20%20ELIMAX.SAR%20L.pdf" target="_blank" rel="noopener">Ouvrir le PDF</a></p><p><a href="media/bunec/OFFRE%20TECHNIQUE%20BUNEC%20%20ELIMAX.SAR%20L.pdf" download>Télécharger le PDF</a></p></article>
+
+        </div>
+      </section>
+      <section aria-labelledby="bunec-lettre-titre" style="margin-top:32px;">
+        <h3 id="bunec-lettre-titre">Correspondance institutionnelle</h3>
+        <article class="card" style="margin:0;padding:20px;">
+          <h4>Lettre du BUNEC relative à la présentation du projet</h4>
+          <p>Correspondance remise par le BUNEC dans le cadre de la présentation du projet.</p>
+          <a class="btn btn-small" href="media/bunec/lettre%20du%20bunec.pdf" target="_blank" rel="noopener">Consulter la lettre (PDF)</a>
+          <a class="btn btn-small" href="media/bunec/lettre%20du%20bunec.pdf" download>Télécharger la lettre</a>
+        </article>
+      </section>
+      </section>
+      <p style="margin-top:28px;"><a class="btn btn-small" href="#contact">Demander une démonstration</a></p>
+      <div class="portfolio-project-actions bunec-bottom-actions">
+        <button class="btn btn-small portfolio-back-to-projects" type="button" data-portfolio-back="projets">← Retour aux projets</button>
+      </div>
+
     </details>
     
     <details class="card proj" id="cybercare">
       <summary>
         <div><h3>CyberCare</h3><p class="institution" style="margin:4px 0 0">Sensibilisation et accompagnement en cybersécurité</p></div>
-        <div><span class="badge badge-wip">Fiche en cours de rédaction</span> <span class="summary-hint">Voir la fiche ▾</span></div>
+        <div><span class="badge badge-proto">Prototype interactif</span> <span class="summary-hint">Voir la fiche ▾</span></div>
       </summary>
-      <div class="alert alert-info">Cette fiche est en cours de rédaction. Les éléments non confirmés ne sont volontairement pas affichés.</div>
+<div class="portfolio-project-actions"><button class="btn btn-small portfolio-back-to-projects" type="button" data-portfolio-back="projets">← Retour aux projets</button></div>
+      
+<!-- CYBERCARE_RUBRIQUES_NAV_V1 -->
+      <nav class="cybercare-rubric-nav" aria-label="Rubriques CyberCare">
+        <button type="button" data-cybercare-show="presentation" aria-pressed="true">Présentation</button>
+        <button type="button" data-cybercare-show="captures" aria-pressed="false">Captures</button>
+        <button type="button" data-cybercare-show="videos" aria-pressed="false">Vidéos</button>
+        <button type="button" data-cybercare-show="documents" aria-pressed="false">Documents</button>
+      </nav>
+
+      <section data-cybercare-panel="presentation">
       <dl class="fiche">
         <div><dt>1. Résumé</dt><dd>Solution de sensibilisation et d&#39;accompagnement en cybersécurité : scénarios de sensibilisation au phishing, contenus pédagogiques et suivi des signalements.</dd></div>
         <div><dt>2. Contexte et problème à résoudre</dt><dd>Le phishing et l&#39;ingénierie sociale touchent les particuliers et les organisations, qui manquent souvent d&#39;exemples concrets pour reconnaître une fraude.</dd></div>
         <div><dt>3. Objectifs</dt><dd><ul><li>Faire vivre une simulation de phishing pédagogique</li><li>Expliquer ensuite les indices de fraude et les bonnes pratiques</li></ul></dd></div>
-        <div><dt>4. Ma contribution personnelle</dt><dd>À préciser.</dd></div>
-        <div><dt>5. Architecture et technologies</dt><dd>À préciser.</dd></div>
-        <div><dt>6. Fonctionnalités réalisées</dt><dd>À préciser.</dd></div>
+        <div><dt>4. Ma contribution personnelle</dt><dd>Participation à la conception fonctionnelle et à la réalisation des interfaces et parcours de démonstration du projet.</dd></div>
+        <div><dt>5. Architecture et technologies</dt><dd>Prototype présenté à travers des interfaces web et des parcours de démonstration. Les technologies exactes, le stockage des données et les éventuels services serveur doivent être confirmés à partir du code source avant toute affirmation sur l’architecture complète.</dd></div>
+        <div><dt>6. Fonctionnalités réalisées</dt><dd><ul><li>Simulation pédagogique de phishing et présentation des indices qui permettent de reconnaître une tentative de fraude.</li><li>Contenus et guides de bonnes pratiques en cybersécurité.</li><li>Interfaces de démonstration pour le signalement d’incidents et le suivi des informations associées.</li><li>Parcours illustrés par les captures : assistant CyberCare, bilan de sécurité, détection de menaces et vérification d’intégrité.</li></ul><p class="note">Ces éléments décrivent les parcours présentés dans le prototype ; ils ne prouvent pas l’existence d’un service de surveillance ou d’un backend opérationnel.</p></dd></div>
         <div><dt>7. Mesures de sécurité</dt><dd><ul><li>Les démonstrations sont conçues pour n&#39;utiliser que des données fictives et ne jamais collecter de vrai mot de passe, code OTP ou donnée bancaire.</li></ul></dd></div>
         <div><dt>8. Tests effectués</dt><dd>Aucun résultat de test publié à ce jour.</dd></div>
-        <div><dt>9. Captures d'écran et démonstration</dt><dd>Captures d&#39;écran et démonstration : à ajouter.</dd></div>
+        <div><dt>9. Captures d'écran et démonstration</dt><dd>Les captures d’écran ci-dessous illustrent les interfaces et les parcours du prototype. Les vidéos et documents disponibles complètent la présentation. Une démonstration réelle des services connectés devra être distinguée des maquettes et simulations.</dd></div>
         <div><dt>10. Dépôt de code</dt><dd>Code non public.</dd></div>
         <div><dt>11. Limites et pistes d'amélioration</dt><dd><ul><li>Cette fiche est incomplète : les éléments non confirmés ne sont volontairement pas affichés</li></ul></dd></div>
-        <div><dt>12. Statut</dt><dd>Fiche en cours de rédaction</dd></div>
+        <div><dt>12. Statut</dt><dd>Prototype fonctionnel</dd></div>
       </dl>
       <a class="btn btn-small" href="#contact">Demander une démonstration</a>
-    </details>
+      </section>
+
+      <div class="cybercare-medias" style="margin-top:28px;padding-top:24px;border-top:1px solid #d1d5db;">
+<section data-cybercare-panel="documents" hidden>
+<h3 class="spaced">Ressources et démonstrations CyberCare</h3>
+    <p class="lead">Retrouvez la présentation du projet, ses fonctionnalités,
+    les captures d’écran et les ressources disponibles.</p>
+
+    <h3>01 — Présentation</h3>
+    <p>Document de présentation générale du projet CyberCare.</p>
+    <div class="actions">
+      <a class="btn" href="media/cybetcare/documents%20pdf/CYBERCARE%20%E2%80%94%20Pr%C3%A9sentation%20du%20projet.pdf" target="_blank" rel="noopener">Voir la présentation</a>
+      <a class="btn" href="media/cybetcare/documents%20pdf/CYBERCARE%20%E2%80%94%20Pr%C3%A9sentation%20du%20projet.pdf" download>Télécharger le PDF</a>
+    </div>
     
+
+    <h3>02 — Fonctionnalités</h3>
+    <p>Document détaillant les fonctionnalités de CyberCare.</p>
+    <div class="actions">
+      <a class="btn" href="media/cybetcare/documents%20pdf/FONCTIONNALIT%C3%89S%20DE%20CYBERCARE.pdf" target="_blank" rel="noopener">Voir les fonctionnalités</a>
+      <a class="btn" href="media/cybetcare/documents%20pdf/FONCTIONNALIT%C3%89S%20DE%20CYBERCARE.pdf" download>Télécharger le PDF</a>
+    </div>
+    
+
+      </section>
+      <section data-cybercare-panel="captures" hidden>
+    <h3>03 — Captures d’écran CyberCare</h3>
+    <div class="grid grid-3 cybercare-capture-grid" style="gap:20px;">
+      <figure class="card" style="margin:0;padding:12px;">
+  <img role="button" tabindex="0" aria-label="Agrandir la capture" style="display:block;width:100%;height:220px;object-fit:contain;background:#f3f4f6;border-radius:8px;cursor:zoom-in;" src="media/cybetcare/capture%20d%20ecran/assistant%20cybercare.png" alt="Assistant CyberCare" loading="lazy">
+  <figcaption style="padding-top:10px;">Assistant CyberCare</figcaption>
+</figure>
+<figure class="card" style="margin:0;padding:12px;">
+  <img role="button" tabindex="0" aria-label="Agrandir la capture" style="display:block;width:100%;height:220px;object-fit:contain;background:#f3f4f6;border-radius:8px;cursor:zoom-in;" src="media/cybetcare/capture%20d%20ecran/check-up%20securite.png" alt="Check-up sécurité" loading="lazy">
+  <figcaption style="padding-top:10px;">Check-up sécurité</figcaption>
+</figure>
+<figure class="card" style="margin:0;padding:12px;">
+  <img role="button" tabindex="0" aria-label="Agrandir la capture" style="display:block;width:100%;height:220px;object-fit:contain;background:#f3f4f6;border-radius:8px;cursor:zoom-in;" src="media/cybetcare/capture%20d%20ecran/detecter%20une%20menace.png" alt="Détection d’une menace" loading="lazy">
+  <figcaption style="padding-top:10px;">Détection d’une menace</figcaption>
+</figure>
+<figure class="card" style="margin:0;padding:12px;">
+  <img role="button" tabindex="0" aria-label="Agrandir la capture" style="display:block;width:100%;height:220px;object-fit:contain;background:#f3f4f6;border-radius:8px;cursor:zoom-in;" src="media/cybetcare/capture%20d%20ecran/espace%20parent.png" alt="Espace parent" loading="lazy">
+  <figcaption style="padding-top:10px;">Espace parent</figcaption>
+</figure>
+<figure class="card" style="margin:0;padding:12px;">
+  <img role="button" tabindex="0" aria-label="Agrandir la capture" style="display:block;width:100%;height:220px;object-fit:contain;background:#f3f4f6;border-radius:8px;cursor:zoom-in;" src="media/cybetcare/capture%20d%20ecran/guides%20de%20protection.png" alt="Guides de protection" loading="lazy">
+  <figcaption style="padding-top:10px;">Guides de protection</figcaption>
+</figure>
+<figure class="card" style="margin:0;padding:12px;">
+  <img role="button" tabindex="0" aria-label="Agrandir la capture" style="display:block;width:100%;height:220px;object-fit:contain;background:#f3f4f6;border-radius:8px;cursor:zoom-in;" src="media/cybetcare/capture%20d%20ecran/mes%20dossiers.png" alt="Mes dossiers" loading="lazy">
+  <figcaption style="padding-top:10px;">Mes dossiers</figcaption>
+</figure>
+<figure class="card" style="margin:0;padding:12px;">
+  <img role="button" tabindex="0" aria-label="Agrandir la capture" style="display:block;width:100%;height:220px;object-fit:contain;background:#f3f4f6;border-radius:8px;cursor:zoom-in;" src="media/cybetcare/capture%20d%20ecran/page%20d%20accueil.png" alt="Page d’accueil CyberCare" loading="lazy">
+  <figcaption style="padding-top:10px;">Page d’accueil CyberCare</figcaption>
+</figure>
+<figure class="card" style="margin:0;padding:12px;">
+  <img role="button" tabindex="0" aria-label="Agrandir la capture" style="display:block;width:100%;height:220px;object-fit:contain;background:#f3f4f6;border-radius:8px;cursor:zoom-in;" src="media/cybetcare/capture%20d%20ecran/signaler%20un%20incident%202.png" alt="Signalement d’un incident" loading="lazy">
+  <figcaption style="padding-top:10px;">Signalement d’un incident</figcaption>
+</figure>
+<figure class="card" style="margin:0;padding:12px;">
+  <img role="button" tabindex="0" aria-label="Agrandir la capture" style="display:block;width:100%;height:220px;object-fit:contain;background:#f3f4f6;border-radius:8px;cursor:zoom-in;" src="media/cybetcare/capture%20d%20ecran/verifier%20integrite.png" alt="Vérification de l’intégrité" loading="lazy">
+  <figcaption style="padding-top:10px;">Vérification de l’intégrité</figcaption>
+</figure>
+    </div>
+
+<div class="card cybercare-conference-card" style="margin-top:32px;padding:20px;">
+      <h3>CyberCare Conference Zero</h3>
+      <p>Cette galerie est consacrée séparément à CyberCare Conference Zero
+      et à ses scénarios pédagogiques de sensibilisation.</p>
+      <div class="grid grid-3 cybercare-capture-grid" style="gap:20px;">
+        <figure class="card" style="margin:0;padding:12px;">
+  <img role="button" tabindex="0" aria-label="Agrandir la capture" style="display:block;width:100%;height:220px;object-fit:contain;background:#f3f4f6;border-radius:8px;cursor:zoom-in;" src="media/cybetcare/capture%20d%20ecran/cybercare%20conference-zero/message%20de%20simulation.png" alt="Message de simulation" loading="lazy">
+  <figcaption style="padding-top:10px;">Message de simulation</figcaption>
+</figure>
+<figure class="card" style="margin:0;padding:12px;">
+  <img role="button" tabindex="0" aria-label="Agrandir la capture" style="display:block;width:100%;height:220px;object-fit:contain;background:#f3f4f6;border-radius:8px;cursor:zoom-in;" src="media/cybetcare/capture%20d%20ecran/cybercare%20conference-zero/page%20d%20accueil.png" alt="Accueil Conference Zero" loading="lazy">
+  <figcaption style="padding-top:10px;">Accueil Conference Zero</figcaption>
+</figure>
+<figure class="card" style="margin:0;padding:12px;">
+  <img role="button" tabindex="0" aria-label="Agrandir la capture" style="display:block;width:100%;height:220px;object-fit:contain;background:#f3f4f6;border-radius:8px;cursor:zoom-in;" src="media/cybetcare/capture%20d%20ecran/cybercare%20conference-zero/scenario%201%20capture%20identifiant.png" alt="Scénario 1 — Capture d’identifiant" loading="lazy">
+  <figcaption style="padding-top:10px;">Scénario 1 — Capture d’identifiant</figcaption>
+</figure>
+<figure class="card" style="margin:0;padding:12px;">
+  <img role="button" tabindex="0" aria-label="Agrandir la capture" style="display:block;width:100%;height:220px;object-fit:contain;background:#f3f4f6;border-radius:8px;cursor:zoom-in;" src="media/cybetcare/capture%20d%20ecran/cybercare%20conference-zero/scenario%201%20saisir%20information.png" alt="Scénario 1 — Saisie d’information" loading="lazy">
+  <figcaption style="padding-top:10px;">Scénario 1 — Saisie d’information</figcaption>
+</figure>
+<figure class="card" style="margin:0;padding:12px;">
+  <img role="button" tabindex="0" aria-label="Agrandir la capture" style="display:block;width:100%;height:220px;object-fit:contain;background:#f3f4f6;border-radius:8px;cursor:zoom-in;" src="media/cybetcare/capture%20d%20ecran/cybercare%20conference-zero/scenario%201%20sensibilisation.png" alt="Scénario 1 — Sensibilisation" loading="lazy">
+  <figcaption style="padding-top:10px;">Scénario 1 — Sensibilisation</figcaption>
+</figure>
+      </div>
+    </div>
+
+
+      </section>
+      <section data-cybercare-panel="videos" hidden>
+    <!-- CYBERCARE_VIDEO_CARDS_V2 -->
+    <section class="cybercare-video-gallery" aria-labelledby="cybercare-videos-title">
+      <h3 id="cybercare-videos-title">04 — Vidéos</h3>
+      <p>Découvrez les principales interfaces et démonstrations du projet CyberCare.</p>
+      <div class="cybercare-video-grid">
+      <article class="cybercare-video-item">
+        <button class="cybercare-video-card" type="button"
+          data-video-src="media/cybetcare/videos_compressees/wafo-introduction-originale-compressee.mp4"
+          data-video-title="Wafo Introduction"
+          aria-label="Lire la vidéo : Wafo Introduction">
+          <span class="cybercare-video-placeholder" aria-hidden="true">Wafo Introduction</span>
+          <span class="cybercare-video-play" aria-hidden="true">▶</span>
+        </button>
+        <h4>Wafo Introduction</h4>
+        <p>Présentation vidéo de Benjamin.</p>
+      </article>
+      
+        
+      <article class="cybercare-video-item">
+        <button class="cybercare-video-card" type="button"
+          data-video-src="media/cybetcare/videos_compressees/ACADEMIE.mp4" data-video-title="Académie"
+          aria-label="Lire la vidéo : Académie">
+          <img src="media/cybetcare/videos_compressees/miniatures/cybercare-video-01.jpg" alt="" loading="lazy">
+          <span class="cybercare-video-play" aria-hidden="true">▶</span>
+        </button>
+        <h4>Académie</h4>
+        <p>Cliquer sur la vignette pour regarder la démonstration.</p>
+      </article>
+      <article class="cybercare-video-item">
+        <button class="cybercare-video-card" type="button"
+          data-video-src="media/cybetcare/videos_compressees/ASSISTANT%20IA.mp4" data-video-title="Assistant IA"
+          aria-label="Lire la vidéo : Assistant IA">
+          <img src="media/cybetcare/videos_compressees/miniatures/cybercare-video-02.jpg" alt="" loading="lazy">
+          <span class="cybercare-video-play" aria-hidden="true">▶</span>
+        </button>
+        <h4>Assistant IA</h4>
+        <p>Cliquer sur la vignette pour regarder la démonstration.</p>
+      </article>
+      <article class="cybercare-video-item">
+        <button class="cybercare-video-card" type="button"
+          data-video-src="media/cybetcare/videos_compressees/CHEK-UP-SECURITE.mp4" data-video-title="Check-up sécurité"
+          aria-label="Lire la vidéo : Check-up sécurité">
+          <img src="media/cybetcare/videos_compressees/miniatures/cybercare-video-03.jpg" alt="" loading="lazy">
+          <span class="cybercare-video-play" aria-hidden="true">▶</span>
+        </button>
+        <h4>Check-up sécurité</h4>
+        <p>Cliquer sur la vignette pour regarder la démonstration.</p>
+      </article>
+      <article class="cybercare-video-item">
+        <button class="cybercare-video-card" type="button"
+          data-video-src="media/cybetcare/videos_compressees/CYBERCARE%20PREVENIR-ACCOMPAGNER%20-PROTEGER.mp4" data-video-title="CyberCare — Prévenir, accompagner, protéger"
+          aria-label="Lire la vidéo : CyberCare — Prévenir, accompagner, protéger">
+          <img src="media/cybetcare/videos_compressees/miniatures/cybercare-video-04.jpg" alt="" loading="lazy">
+          <span class="cybercare-video-play" aria-hidden="true">▶</span>
+        </button>
+        <h4>CyberCare — Prévenir, accompagner, protéger</h4>
+        <p>Cliquer sur la vignette pour regarder la démonstration.</p>
+      </article>
+      <article class="cybercare-video-item">
+        <button class="cybercare-video-card" type="button"
+          data-video-src="media/cybetcare/videos_compressees/DETECTER%20UNE%20MENACE%20.mp4" data-video-title="Détecter une menace"
+          aria-label="Lire la vidéo : Détecter une menace">
+          <img src="media/cybetcare/videos_compressees/miniatures/cybercare-video-05.jpg" alt="" loading="lazy">
+          <span class="cybercare-video-play" aria-hidden="true">▶</span>
+        </button>
+        <h4>Détecter une menace</h4>
+        <p>Cliquer sur la vignette pour regarder la démonstration.</p>
+      </article>
+      <article class="cybercare-video-item">
+        <button class="cybercare-video-card" type="button"
+          data-video-src="media/cybetcare/videos_compressees/ESPACES-PARENT.mp4" data-video-title="Espaces parent"
+          aria-label="Lire la vidéo : Espaces parent">
+          <img src="media/cybetcare/videos_compressees/miniatures/cybercare-video-06.jpg" alt="" loading="lazy">
+          <span class="cybercare-video-play" aria-hidden="true">▶</span>
+        </button>
+        <h4>Espaces parent</h4>
+        <p>Cliquer sur la vignette pour regarder la démonstration.</p>
+      </article>
+      <article class="cybercare-video-item">
+        <button class="cybercare-video-card" type="button"
+          data-video-src="media/cybetcare/videos_compressees/GUIDES%20DE%20PROTECTION.mp4" data-video-title="Guides de protection"
+          aria-label="Lire la vidéo : Guides de protection">
+          <img src="media/cybetcare/videos_compressees/miniatures/cybercare-video-07.jpg" alt="" loading="lazy">
+          <span class="cybercare-video-play" aria-hidden="true">▶</span>
+        </button>
+        <h4>Guides de protection</h4>
+        <p>Cliquer sur la vignette pour regarder la démonstration.</p>
+      </article>
+      <article class="cybercare-video-item">
+        <button class="cybercare-video-card" type="button"
+          data-video-src="media/cybetcare/videos_compressees/ORIENTATION.mp4" data-video-title="Orientation"
+          aria-label="Lire la vidéo : Orientation">
+          <img src="media/cybetcare/videos_compressees/miniatures/cybercare-video-08.jpg" alt="" loading="lazy">
+          <span class="cybercare-video-play" aria-hidden="true">▶</span>
+        </button>
+        <h4>Orientation</h4>
+        <p>Cliquer sur la vignette pour regarder la démonstration.</p>
+      </article>
+      <article class="cybercare-video-item">
+        <button class="cybercare-video-card" type="button"
+          data-video-src="media/cybetcare/videos_compressees/SIGNALER%20UN%20INCIDENT.mp4" data-video-title="Signaler un incident"
+          aria-label="Lire la vidéo : Signaler un incident">
+          <img src="media/cybetcare/videos_compressees/miniatures/cybercare-video-09.jpg" alt="" loading="lazy">
+          <span class="cybercare-video-play" aria-hidden="true">▶</span>
+        </button>
+        <h4>Signaler un incident</h4>
+        <p>Cliquer sur la vignette pour regarder la démonstration.</p>
+      </article>
+      <article class="cybercare-video-item">
+        <button class="cybercare-video-card" type="button"
+          data-video-src="media/cybetcare/videos_compressees/UTILISATEUR-CONTENU-CE%20QUI%20ES%20REEL.mp4" data-video-title="Contenu utilisateur — ce qui est réel"
+          aria-label="Lire la vidéo : Contenu utilisateur — ce qui est réel">
+          <img src="media/cybetcare/videos_compressees/miniatures/cybercare-video-10.jpg" alt="" loading="lazy">
+          <span class="cybercare-video-play" aria-hidden="true">▶</span>
+        </button>
+        <h4>Contenu utilisateur — ce qui est réel</h4>
+        <p>Cliquer sur la vignette pour regarder la démonstration.</p>
+      </article>
+      
+      <article class="cybercare-video-item">
+        <button class="cybercare-video-card" type="button"
+          data-video-src="media/cybetcare/videos_compressees/CYBERCARE-CONFERENCE-ZERO.mp4"
+          data-video-title="Conference Zero — CyberCare"
+          aria-label="Lire la vidéo : Conference Zero — CyberCare">
+          <span class="cybercare-video-placeholder" aria-hidden="true">Conference Zero</span>
+          <span class="cybercare-video-play" aria-hidden="true">▶</span>
+        </button>
+        <h4>Conference Zero — CyberCare</h4>
+        <p>Présentation de Conference Zero.</p>
+      </article>
+      </div>
+    </section>
+
+    <dialog class="cybercare-video-dialog" id="cybercare-video-dialog"
+      aria-labelledby="cybercare-video-dialog-title">
+      <div class="cybercare-video-dialog-head">
+        <h3 id="cybercare-video-dialog-title">Démonstration CyberCare</h3>
+        <button type="button" class="cybercare-video-close">✕ Fermer</button>
+      </div>
+      <video id="cybercare-video-player" controls playsinline preload="metadata"></video>
+    </dialog>
+
+    <script>
+    (() => {
+      const dialog = document.getElementById('cybercare-video-dialog');
+      if (!dialog || dialog.dataset.ready === 'true') return;
+      dialog.dataset.ready = 'true';
+
+      const player = document.getElementById('cybercare-video-player');
+      const heading = document.getElementById('cybercare-video-dialog-title');
+
+      document.querySelectorAll('#cybercare .cybercare-video-card').forEach(button => {
+        button.addEventListener('click', () => {
+          player.src = button.dataset.videoSrc;
+          heading.textContent = button.dataset.videoTitle;
+          dialog.showModal();
+          player.play().catch(() => {});
+        });
+      });
+
+      function stopVideo() {
+        player.pause();
+        player.removeAttribute('src');
+        player.load();
+      }
+
+      dialog.querySelector('.cybercare-video-close').addEventListener('click', () => dialog.close());
+      dialog.addEventListener('close', stopVideo);
+      dialog.addEventListener('click', event => {
+        if (event.target === dialog) dialog.close();
+      });
+    })();
+    </script>
+      </section>
+      <section data-cybercare-panel="documents" hidden>
+    <h3>05 — Documents</h3>
+    
+    <div class="grid grid-3 cybercare-documents-grid">
+      <article class="card cybercare-document-card">
+        <h4>Présentation du projet CyberCare</h4>
+        <p>Document de présentation générale du projet.</p>
+        <div class="cybercare-document-actions">
+          <a class="btn btn-small" href="media/cybetcare/documents%20pdf/CYBERCARE%20%E2%80%94%20Pr%C3%A9sentation%20du%20projet.pdf" target="_blank" rel="noopener">Ouvrir le PDF</a>
+          <a href="media/cybetcare/documents%20pdf/CYBERCARE%20%E2%80%94%20Pr%C3%A9sentation%20du%20projet.pdf" download>Télécharger le PDF</a>
+        </div>
+      </article>
+      <article class="card cybercare-document-card">
+        <h4>Fonctionnalités de CyberCare</h4>
+        <p>Document détaillant les fonctionnalités du projet.</p>
+        <div class="cybercare-document-actions">
+          <a class="btn btn-small" href="media/cybetcare/documents%20pdf/FONCTIONNALIT%C3%89S%20DE%20CYBERCARE.pdf" target="_blank" rel="noopener">Ouvrir le PDF</a>
+          <a href="media/cybetcare/documents%20pdf/FONCTIONNALIT%C3%89S%20DE%20CYBERCARE.pdf" download>Télécharger le PDF</a>
+        </div>
+      </article>
+    </div>
+
+    <h3>06 — Technique</h3>
+    <p>La documentation technique sera ajoutée ici lorsqu’elle sera prête.</p>
+
+    <h3>07 — Commercial</h3>
+    <p>Les supports commerciaux seront ajoutés ici lorsqu’ils seront disponibles.</p>
+
+    <h3>08 — Publications</h3>
+    <p>Les publications seront ajoutées ici lorsqu’elles seront disponibles.</p>
+
+      </section>
+          </div>
+
+<script>
+(() => {
+  const root = document.getElementById('cybercare');
+  if (!root || root.dataset.rubricsReady === 'true') return;
+  root.dataset.rubricsReady = 'true';
+
+  const buttons = root.querySelectorAll('[data-cybercare-show]');
+  const panels = root.querySelectorAll('[data-cybercare-panel]');
+
+  function showPanel(name) {
+    buttons.forEach(button => {
+      button.setAttribute(
+        'aria-pressed',
+        String(button.dataset.cybercareShow === name)
+      );
+    });
+
+    panels.forEach(panel => {
+      panel.hidden = panel.dataset.cybercarePanel !== name;
+    });
+  }
+
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      showPanel(button.dataset.cybercareShow);
+    });
+  });
+
+  showPanel('presentation');
+})();
+</script>
+
+</details>
+    
+    <details class="card proj" id="fecafoot">
+      <summary>
+        <div>
+          <h3>FECAFOOT DIGITAL</h3>
+          <p class="institution" style="margin:4px 0 0">Plateforme numérique de gestion et de valorisation du football camerounais</p>
+        </div>
+        <div><span class="badge badge-proto">Prototype interactif</span> <span class="summary-hint">Voir la fiche ▾</span></div>
+      </summary>
+<div class="portfolio-project-actions"><button class="btn btn-small portfolio-back-to-projects" type="button" data-portfolio-back="projets">← Retour aux projets</button></div>
+      <!-- FECAFOOT_RUBRIQUES_NAV_V1 -->
+      <nav class="fecafoot-rubric-nav" aria-label="Rubriques FECAFOOT DIGITAL">
+        <button type="button" data-fecafoot-show="presentation" aria-pressed="true">Présentation</button>
+        <button type="button" data-fecafoot-show="captures" aria-pressed="false">Captures d’écran</button>
+        <button type="button" data-fecafoot-show="videos" aria-pressed="false">Vidéos</button>
+        <button type="button" data-fecafoot-show="documents" aria-pressed="false">Documents</button>
+      </nav>
+      <section data-fecafoot-panel="presentation">
+
+
+      <div style="margin-top:22px;">
+        <p class="lead">FECAFOOT DIGITAL est une plateforme SportTech qui rassemble des outils de gestion des matchs, de suivi des joueurs, de vérification des licences et d’analyse de l’écosystème footballistique.</p>
+      </div>
+
+      <dl class="fiche">
+        <div><dt>1. Présentation</dt><dd>Une solution numérique conçue pour structurer les informations sportives et faciliter leur consultation par les acteurs concernés.</dd></div>
+        <div><dt>2. Contexte et enjeux</dt><dd>Améliorer l’organisation des données liées aux rencontres, aux joueurs, aux clubs, aux compétitions et aux infrastructures sportives.</dd></div>
+        <div><dt>3. Objectifs</dt><dd><ul>
+          <li>Faciliter la saisie et le suivi des événements de match.</li>
+          <li>Structurer les informations des joueurs et des clubs.</li>
+          <li>Simplifier la consultation et la vérification des licences.</li>
+          <li>Valoriser les statistiques, les talents et les infrastructures.</li>
+        </ul></dd></div>
+        <div><dt>4. Modules fonctionnels</dt><dd><ul>
+          <li>Live score et événements de match.</li>
+          <li>Licences numériques et vérification par QR code.</li>
+          <li>Profils des joueurs et statistiques.</li>
+          <li>IA Scouting et aide à l’analyse des talents.</li>
+          <li>Clubs, compétitions et transferts.</li>
+          <li>Infrastructures sportives.</li>
+          <li>Analyses et économie du football.</li>
+          <li>Assistant intelligent et espace diaspora.</li>
+          <li>Médias et valorisation de l’écosystème footballistique.</li>
+        </ul></dd></div>
+        <div><dt>5. Publics concernés</dt><dd>Responsables sportifs, gestionnaires de compétitions, clubs, joueurs, officiels, analystes, recruteurs et autres acteurs habilités.</dd></div>
+        <div><dt>6. Apport du projet</dt><dd>Réunir les informations dans des espaces fonctionnels complémentaires afin de faciliter le suivi sportif, la consultation des données et l’aide à la décision.</dd></div>
+        <div><dt>7. Sécurité et gouvernance</dt><dd>La gestion des accès, la protection des données, la validation des informations et la traçabilité doivent être adaptées aux rôles des utilisateurs et aux exigences d’exploitation.</dd></div>
+        <div><dt>8. Captures d’écran</dt><dd>Galerie des interfaces du prototype. Clique sur une capture pour l’agrandir ; utilise Échap ou le bouton de fermeture pour revenir à la fiche.</dd></div>
+        <div><dt>9. Documentation</dt><dd>Présentation générale, documentation fonctionnelle et offre technique disponibles au format PDF ci-dessous.</dd></div>
+        <div><dt>10. Statut</dt><dd>Prototype fonctionnel avec interfaces et modules de démonstration.</dd></div>
+      </dl>
+      </section>
+
+      <section data-fecafoot-panel="captures" hidden>
+      <section aria-labelledby="fecafoot-captures-titre" style="margin-top:32px;">
+        <h3 id="fecafoot-captures-titre">Captures d’écran du prototype</h3>
+        <p class="lead">Explore les différentes interfaces de FECAFOOT DIGITAL. Chaque capture peut être agrandie individuellement.</p>
+        <div class="grid grid-3" style="gap:20px;">
+          
+        <figure class="card" style="margin:0;padding:12px;">
+          <img src="media/fecafoot/capture%20d%20ecran/page%20de%20connexion.png" alt="Page de connexion"
+               role="button" tabindex="0"
+               aria-label="Agrandir : Page de connexion"
+               loading="lazy"
+               style="display:block;width:100%;height:220px;object-fit:contain;background:#f3f4f6;border-radius:8px;cursor:zoom-in;">
+          <figcaption style="padding-top:10px;">Page de connexion</figcaption>
+        </figure>
+        <figure class="card" style="margin:0;padding:12px;">
+          <img src="media/fecafoot/capture%20d%20ecran/profil.png" alt="Profil utilisateur"
+               role="button" tabindex="0"
+               aria-label="Agrandir : Profil utilisateur"
+               loading="lazy"
+               style="display:block;width:100%;height:220px;object-fit:contain;background:#f3f4f6;border-radius:8px;cursor:zoom-in;">
+          <figcaption style="padding-top:10px;">Profil utilisateur</figcaption>
+        </figure>
+        <figure class="card" style="margin:0;padding:12px;">
+          <img src="media/fecafoot/capture%20d%20ecran/clubs.png" alt="Gestion des clubs"
+               role="button" tabindex="0"
+               aria-label="Agrandir : Gestion des clubs"
+               loading="lazy"
+               style="display:block;width:100%;height:220px;object-fit:contain;background:#f3f4f6;border-radius:8px;cursor:zoom-in;">
+          <figcaption style="padding-top:10px;">Gestion des clubs</figcaption>
+        </figure>
+        <figure class="card" style="margin:0;padding:12px;">
+          <img src="media/fecafoot/capture%20d%20ecran/evenement.jpg" alt="Événements de match"
+               role="button" tabindex="0"
+               aria-label="Agrandir : Événements de match"
+               loading="lazy"
+               style="display:block;width:100%;height:220px;object-fit:contain;background:#f3f4f6;border-radius:8px;cursor:zoom-in;">
+          <figcaption style="padding-top:10px;">Événements de match</figcaption>
+        </figure>
+        <figure class="card" style="margin:0;padding:12px;">
+          <img src="media/fecafoot/capture%20d%20ecran/mise%20a%20jour%20livescore.png" alt="Mise à jour du live score"
+               role="button" tabindex="0"
+               aria-label="Agrandir : Mise à jour du live score"
+               loading="lazy"
+               style="display:block;width:100%;height:220px;object-fit:contain;background:#f3f4f6;border-radius:8px;cursor:zoom-in;">
+          <figcaption style="padding-top:10px;">Mise à jour du live score</figcaption>
+        </figure>
+        <figure class="card" style="margin:0;padding:12px;">
+          <img src="media/fecafoot/capture%20d%20ecran/scan%20du%20score%20.png" alt="Scan du score"
+               role="button" tabindex="0"
+               aria-label="Agrandir : Scan du score"
+               loading="lazy"
+               style="display:block;width:100%;height:220px;object-fit:contain;background:#f3f4f6;border-radius:8px;cursor:zoom-in;">
+          <figcaption style="padding-top:10px;">Scan du score</figcaption>
+        </figure>
+        <figure class="card" style="margin:0;padding:12px;">
+          <img src="media/fecafoot/capture%20d%20ecran/licence.png" alt="Licence numérique"
+               role="button" tabindex="0"
+               aria-label="Agrandir : Licence numérique"
+               loading="lazy"
+               style="display:block;width:100%;height:220px;object-fit:contain;background:#f3f4f6;border-radius:8px;cursor:zoom-in;">
+          <figcaption style="padding-top:10px;">Licence numérique</figcaption>
+        </figure>
+        <figure class="card" style="margin:0;padding:12px;">
+          <img src="media/fecafoot/capture%20d%20ecran/ia.png" alt="Assistant intelligent"
+               role="button" tabindex="0"
+               aria-label="Agrandir : Assistant intelligent"
+               loading="lazy"
+               style="display:block;width:100%;height:220px;object-fit:contain;background:#f3f4f6;border-radius:8px;cursor:zoom-in;">
+          <figcaption style="padding-top:10px;">Assistant intelligent</figcaption>
+        </figure>
+        <figure class="card" style="margin:0;padding:12px;">
+          <img src="media/fecafoot/capture%20d%20ecran/ia%20scouting.png" alt="IA Scouting"
+               role="button" tabindex="0"
+               aria-label="Agrandir : IA Scouting"
+               loading="lazy"
+               style="display:block;width:100%;height:220px;object-fit:contain;background:#f3f4f6;border-radius:8px;cursor:zoom-in;">
+          <figcaption style="padding-top:10px;">IA Scouting</figcaption>
+        </figure>
+        <figure class="card" style="margin:0;padding:12px;">
+          <img src="media/fecafoot/capture%20d%20ecran/analytics.png" alt="Analyses et statistiques"
+               role="button" tabindex="0"
+               aria-label="Agrandir : Analyses et statistiques"
+               loading="lazy"
+               style="display:block;width:100%;height:220px;object-fit:contain;background:#f3f4f6;border-radius:8px;cursor:zoom-in;">
+          <figcaption style="padding-top:10px;">Analyses et statistiques</figcaption>
+        </figure>
+        <figure class="card" style="margin:0;padding:12px;">
+          <img src="media/fecafoot/capture%20d%20ecran/transfert.png" alt="Gestion des transferts"
+               role="button" tabindex="0"
+               aria-label="Agrandir : Gestion des transferts"
+               loading="lazy"
+               style="display:block;width:100%;height:220px;object-fit:contain;background:#f3f4f6;border-radius:8px;cursor:zoom-in;">
+          <figcaption style="padding-top:10px;">Gestion des transferts</figcaption>
+        </figure>
+        <figure class="card" style="margin:0;padding:12px;">
+          <img src="media/fecafoot/capture%20d%20ecran/infra.png" alt="Infrastructures sportives"
+               role="button" tabindex="0"
+               aria-label="Agrandir : Infrastructures sportives"
+               loading="lazy"
+               style="display:block;width:100%;height:220px;object-fit:contain;background:#f3f4f6;border-radius:8px;cursor:zoom-in;">
+          <figcaption style="padding-top:10px;">Infrastructures sportives</figcaption>
+        </figure>
+        <figure class="card" style="margin:0;padding:12px;">
+          <img src="media/fecafoot/capture%20d%20ecran/economie.png" alt="Économie du football"
+               role="button" tabindex="0"
+               aria-label="Agrandir : Économie du football"
+               loading="lazy"
+               style="display:block;width:100%;height:220px;object-fit:contain;background:#f3f4f6;border-radius:8px;cursor:zoom-in;">
+          <figcaption style="padding-top:10px;">Économie du football</figcaption>
+        </figure>
+        </div>
+      </section>
+
+      
+      </section>
+      <section data-fecafoot-panel="videos" hidden>
+        <section class="fecafoot-video-gallery" aria-labelledby="fecafoot-videos-title">
+          <h3 id="fecafoot-videos-title">Vidéos de démonstration</h3>
+          <p>Découvrez les modules et les parcours de FECAFOOT DIGITAL.</p>
+          <div class="fecafoot-video-grid">
+        <article class="fecafoot-video-item">
+          <button class="fecafoot-video-card" type="button"
+            data-video-src="media/fecafoot/videos_compressees/wafo%20fo%20introduction.mp4"
+            data-video-title="Wafo Introduction"
+            aria-label="Lire la vidéo : Wafo Introduction">
+            <span class="fecafoot-video-play" aria-hidden="true">▶</span>
+            <span class="fecafoot-video-card-label">Wafo Introduction</span>
+          </button>
+          <h4>Wafo Introduction</h4>
+          <p>Présentation vidéo de Benjamin.</p>
+        </article>
+
+        
+
+        <article class="fecafoot-video-item">
+          <button class="fecafoot-video-card" type="button"
+            data-video-src="media/fecafoot/videos_compressees/ARBITRAGE.mp4"
+            data-video-title="Arbitrage"
+            aria-label="Lire la vidéo : Arbitrage">
+            <span class="fecafoot-video-play" aria-hidden="true">▶</span>
+            <span class="fecafoot-video-card-label">Arbitrage</span>
+          </button>
+          <h4>Arbitrage</h4>
+          <p>Cliquer sur la carte pour regarder la démonstration.</p>
+        </article>
+
+        <article class="fecafoot-video-item">
+          <button class="fecafoot-video-card" type="button"
+            data-video-src="media/fecafoot/videos_compressees/ASSISTANT%20IA.mp4"
+            data-video-title="Assistant IA"
+            aria-label="Lire la vidéo : Assistant IA">
+            <span class="fecafoot-video-play" aria-hidden="true">▶</span>
+            <span class="fecafoot-video-card-label">Assistant IA</span>
+          </button>
+          <h4>Assistant IA</h4>
+          <p>Cliquer sur la carte pour regarder la démonstration.</p>
+        </article>
+
+        <article class="fecafoot-video-item">
+          <button class="fecafoot-video-card" type="button"
+            data-video-src="media/fecafoot/videos_compressees/CLUBS.mp4"
+            data-video-title="Gestion des clubs"
+            aria-label="Lire la vidéo : Gestion des clubs">
+            <span class="fecafoot-video-play" aria-hidden="true">▶</span>
+            <span class="fecafoot-video-card-label">Gestion des clubs</span>
+          </button>
+          <h4>Gestion des clubs</h4>
+          <p>Cliquer sur la carte pour regarder la démonstration.</p>
+        </article>
+
+        <article class="fecafoot-video-item">
+          <button class="fecafoot-video-card" type="button"
+            data-video-src="media/fecafoot/videos_compressees/COMPETITION.mp4"
+            data-video-title="Compétitions"
+            aria-label="Lire la vidéo : Compétitions">
+            <span class="fecafoot-video-play" aria-hidden="true">▶</span>
+            <span class="fecafoot-video-card-label">Compétitions</span>
+          </button>
+          <h4>Compétitions</h4>
+          <p>Cliquer sur la carte pour regarder la démonstration.</p>
+        </article>
+
+        <article class="fecafoot-video-item">
+          <button class="fecafoot-video-card" type="button"
+            data-video-src="media/fecafoot/videos_compressees/CONTACT.mp4"
+            data-video-title="Contact"
+            aria-label="Lire la vidéo : Contact">
+            <span class="fecafoot-video-play" aria-hidden="true">▶</span>
+            <span class="fecafoot-video-card-label">Contact</span>
+          </button>
+          <h4>Contact</h4>
+          <p>Cliquer sur la carte pour regarder la démonstration.</p>
+        </article>
+
+        <article class="fecafoot-video-item">
+          <button class="fecafoot-video-card" type="button"
+            data-video-src="media/fecafoot/videos_compressees/DIASPORA.mp4"
+            data-video-title="Espace diaspora"
+            aria-label="Lire la vidéo : Espace diaspora">
+            <span class="fecafoot-video-play" aria-hidden="true">▶</span>
+            <span class="fecafoot-video-card-label">Espace diaspora</span>
+          </button>
+          <h4>Espace diaspora</h4>
+          <p>Cliquer sur la carte pour regarder la démonstration.</p>
+        </article>
+
+        <article class="fecafoot-video-item">
+          <button class="fecafoot-video-card" type="button"
+            data-video-src="media/fecafoot/videos_compressees/DISTINCTIONS.mp4"
+            data-video-title="Distinctions"
+            aria-label="Lire la vidéo : Distinctions">
+            <span class="fecafoot-video-play" aria-hidden="true">▶</span>
+            <span class="fecafoot-video-card-label">Distinctions</span>
+          </button>
+          <h4>Distinctions</h4>
+          <p>Cliquer sur la carte pour regarder la démonstration.</p>
+        </article>
+
+        <article class="fecafoot-video-item">
+          <button class="fecafoot-video-card" type="button"
+            data-video-src="media/fecafoot/videos_compressees/ECONOMIE.mp4"
+            data-video-title="Économie du football"
+            aria-label="Lire la vidéo : Économie du football">
+            <span class="fecafoot-video-play" aria-hidden="true">▶</span>
+            <span class="fecafoot-video-card-label">Économie du football</span>
+          </button>
+          <h4>Économie du football</h4>
+          <p>Cliquer sur la carte pour regarder la démonstration.</p>
+        </article>
+
+        <article class="fecafoot-video-item">
+          <button class="fecafoot-video-card" type="button"
+            data-video-src="media/fecafoot/videos_compressees/FECAFOOT%20PRESENTATION%20GENERAL.mp4"
+            data-video-title="Présentation générale de FECAFOOT DIGITAL"
+            aria-label="Lire la vidéo : Présentation générale de FECAFOOT DIGITAL">
+            <span class="fecafoot-video-play" aria-hidden="true">▶</span>
+            <span class="fecafoot-video-card-label">Présentation générale de FECAFOOT DIGITAL</span>
+          </button>
+          <h4>Présentation générale de FECAFOOT DIGITAL</h4>
+          <p>Cliquer sur la carte pour regarder la démonstration.</p>
+        </article>
+
+        <article class="fecafoot-video-item">
+          <button class="fecafoot-video-card" type="button"
+            data-video-src="media/fecafoot/videos_compressees/IA%20SCOUTING.mp4"
+            data-video-title="IA Scouting — analyse des talents"
+            aria-label="Lire la vidéo : IA Scouting — analyse des talents">
+            <span class="fecafoot-video-play" aria-hidden="true">▶</span>
+            <span class="fecafoot-video-card-label">IA Scouting — analyse des talents</span>
+          </button>
+          <h4>IA Scouting — analyse des talents</h4>
+          <p>Cliquer sur la carte pour regarder la démonstration.</p>
+        </article>
+
+        <article class="fecafoot-video-item">
+          <button class="fecafoot-video-card" type="button"
+            data-video-src="media/fecafoot/videos_compressees/INFRASTRUCTURE.mp4"
+            data-video-title="Infrastructures sportives"
+            aria-label="Lire la vidéo : Infrastructures sportives">
+            <span class="fecafoot-video-play" aria-hidden="true">▶</span>
+            <span class="fecafoot-video-card-label">Infrastructures sportives</span>
+          </button>
+          <h4>Infrastructures sportives</h4>
+          <p>Cliquer sur la carte pour regarder la démonstration.</p>
+        </article>
+
+        <article class="fecafoot-video-item">
+          <button class="fecafoot-video-card" type="button"
+            data-video-src="media/fecafoot/videos_compressees/INTERNATIONAL.mp4"
+            data-video-title="Espace international"
+            aria-label="Lire la vidéo : Espace international">
+            <span class="fecafoot-video-play" aria-hidden="true">▶</span>
+            <span class="fecafoot-video-card-label">Espace international</span>
+          </button>
+          <h4>Espace international</h4>
+          <p>Cliquer sur la carte pour regarder la démonstration.</p>
+        </article>
+
+        <article class="fecafoot-video-item">
+          <button class="fecafoot-video-card" type="button"
+            data-video-src="media/fecafoot/videos_compressees/JOUEURS.mp4"
+            data-video-title="Gestion des joueurs"
+            aria-label="Lire la vidéo : Gestion des joueurs">
+            <span class="fecafoot-video-play" aria-hidden="true">▶</span>
+            <span class="fecafoot-video-card-label">Gestion des joueurs</span>
+          </button>
+          <h4>Gestion des joueurs</h4>
+          <p>Cliquer sur la carte pour regarder la démonstration.</p>
+        </article>
+
+        <article class="fecafoot-video-item">
+          <button class="fecafoot-video-card" type="button"
+            data-video-src="media/fecafoot/videos_compressees/MATCHS.mp4"
+            data-video-title="Gestion des matchs"
+            aria-label="Lire la vidéo : Gestion des matchs">
+            <span class="fecafoot-video-play" aria-hidden="true">▶</span>
+            <span class="fecafoot-video-card-label">Gestion des matchs</span>
+          </button>
+          <h4>Gestion des matchs</h4>
+          <p>Cliquer sur la carte pour regarder la démonstration.</p>
+        </article>
+
+        <article class="fecafoot-video-item">
+          <button class="fecafoot-video-card" type="button"
+            data-video-src="media/fecafoot/videos_compressees/MEDIAS.mp4"
+            data-video-title="Médias"
+            aria-label="Lire la vidéo : Médias">
+            <span class="fecafoot-video-play" aria-hidden="true">▶</span>
+            <span class="fecafoot-video-card-label">Médias</span>
+          </button>
+          <h4>Médias</h4>
+          <p>Cliquer sur la carte pour regarder la démonstration.</p>
+        </article>
+
+        <article class="fecafoot-video-item">
+          <button class="fecafoot-video-card" type="button"
+            data-video-src="media/fecafoot/videos_compressees/TABLEAU%20DE%20BORD.mp4"
+            data-video-title="Tableau de bord"
+            aria-label="Lire la vidéo : Tableau de bord">
+            <span class="fecafoot-video-play" aria-hidden="true">▶</span>
+            <span class="fecafoot-video-card-label">Tableau de bord</span>
+          </button>
+          <h4>Tableau de bord</h4>
+          <p>Cliquer sur la carte pour regarder la démonstration.</p>
+        </article>
+
+        <article class="fecafoot-video-item">
+          <button class="fecafoot-video-card" type="button"
+            data-video-src="media/fecafoot/videos_compressees/TRANSFERT.mp4"
+            data-video-title="Gestion des transferts"
+            aria-label="Lire la vidéo : Gestion des transferts">
+            <span class="fecafoot-video-play" aria-hidden="true">▶</span>
+            <span class="fecafoot-video-card-label">Gestion des transferts</span>
+          </button>
+          <h4>Gestion des transferts</h4>
+          <p>Cliquer sur la carte pour regarder la démonstration.</p>
+        </article>
+
+        
+
+        <article class="fecafoot-video-item">
+          <button class="fecafoot-video-card" type="button"
+            data-video-src="media/fecafoot/videos_compressees/%F0%9F%94%B4%20Live%20Score%20%E2%80%94%20Scores%20en%20direct.mp4"
+            data-video-title="Live Score — Scores en direct"
+            aria-label="Lire la vidéo : Live Score — Scores en direct">
+            <span class="fecafoot-video-play" aria-hidden="true">▶</span>
+            <span class="fecafoot-video-card-label">Live Score — Scores en direct</span>
+          </button>
+          <h4>Live Score — Scores en direct</h4>
+          <p>Cliquer sur la carte pour regarder la démonstration.</p>
+        </article>
+          </div>
+        </section>
+
+        <dialog class="fecafoot-video-dialog" id="fecafoot-video-dialog"
+          aria-labelledby="fecafoot-video-dialog-title">
+          <div class="fecafoot-video-dialog-head">
+            <h3 id="fecafoot-video-dialog-title">Démonstration FECAFOOT DIGITAL</h3>
+            <button type="button" class="fecafoot-video-close">✕ Fermer</button>
+          </div>
+          <video id="fecafoot-video-player" controls playsinline preload="metadata"></video>
+        </dialog>
+
+        <script>
+        (() => {
+          const root = document.getElementById('fecafoot');
+          if (!root || root.dataset.rubricsReady === 'true') return;
+          root.dataset.rubricsReady = 'true';
+
+          const buttons = root.querySelectorAll('[data-fecafoot-show]');
+          const panels = root.querySelectorAll('[data-fecafoot-panel]');
+
+          function showPanel(name) {
+            panels.forEach(panel => {
+              panel.hidden = panel.dataset.fecafootPanel !== name;
+            });
+            buttons.forEach(button => {
+              button.setAttribute(
+                'aria-pressed',
+                String(button.dataset.fecafootShow === name)
+              );
+            });
+          }
+
+          buttons.forEach(button => {
+            button.addEventListener('click', () => {
+              showPanel(button.dataset.fecafootShow);
+            });
+          });
+
+          showPanel('presentation');
+
+          const dialog = root.querySelector('#fecafoot-video-dialog');
+          const player = root.querySelector('#fecafoot-video-player');
+          const heading = root.querySelector('#fecafoot-video-dialog-title');
+
+          if (!dialog || !player || !heading) return;
+
+          root.querySelectorAll('.fecafoot-video-card').forEach(button => {
+            button.addEventListener('click', () => {
+              player.src = button.dataset.videoSrc;
+              heading.textContent = button.dataset.videoTitle;
+              dialog.showModal();
+              player.play().catch(() => {});
+            });
+          });
+
+          function stopVideo() {
+            player.pause();
+            player.removeAttribute('src');
+            player.load();
+          }
+
+          dialog.querySelector('.fecafoot-video-close')
+            .addEventListener('click', () => dialog.close());
+
+          dialog.addEventListener('close', stopVideo);
+
+          dialog.addEventListener('click', event => {
+            if (event.target === dialog) dialog.close();
+          });
+        })();
+        </script>
+      </section>
+      <section data-fecafoot-panel="documents" hidden>
+
+      <section aria-labelledby="fecafoot-documents-titre" style="margin-top:36px;">
+        <h3 id="fecafoot-documents-titre">Documents du projet</h3>
+        <div class="grid grid-3" style="gap:20px;">
+          
+        <article class="card" style="margin:0;padding:18px;">
+          <h4>Présentation du projet</h4>
+          <p>Vision, enjeux, modules et valeur stratégique de FECAFOOT DIGITAL.</p>
+          <p><a class="btn btn-small" href="media/fecafoot/Presentation_du_projet_FECAFOOT_DIGITAL_.pdf" target="_blank" rel="noopener">Ouvrir le PDF</a></p>
+          <p><a href="media/fecafoot/Presentation_du_projet_FECAFOOT_DIGITAL_.pdf" download>Télécharger le PDF</a></p>
+        </article>
+        <article class="card" style="margin:0;padding:18px;">
+          <h4>Fonctionnalités de FECAFOOT DIGITAL</h4>
+          <p>Présentation détaillée des modules et de leurs parcours opérationnels.</p>
+          <p><a class="btn btn-small" href="media/fecafoot/Fonctionnalites_FECAFOOT_DIGITAL_Fonctionnalites.pdf" target="_blank" rel="noopener">Ouvrir le PDF</a></p>
+          <p><a href="media/fecafoot/Fonctionnalites_FECAFOOT_DIGITAL_Fonctionnalites.pdf" download>Télécharger le PDF</a></p>
+        </article>
+        <article class="card" style="margin:0;padding:18px;">
+          <h4>Offre technique — ELIMAX SARL</h4>
+          <p>Document technique associé au projet FECAFOOT.</p>
+          <p><a class="btn btn-small" href="media/fecafoot/OFRE%20TECHNIQUE%20%20fecafoot%20elimax.sarl.pdf" target="_blank" rel="noopener">Ouvrir le PDF</a></p>
+          <p><a href="media/fecafoot/OFRE%20TECHNIQUE%20%20fecafoot%20elimax.sarl.pdf" download>Télécharger le PDF</a></p>
+        </article>
+        </div>
+      </section>
+
+      </section>
+
+      <p style="margin-top:28px;"><a class="btn btn-small" href="#contact">Demander une démonstration</a></p>
+    </details>
+
     <details class="card proj" id="educore">
       <summary>
         <div><h3>EduCore</h3><p class="institution" style="margin:4px 0 0">Gestion scolaire et suivi des paiements</p></div>
-        <div><span class="badge badge-proto">Prototype de démonstration</span> <span class="summary-hint">Voir la fiche ▾</span></div>
+        <div><span class="badge badge-proto">Prototype interactif</span> <span class="summary-hint">Voir la fiche ▾</span></div>
       </summary>
-      
+<div class="portfolio-project-actions"><button class="btn btn-small portfolio-back-to-projects" type="button" data-portfolio-back="projets">← Retour aux projets</button></div>
+
+      <nav class="educore-rubric-nav" aria-label="Rubriques du projet EduCore">
+        <button type="button" data-educore-show="presentation" aria-pressed="true">Présentation</button>
+        <button type="button" data-educore-show="captures" aria-pressed="false">Captures d’écran</button>
+        <button type="button" data-educore-show="videos" aria-pressed="false">Vidéos</button>
+        <button type="button" data-educore-show="documents" aria-pressed="false">Documents</button>
+      </nav>
+
+      <section data-educore-panel="presentation">
       <dl class="fiche">
         <div><dt>1. Résumé</dt><dd>Prototype de gestion scolaire avec trois établissements de démonstration (primaire, secondaire, université), des rôles distincts et un suivi des paiements de scolarité en mode démonstration.</dd></div>
         <div><dt>2. Contexte et problème à résoudre</dt><dd>La gestion des élèves, des notes et des paiements de scolarité repose souvent sur des documents papier ou des outils dispersés.</dd></div>
         <div><dt>3. Objectifs</dt><dd><ul><li>Organiser les informations scolaires par rôle</li><li>Suivre les paiements de scolarité</li><li>Produire des documents vérifiables (reçus, quitus, cartes)</li></ul></dd></div>
         <div><dt>4. Ma contribution personnelle</dt><dd>Conception fonctionnelle et développement du prototype.</dd></div>
         <div><dt>5. Architecture et technologies</dt><dd>Application web en HTML, CSS et JavaScript. Les données sont stockées dans le navigateur (localStorage). Pas de serveur ni de base de données.<ul class="tags"><li>JavaScript</li><li>HTML</li><li>CSS</li><li>localStorage</li></ul></dd></div>
-        <div><dt>6. Fonctionnalités réalisées</dt><dd><ul><li>Trois établissements de démonstration</li><li>Gestion des rôles</li><li>Paiements de scolarité en mode démonstration (en ligne et à la caisse)</li></ul></dd></div>
+        <div><dt>6. Fonctionnalités réalisées</dt><dd><ul><li>Trois établissements de démonstration : primaire, secondaire et université.</li><li>Espaces et fonctions organisés selon les rôles des utilisateurs.</li><li>Suivi des paiements de scolarité en mode démonstration, avec parcours en ligne simulé et paiement à la caisse.</li><li>Présentation des documents scolaires et financiers prévus dans les parcours, notamment les quitus et les reçus.</li></ul><p class="note"><strong>Important :</strong> aucun paiement n’est réellement encaissé par le prototype.</p></dd></div>
         <div><dt>7. Mesures de sécurité</dt><dd><ul><li>Aucune donnée réelle d&#39;élève n&#39;est utilisée</li></ul><p class="note">Les paiements sont simulés : aucune banque ni service de paiement mobile n&#39;est connecté.</p></dd></div>
         <div><dt>8. Tests effectués</dt><dd>Aucun résultat de test formel n&#39;est publié à ce jour.</dd></div>
-        <div><dt>9. Captures d'écran et démonstration</dt><dd>Captures d&#39;écran et démonstration : à ajouter.</dd></div>
+        <div><dt>9. Captures d'écran et démonstration</dt><dd>Les documents de présentation et des fonctionnalités sont disponibles dans la section Documents EDUCORE ci-dessous.</dd></div>
         <div><dt>10. Dépôt de code</dt><dd>Code non public.</dd></div>
         <div><dt>11. Limites et pistes d'amélioration</dt><dd><ul><li>Prototype de démonstration, non déployé</li><li>Paiements simulés, sans intégration bancaire</li><li>Données conservées localement dans le navigateur</li><li>Notes, bulletins, reçus, quitus, documents, carte étudiante et QR de vérification : en cours d&#39;évolution</li></ul></dd></div>
         <div><dt>12. Statut</dt><dd>Prototype de démonstration</dd></div>
       </dl>
+      </section>
+      
+      <section data-educore-panel="documents" hidden>
+      <section id="educore-documents" class="card" aria-labelledby="educore-documents-title" style="margin-top:20px;padding:20px;">
+        <h3 id="educore-documents-title">Documents EDUCORE</h3>
+        <p>Consultez la présentation du projet et le document détaillant ses fonctionnalités.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:16px;">
+          <article style="padding:16px;border:1px solid var(--border, #ddd);border-radius:12px;">
+            <h4>Présentation du projet</h4>
+            <p>Objectifs, architecture, fonctionnement et limites du prototype.</p>
+            <p>
+              <a class="btn btn-small" href="media/educore/EDUCORE%20-%20presentation%20du%20projet.pdf" target="_blank" rel="noopener">Voir le PDF</a>
+              <a class="btn btn-small btn-ghost" href="media/educore/EDUCORE%20-%20presentation%20du%20projet.pdf" download="EDUCORE-Presentation-du-projet.pdf">Télécharger le PDF</a>
+            </p>
+          </article>
+          <article style="padding:16px;border:1px solid var(--border, #ddd);border-radius:12px;">
+            <h4>Fonctionnalités EDUCORE</h4>
+            <p>Fonctionnalités du prototype, parcours utilisateurs et améliorations prévues.</p>
+            <p>
+              <a class="btn btn-small" href="media/educore/EDUCORE%20-%20Fonctionnalites.pdf" target="_blank" rel="noopener">Voir le PDF</a>
+              <a class="btn btn-small btn-ghost" href="media/educore/EDUCORE%20-%20Fonctionnalites.pdf" download="EDUCORE-Fonctionnalites.pdf">Télécharger le PDF</a>
+            </p>
+          </article>
+        </div>
+      </section>
+      </section>
+
+      <section data-educore-panel="captures" hidden>
+      <section id="educore-gallery" class="educore-gallery" aria-labelledby="educore-gallery-title">
+        <h3 id="educore-gallery-title">Captures d’écran EDUCORE</h3>
+        <p class="educore-gallery-intro">Explorez les interfaces du prototype. Sélectionnez une capture pour l’afficher en grand.</p>
+        <section class="educore-gallery-group" aria-label="Administration et gestion">
+          <h4>Administration et gestion</h4>
+          <div class="educore-gallery-grid">
+            <button class="educore-gallery-item" type="button" data-full-image="media/educore/capture%20d%20ecran/direction.png" data-image-alt="Espace direction" aria-label="Agrandir : Espace direction"><img role="button" tabindex="0" src="media/educore/capture%20d%20ecran/direction.png" alt="Espace direction" loading="lazy"><span>Espace direction</span></button>
+            <button class="educore-gallery-item" type="button" data-full-image="media/educore/capture%20d%20ecran/secretariat.png" data-image-alt="Espace secrétariat" aria-label="Agrandir : Espace secrétariat"><img role="button" tabindex="0" src="media/educore/capture%20d%20ecran/secretariat.png" alt="Espace secrétariat" loading="lazy"><span>Espace secrétariat</span></button>
+            <button class="educore-gallery-item" type="button" data-full-image="media/educore/capture%20d%20ecran/comptabilite.png" data-image-alt="Comptabilité" aria-label="Agrandir : Comptabilité"><img role="button" tabindex="0" src="media/educore/capture%20d%20ecran/comptabilite.png" alt="Comptabilité" loading="lazy"><span>Comptabilité</span></button>
+            <button class="educore-gallery-item" type="button" data-full-image="media/educore/capture%20d%20ecran/vue%20financiere.png" data-image-alt="Vue financière" aria-label="Agrandir : Vue financière"><img role="button" tabindex="0" src="media/educore/capture%20d%20ecran/vue%20financiere.png" alt="Vue financière" loading="lazy"><span>Vue financière</span></button>
+          </div>
+        </section>
+        <section class="educore-gallery-group" aria-label="Espaces et suivi scolaire">
+          <h4>Espaces et suivi scolaire</h4>
+          <div class="educore-gallery-grid">
+            <button class="educore-gallery-item" type="button" data-full-image="media/educore/capture%20d%20ecran/page%20connexion%20ecole%20marthe.png" data-image-alt="Connexion établissement" aria-label="Agrandir : Connexion établissement"><img role="button" tabindex="0" src="media/educore/capture%20d%20ecran/page%20connexion%20ecole%20marthe.png" alt="Connexion établissement" loading="lazy"><span>Connexion établissement</span></button>
+            <button class="educore-gallery-item" type="button" data-full-image="media/educore/capture%20d%20ecran/page%20d%20accueil.png" data-image-alt="Page d’accueil" aria-label="Agrandir : Page d’accueil"><img role="button" tabindex="0" src="media/educore/capture%20d%20ecran/page%20d%20accueil.png" alt="Page d’accueil" loading="lazy"><span>Page d’accueil</span></button>
+            <button class="educore-gallery-item" type="button" data-full-image="media/educore/capture%20d%20ecran/parent%20.png" data-image-alt="Espace parent" aria-label="Agrandir : Espace parent"><img role="button" tabindex="0" src="media/educore/capture%20d%20ecran/parent%20.png" alt="Espace parent" loading="lazy"><span>Espace parent</span></button>
+            <button class="educore-gallery-item" type="button" data-full-image="media/educore/capture%20d%20ecran/enseignant.png" data-image-alt="Espace enseignant" aria-label="Agrandir : Espace enseignant"><img role="button" tabindex="0" src="media/educore/capture%20d%20ecran/enseignant.png" alt="Espace enseignant" loading="lazy"><span>Espace enseignant</span></button>
+            <button class="educore-gallery-item" type="button" data-full-image="media/educore/capture%20d%20ecran/emploi%20de%20temps.png" data-image-alt="Emploi du temps" aria-label="Agrandir : Emploi du temps"><img role="button" tabindex="0" src="media/educore/capture%20d%20ecran/emploi%20de%20temps.png" alt="Emploi du temps" loading="lazy"><span>Emploi du temps</span></button>
+            <button class="educore-gallery-item" type="button" data-full-image="media/educore/capture%20d%20ecran/notification.png" data-image-alt="Notifications" aria-label="Agrandir : Notifications"><img role="button" tabindex="0" src="media/educore/capture%20d%20ecran/notification.png" alt="Notifications" loading="lazy"><span>Notifications</span></button>
+            <button class="educore-gallery-item" type="button" data-full-image="media/educore/capture%20d%20ecran/visite%20medical.png" data-image-alt="Visite médicale" aria-label="Agrandir : Visite médicale"><img role="button" tabindex="0" src="media/educore/capture%20d%20ecran/visite%20medical.png" alt="Visite médicale" loading="lazy"><span>Visite médicale</span></button>
+          </div>
+        </section>
+        <section class="educore-gallery-group" aria-label="Documents et paiements">
+          <h4>Documents et paiements</h4>
+          <div class="educore-gallery-grid">
+            <button class="educore-gallery-item" type="button" data-full-image="media/educore/capture%20d%20ecran/carte%20d%20identite.png" data-image-alt="Carte d’identité" aria-label="Agrandir : Carte d’identité"><img role="button" tabindex="0" src="media/educore/capture%20d%20ecran/carte%20d%20identite.png" alt="Carte d’identité" loading="lazy"><span>Carte d’identité</span></button>
+            <button class="educore-gallery-item" type="button" data-full-image="media/educore/capture%20d%20ecran/quitus.png" data-image-alt="Quitus scolaire" aria-label="Agrandir : Quitus scolaire"><img role="button" tabindex="0" src="media/educore/capture%20d%20ecran/quitus.png" alt="Quitus scolaire" loading="lazy"><span>Quitus scolaire</span></button>
+            <button class="educore-gallery-item" type="button" data-full-image="media/educore/capture%20d%20ecran/recu%20de%20paiement.png" data-image-alt="Reçu de paiement" aria-label="Agrandir : Reçu de paiement"><img role="button" tabindex="0" src="media/educore/capture%20d%20ecran/recu%20de%20paiement.png" alt="Reçu de paiement" loading="lazy"><span>Reçu de paiement</span></button>
+            <button class="educore-gallery-item" type="button" data-full-image="media/educore/capture%20d%20ecran/attestation%20de%20paiment.png" data-image-alt="Attestation de paiement" aria-label="Agrandir : Attestation de paiement"><img role="button" tabindex="0" src="media/educore/capture%20d%20ecran/attestation%20de%20paiment.png" alt="Attestation de paiement" loading="lazy"><span>Attestation de paiement</span></button>
+            <button class="educore-gallery-item" type="button" data-full-image="media/educore/capture%20d%20ecran/qr%20code.png" data-image-alt="Code QR de vérification" aria-label="Agrandir : Code QR de vérification"><img role="button" tabindex="0" src="media/educore/capture%20d%20ecran/qr%20code.png" alt="Code QR de vérification" loading="lazy"><span>Code QR de vérification</span></button>
+          </div>
+        </section>
+
+      </section>
+      </section>
+
+      <!-- EDUCORE_VIDEO_GALLERY_V1 -->
+      <section data-educore-panel="videos" hidden>
+        <section class="educore-video-gallery" aria-labelledby="educore-videos-title">
+          <h3 id="educore-videos-title">Vidéos de démonstration EduCore</h3>
+          <p>Découvrez les différents espaces et parcours du prototype de gestion scolaire.</p>
+          <div class="educore-video-grid">
+          <article class="educore-video-item">
+            <button class="educore-video-card" type="button"
+              data-educore-video-src="media/educore/videos_compressees/COMPTABILITE.mp4"
+              data-educore-video-title="Comptabilité"
+              aria-label="Lire la vidéo : Comptabilité">
+              <img src="media/educore/videos_miniatures/COMPTABILITE.jpg" alt="" loading="lazy">
+              <span class="educore-video-play" aria-hidden="true">▶</span>
+            </button>
+            <h4>Comptabilité</h4>
+            <p>Cliquer sur la vignette pour regarder la démonstration.</p>
+          </article>
+          <article class="educore-video-item">
+            <button class="educore-video-card" type="button"
+              data-educore-video-src="media/educore/videos_compressees/DIRECTION-UNIVERSITE.mp4"
+              data-educore-video-title="Direction université"
+              aria-label="Lire la vidéo : Direction université">
+              <img src="media/educore/videos_miniatures/DIRECTION-UNIVERSITE.jpg" alt="" loading="lazy">
+              <span class="educore-video-play" aria-hidden="true">▶</span>
+            </button>
+            <h4>Direction université</h4>
+            <p>Cliquer sur la vignette pour regarder la démonstration.</p>
+          </article>
+          <article class="educore-video-item">
+            <button class="educore-video-card" type="button"
+              data-educore-video-src="media/educore/videos_compressees/ADAPTATION-NIVEAUX-SCOLAIRES.mp4"
+              data-educore-video-title="Adaptation aux différents niveaux scolaires"
+              aria-label="Lire la vidéo : Adaptation aux différents niveaux scolaires">
+              <img src="media/educore/videos_miniatures/ADAPTATION-NIVEAUX-SCOLAIRES.jpg" alt="" loading="lazy">
+              <span class="educore-video-play" aria-hidden="true">▶</span>
+            </button>
+            <h4>Adaptation aux différents niveaux scolaires</h4>
+            <p>Cliquer sur la vignette pour regarder la démonstration.</p>
+          </article>
+          <article class="educore-video-item">
+            <button class="educore-video-card" type="button"
+              data-educore-video-src="media/educore/videos_compressees/ENSEIGNANT.mp4"
+              data-educore-video-title="Espace enseignant"
+              aria-label="Lire la vidéo : Espace enseignant">
+              <img src="media/educore/videos_miniatures/ENSEIGNANT.jpg" alt="" loading="lazy">
+              <span class="educore-video-play" aria-hidden="true">▶</span>
+            </button>
+            <h4>Espace enseignant</h4>
+            <p>Cliquer sur la vignette pour regarder la démonstration.</p>
+          </article>
+          <article class="educore-video-item">
+            <button class="educore-video-card" type="button"
+              data-educore-video-src="media/educore/videos_compressees/ETUDIANT-PARENT.mp4"
+              data-educore-video-title="Espace étudiant et parent"
+              aria-label="Lire la vidéo : Espace étudiant et parent">
+              <img src="media/educore/videos_miniatures/ETUDIANT-PARENT.jpg" alt="" loading="lazy">
+              <span class="educore-video-play" aria-hidden="true">▶</span>
+            </button>
+            <h4>Espace étudiant et parent</h4>
+            <p>Cliquer sur la vignette pour regarder la démonstration.</p>
+          </article>
+          <article class="educore-video-item">
+            <button class="educore-video-card" type="button"
+              data-educore-video-src="media/educore/videos_compressees/SECRETAIRE.mp4"
+              data-educore-video-title="Espace secrétaire"
+              aria-label="Lire la vidéo : Espace secrétaire">
+              <img src="media/educore/videos_miniatures/SECRETAIRE.jpg" alt="" loading="lazy">
+              <span class="educore-video-play" aria-hidden="true">▶</span>
+            </button>
+            <h4>Espace secrétaire</h4>
+            <p>Cliquer sur la vignette pour regarder la démonstration.</p>
+          </article>
+          <article class="educore-video-item">
+            <button class="educore-video-card" type="button"
+              data-educore-video-src="media/educore/videos_compressees/SURVEILLANT-GENERAL.mp4"
+              data-educore-video-title="Surveillant général"
+              aria-label="Lire la vidéo : Surveillant général">
+              <img src="media/educore/videos_miniatures/SURVEILLANT-GENERAL.jpg" alt="" loading="lazy">
+              <span class="educore-video-play" aria-hidden="true">▶</span>
+            </button>
+            <h4>Surveillant général</h4>
+            <p>Cliquer sur la vignette pour regarder la démonstration.</p>
+          </article>
+          <article class="educore-video-item">
+            <button class="educore-video-card" type="button"
+              data-educore-video-src="media/educore/videos_compressees/WAFO-VIDEO.mp4"
+              data-educore-video-title="Présentation vidéo par Benjamin"
+              aria-label="Lire la vidéo : Présentation vidéo par Benjamin">
+              <img src="media/educore/videos_miniatures/WAFO-VIDEO.jpg" alt="" loading="lazy">
+              <span class="educore-video-play" aria-hidden="true">▶</span>
+            </button>
+            <h4>Présentation vidéo par Benjamin</h4>
+            <p>Cliquer sur la vignette pour regarder la démonstration.</p>
+          </article>
+          </div>
+        </section>
+      </section>
+
+      <dialog class="educore-video-dialog" id="educore-video-dialog"
+        aria-labelledby="educore-video-dialog-title">
+        <div class="educore-video-dialog-head">
+          <h3 id="educore-video-dialog-title">Démonstration vidéo EduCore</h3>
+          <button type="button" class="educore-video-close" aria-label="Fermer la vidéo">✕ Fermer</button>
+        </div>
+        <video id="educore-video-player" controls playsinline preload="metadata"></video>
+      </dialog>
+
+      <script>
+      (() => {
+        const root = document.getElementById('educore');
+        const dialog = document.getElementById('educore-video-dialog');
+        if (!root || !dialog || dialog.dataset.ready === 'true') return;
+
+        const player = document.getElementById('educore-video-player');
+        const heading = document.getElementById('educore-video-dialog-title');
+        const closeButton = dialog.querySelector('.educore-video-close');
+        if (!player || !heading || !closeButton) return;
+
+        dialog.dataset.ready = 'true';
+
+        root.querySelectorAll('.educore-video-card').forEach(button => {
+          button.addEventListener('click', () => {
+            player.src = button.dataset.educoreVideoSrc;
+            heading.textContent = button.dataset.educoreVideoTitle;
+            dialog.showModal();
+            player.play().catch(() => {});
+          });
+        });
+
+        function stopVideo() {
+          player.pause();
+          player.removeAttribute('src');
+          player.load();
+        }
+
+        closeButton.addEventListener('click', () => dialog.close());
+        dialog.addEventListener('close', stopVideo);
+        dialog.addEventListener('click', event => {
+          if (event.target === dialog) dialog.close();
+        });
+      })();
+      </script>
+
+      <div id="educore-lightbox" class="educore-lightbox" hidden role="dialog" aria-modal="true" aria-label="Capture EDUCORE agrandie">
+        <button type="button" class="educore-lightbox-close" aria-label="Fermer l’image agrandie">×</button>
+        <figure>
+          <img id="educore-lightbox-image" src="" alt="">
+          <figcaption id="educore-lightbox-caption"></figcaption>
+        </figure>
+      </div>
+
+
+
+      <script>
+      (() => {
+        function initEduCoreRubrics() {
+          const root = document.getElementById('educore');
+          if (!root || root.dataset.educoreRubricsReady === 'true') return;
+
+          const buttons = root.querySelectorAll('[data-educore-show]');
+          const panels = root.querySelectorAll('[data-educore-panel]');
+          if (buttons.length !== 4 || panels.length !== 4) return;
+
+          buttons.forEach(button => {
+            button.addEventListener('click', function () {
+              const selected = this.getAttribute('data-educore-show');
+
+              panels.forEach(panel => {
+                panel.hidden = panel.getAttribute('data-educore-panel') !== selected;
+              });
+
+              buttons.forEach(item => {
+                item.setAttribute('aria-pressed', String(item === this));
+              });
+            });
+          });
+
+          root.dataset.educoreRubricsReady = 'true';
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initEduCoreRubrics);
+        } else {
+          initEduCoreRubrics();
+        }
+      })();
+      </script>
+
       <a class="btn btn-small" href="#contact">Demander une démonstration</a>
     </details>
     
   </div>
 </section>
+
+
+
 
 <section id="services" class="section section-alt">
   <div class="container">
@@ -522,13 +1891,20 @@ details.proj[open] summary{margin-bottom:16px}
 
 <section id="elimax" class="section">
   <div class="container narrow">
-    <p class="eyebrow">Partenariat professionnel</p>
-    <h2 class="h2">Ma collaboration avec Elimax SARL</h2>
-    <p class="lead">Elimax SARL est l&#39;entreprise de mon grand frère. Je travaille avec elle depuis environ un an et demi et je l&#39;utilise comme cadre professionnel pour certains projets et opportunités.</p>
-    <h3 class="spaced">Ce que cela permet</h3>
-    <ul class="check-list"><li>Prestations de services informatiques</li><li>Solutions numériques et projets informatiques</li><li>Collaboration possible avec des organisations publiques ou privées</li></ul>
-    <h3 class="spaced">Distinction claire</h3>
-    <ul class="check-list"><li>Ce portfolio est ma marque personnelle, distincte de l&#39;entreprise.</li><li>Je ne suis pas le propriétaire juridique d&#39;Elimax SARL.</li><li>Les projets sont présentés selon mes contributions réelles et les autorisations obtenues.</li><li>Aucun logo, contrat, nom de client ou résultat commercial n&#39;est publié sans autorisation.</li></ul>
+    <p class="eyebrow">Partenariats professionnels</p>
+    <h2 class="h2">Partenariats professionnels et conduite de projets</h2>
+
+    <h3 class="spaced">Mon rôle au sein d’Elimax SARL</h3>
+    <p class="lead">J’interviens dans le pilotage des activités informatiques, la conception de solutions numériques et la préparation technique de projets destinés aux organisations publiques et privées. Mon rôle couvre notamment l’analyse des besoins, l’élaboration de propositions techniques, le développement de solutions et le suivi de leur mise en œuvre.</p>
+
+    <h3 class="spaced">Marchés publics et opportunités professionnelles</h3>
+    <p>Dans le cadre des activités d’Elimax SARL, je contribue à l’identification des opportunités, à la préparation des réponses aux appels d’offres et à la définition des solutions informatiques adaptées aux besoins exprimés. Je prends en charge les aspects techniques des projets relevant de mon domaine d’intervention, dans le respect des responsabilités et des engagements définis pour chaque marché.</p>
+
+    <h3 class="spaced">Partenariats et collaboration</h3>
+    <p>Je privilégie une approche fondée sur la complémentarité des compétences, la collaboration avec les acteurs professionnels et la recherche de solutions adaptées aux exigences des organisations. Ces collaborations peuvent favoriser la réalisation de projets numériques, de prestations informatiques et d’initiatives technologiques dans les secteurs public et privé.</p>
+
+    <h3 class="spaced">Ma vision professionnelle</h3>
+    <p>Mon ambition est de transformer les besoins des organisations en solutions numériques concrètes, fiables et évolutives, tout en développant des partenariats durables et en contribuant à la réalisation de projets à forte valeur ajoutée.</p>
   </div>
 </section>
 
@@ -538,7 +1914,8 @@ details.proj[open] summary{margin-bottom:16px}
     <h2 class="h2">Curriculum vitæ</h2>
     <p class="lead">Version française au format PDF, sans donnée personnelle superflue.</p>
     <div class="actions">
-      <a class="btn" href="data:application/pdf;base64,JVBERi0xLjQKJZOMi54gUmVwb3J0TGFiIEdlbmVyYXRlZCBQREYgZG9jdW1lbnQgKG9wZW5zb3VyY2UpCjEgMCBvYmoKPDwKL0YxIDIgMCBSIC9GMiAzIDAgUiAvRjMgNCAwIFIKPj4KZW5kb2JqCjIgMCBvYmoKPDwKL0Jhc2VGb250IC9IZWx2ZXRpY2EgL0VuY29kaW5nIC9XaW5BbnNpRW5jb2RpbmcgL05hbWUgL0YxIC9TdWJ0eXBlIC9UeXBlMSAvVHlwZSAvRm9udAo+PgplbmRvYmoKMyAwIG9iago8PAovQmFzZUZvbnQgL0hlbHZldGljYS1Cb2xkIC9FbmNvZGluZyAvV2luQW5zaUVuY29kaW5nIC9OYW1lIC9GMiAvU3VidHlwZSAvVHlwZTEgL1R5cGUgL0ZvbnQKPj4KZW5kb2JqCjQgMCBvYmoKPDwKL0Jhc2VGb250IC9IZWx2ZXRpY2EtT2JsaXF1ZSAvRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZyAvTmFtZSAvRjMgL1N1YnR5cGUgL1R5cGUxIC9UeXBlIC9Gb250Cj4+CmVuZG9iago1IDAgb2JqCjw8Ci9Db250ZW50cyAxMCAwIFIgL01lZGlhQm94IFsgMCAwIDU5NS4yNzU2IDg0MS44ODk4IF0gL1BhcmVudCA5IDAgUiAvUmVzb3VyY2VzIDw8Ci9Gb250IDEgMCBSIC9Qcm9jU2V0IFsgL1BERiAvVGV4dCAvSW1hZ2VCIC9JbWFnZUMgL0ltYWdlSSBdCj4+IC9Sb3RhdGUgMCAvVHJhbnMgPDwKCj4+IAogIC9UeXBlIC9QYWdlCj4+CmVuZG9iago2IDAgb2JqCjw8Ci9Db250ZW50cyAxMSAwIFIgL01lZGlhQm94IFsgMCAwIDU5NS4yNzU2IDg0MS44ODk4IF0gL1BhcmVudCA5IDAgUiAvUmVzb3VyY2VzIDw8Ci9Gb250IDEgMCBSIC9Qcm9jU2V0IFsgL1BERiAvVGV4dCAvSW1hZ2VCIC9JbWFnZUMgL0ltYWdlSSBdCj4+IC9Sb3RhdGUgMCAvVHJhbnMgPDwKCj4+IAogIC9UeXBlIC9QYWdlCj4+CmVuZG9iago3IDAgb2JqCjw8Ci9MYW5nIChmci1GUikgL1BhZ2VNb2RlIC9Vc2VOb25lIC9QYWdlcyA5IDAgUiAvVHlwZSAvQ2F0YWxvZwo+PgplbmRvYmoKOCAwIG9iago8PAovQXV0aG9yIChXQUZPIFRBTExBIEFuYXRvbGUgQmVuamFtaW4pIC9DcmVhdGlvbkRhdGUgKEQ6MjAyNjEwMjAxMDE1NTArMDEnMDAnKSAvQ3JlYXRvciAoXCh1bnNwZWNpZmllZFwpKSAvS2V5d29yZHMgKCkgL01vZERhdGUgKEQ6MjAyNjEwMjAxMDE1NTArMDEnMDAnKSAvUHJvZHVjZXIgKFJlcG9ydExhYiBQREYgTGlicmFyeSAtIFwob3BlbnNvdXJjZVwpKSAKICAvU3ViamVjdCAoQ3VycmljdWx1bSB2aXRcMzQ2KSAvVGl0bGUgKENWIC0gV0FGTyBUQUxMQSBBbmF0b2xlIEJlbmphbWluKSAvVHJhcHBlZCAvRmFsc2UKPj4KZW5kb2JqCjkgMCBvYmoKPDwKL0NvdW50IDIgL0tpZHMgWyA1IDAgUiA2IDAgUiBdIC9UeXBlIC9QYWdlcwo+PgplbmRvYmoKMTAgMCBvYmoKPDwKL0ZpbHRlciBbIC9BU0NJSTg1RGVjb2RlIC9GbGF0ZURlY29kZSBdIC9MZW5ndGggMjM4OQo+PgpzdHJlYW0KR2F0bTw+QkFMaiZxOVNZa2JraHBgRjRsMyFtV3RBTixxIzMrVmxIKWc+WlpwTkY8ZU0uNU1UbmNgYzZvKlxQPGM3KDBBJE4vVkFHXT4rQEEyQGQrYGZBWEwnJyZgLWtyY0AxT2oyMUYwUzlENEpka1FmWUJBXyUqb3VeJT1mbEI3NUtzJ2wnNCduaEVxc1xhN2puMnAiTE0hVUFDTzZPSlNXO1YhNGpgZFY0T191QF8jcCNQXz9JRDssJFluJm5UQWdEJClXQEZHUTxAYWpDcDEoWFw5ZVM7Qy02aHE+ZXVvUDdqTVhbbjtkQztjXV5DRys6MDdkVWlxYiZKbFBjYHRVZ0QqT2BBbk1UZTMnYWJyXUgsUjlhUVs0by9AaSdPPGlIWUpGMlA9M0ZfLUBFSWlnPEAzaScsRmQ1b01AblJZP1RULXAkbnBmOkhzblVnOVAkbjllWHNeYDFkOSJaJzc6JCZ0JDU+ZkMoZkpDU0FoQFwsTixWN3JTN05EPlNKSkNHaV5jckhkcjhmNmZeR2dZNnBiI3A2RipHMGFtNi9kY0ddJSlMP18+QWo5N2s+R3A6OHRZTENUTFZ1WkheanEuWTpSIixrKzVjYEhCPkRQUSYkMVByV2ovVVRdcz9iOz5iNXE3KmRBJFZjYkA1JnJDYTxgOjRvcihaQDw3M0o7KVphdC0ldDVwWDpCRUMlblRQJSUhJVtKRjMjZHRFZCZBKlxpN1onI1lrIipgMWgkSjRqaz5iTjNoLCFsMy1GLD9lNWFDVmtQcGsvaklYTG89WkFNTlJCbktkXl9ua2hdI2NkVmVIUE9NRDluJj4rSENTUE9dPGVaSkFiXy8tPUctSTY3UzE6dFA9aTJ1a0E6IyUvWSM7ckQ5a29LLGIkblRRcVM8IVFjO21Wc1QhbmheRUMvbV1dNERDY1ZRUiVJKnFcKDxILyVbIztZJUovMEVhUUNMJVckP0twRkRhajJXX3RhUnFITF8hR05QJzIxI2tEZiFpPVRmSGhcOWFxMzloLGc3MDxbI2tUaTRJZUwlJDw8dF9cIydYcFhbMFpGVWFvPnAqaTwrOTBUKS1BSkhhZVFSW28rVCYzakg4RkxTZSdLJWA9cjAoISxvUTAlcDY/JiFHRT8xLFxydFVQNWBHLWlONjg1bmk+Oy43aCdhalAoWjtNVjQhTD1zbWZeLG5DMjNfZyNWdEFYJ2R0RScxWT9MPUtMVHRXJUAkLF9yXEgsXyRJWjo6Pkc8N0lWM0RRY2BrJ1dEVENVIktacjxoTE1yVz9hKElnJXJIRWUrR0QyQSdZYHBNPVtYNHMjcmJCTkpXJlRbZl1gJ28/ZzY4JFhWT0MvZmVubiU4WSdsRipYTU5BTlo2a0BnPE1SOSMlQz08XjpXL1dwRC1XSiVZalFOK2dTS0VUblgrWGYuX09KK0Q9TTxoMDxSZC1QSCZRcilSK088LFBTLkYncCNDPVohclYqVjI/R0BidFU4YkNfZnE5WlBhNzJYWGVcNVcmMFJyTSVLIjFnJUNALUNnIUVVYT9kYSRzVyZdLEhdWjxaMG5nSGZCVDNzWy89XXEyb09AJi1wZC1GVE8rPTZSJkRuZWonbjZMTUkwLCs2LXQnIXUsXzhqXGVPNy9tZVBAQDYnOio0STdEZSFPL0UuMGMxOG88X1VrU0hwaTJnamZ1RDJmWD87bVdRWWlRTShNKTdiPi5sLm1DNlskJDMtaTtGYjhjLUtVNFFYKGZjTUxbIjEzIzFHIz5dKGhXaikjZE9HXVM5WWJAXGIyZDRORlErUzhdcj01NjwoTVRKOmZnTV10cylEMEpeLlZscHRxNzJpIkIzYGQ7MkZOK3QxUUVcI2ZcTTJNXWpzPXIzaFMxWGFMMkRqa2pVbCNOV1FwLDxDLUtbLW0mUmRPNWRDUVMwWWZMbVFdRWRnR1Y8YDtNPT5zVUBpYydbZ2ZoaU0iPU1dNztxa3BYVT8pXXREakRTL3I6Vlk8LUY0OVtnWW8xZDknNj9lLlhSLjBAZj5FYkxYPD1WI1I6cU9ncmVeRFkoIUdiZToyWjNwS2BwQjdGZCxYY0RicFRFZy9PKWdsVCdSLTkjTSZmNzpUYzM/QF9zZVw8cVkqSjQ8P0g5SzonJi1OSTtMZGEzLTIuaWZwQT9tYWVUcy1FRSNFZlNfOD1DXi5iZWAhYmRaWzAwJFNLRyNZcVkncVlXO0pALUU/KVUvYm9la19ac2tcWjlvWDJLI1BCVWU/NDpjZUJiPCZRWkRhSlpVPGQwWVpDa2thUyRoYl5HZkBENGYsKyhNQ1NhPyRYKT8mNXBKYGtoOENNVldBYElSZiwlajYqUW5rWHFlQVB0RXM4SGNzKmQjIiJOT2FpWVREI0JObi8pNVhxXjE1VEZHLEljVVprUytnMiwzPlVaVTQiaC9PNzJkLDYnQUxEP1NUQ1ZRJE4pIUlqRU5dOVBAPyhISythTiNlPiZUYUsyWSxWZ0NQIzVoTCNgOVByMVhIKUwxXkdlNjFAKU4tTTNYRlxDRV9fTU5oci9GZGwnYE9FJ1JkLEtmRD82YTZzbzxFNHRLbDBCSVpeYmo9IlMlVDEmImdgKVc7JUV0IkheXihDS3BfPyJfX0FVNlU9OnRaNkhmKkk+UypAIlIkb0NTKi5LWlY0PUFCN2g+U2ssaG1oOGMlXWhoLFJqcCpQRE1ndDpdZlEqbmJiQiVVXik3Qz1jUmoyRVkhVDg/KmA/Y2QsRCMqPi8zOjdnNG5hPzdZZjd1YGoxU3RpM0FTclVbXDZRTDx0ZTMwY2MqJ1JFOSJNY09kXDU7bmxMUSc1Y2VMUDZmSUlpOjIlQXBpQU0uYytMO1BtaSRqTk8nSzwiQm1qMGhdTEU2OyU2IUlyLV0uPDtLXVBBQ0M3KUkoaklEOFZwamhVJWBUTmtjND8/LiVLJ2EzRzxBVl9vSU9zJVBjNyQyWllYRz8odDBaNFBxYlZ0Z0tLaWBDWz49Y0drOnVGdCkrT0AnKFNBQWMjJnUiRFBZYiZWX2MlZFZoMSRUVTBHYU9SNichL0coL29PZjI4a0Y/JmJYKldJIydsZy5aYGpoQjkkT1dHa0E3STYvTTk4UFBAQGJTQ0wtXCNuVSd0YDtjRjAocEAnRVElPGZyWFItdUpoJCFbOyElYSZiYUonbFlRKjx+PmVuZHN0cmVhbQplbmRvYmoKMTEgMCBvYmoKPDwKL0ZpbHRlciBbIC9BU0NJSTg1RGVjb2RlIC9GbGF0ZURlY29kZSBdIC9MZW5ndGggNDE5Cj4+CnN0cmVhbQpHYXJWSjYjTTwvJkE3VWwzQDdgb1lxXz5GLyUpOVNDKmVtRkxpRlYvXzU9WXRnPkApYEQ7KGwnYUJqLjlCMDxMLykoZGM2WjNNRmNnY21NSU5kOzNfO0xzLlBhI1xLPWZOMlddViZAVFBOXzZEJSt0ailsOyoqZWJJMi9uXEc9VyInPyJlN0ZtVXFQcmsoakcoKE1BQDArK2xtTUohMVxNXCZKWykjJlIobDVPIWdrbko1SGI7bGNIVUhXQ2NxPW1aZV82Yj5Fb21vP1BibkAublFXL21uR1lcNGYpZHNdLzpfKDA0bzJvaF1AQkI/YzlaKkBINyNmT1Y8R3B1SyZGSU11YSxdIjNvJ1JuUEU0ZD9HWHJhREBoa0BQLE5LQUxlOl9ZZDNoR0Q8YlpWMDE4VW0sSWQsIWFiZ0g4MEpoTjh1LiVSamRKcmEuRzRQPzg2WDROYWckW0dOP2ssY25pWVNTMSojXUZVJlpdcmgzJE1Vaig0KiJsJkBVL2oqT2BVRCpMX1YuaklXdDIkKUVRPio/SjFeSy0tTic6V2RAaCN+PmVuZHN0cmVhbQplbmRvYmoKeHJlZgowIDEyCjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDA2MSAwMDAwMCBuIAowMDAwMDAwMTEyIDAwMDAwIG4gCjAwMDAwMDAyMTkgMDAwMDAgbiAKMDAwMDAwMDMzMSAwMDAwMCBuIAowMDAwMDAwNDQ2IDAwMDAwIG4gCjAwMDAwMDA2NTAgMDAwMDAgbiAKMDAwMDAwMDg1NCAwMDAwMCBuIAowMDAwMDAwOTM2IDAwMDAwIG4gCjAwMDAwMDEyNTIgMDAwMDAgbiAKMDAwMDAwMTMxNyAwMDAwMCBuIAowMDAwMDAzNzk4IDAwMDAwIG4gCnRyYWlsZXIKPDwKL0lEIApbPDQ1M2E5ZjBhNzNjZjljYjkyYWI2MGNmNGE5NzAwYTYyPjw0NTNhOWYwYTczY2Y5Y2I5MmFiNjBjZjRhOTcwMGE2Mj5dCiUgUmVwb3J0TGFiIGdlbmVyYXRlZCBQREYgZG9jdW1lbnQgLS0gZGlnZXN0IChvcGVuc291cmNlKQoKL0luZm8gOCAwIFIKL1Jvb3QgNyAwIFIKL1NpemUgMTIKPj4Kc3RhcnR4cmVmCjQzMDgKJSVFT0YK" download="CV-WAFO-TALLA-Anatole-Benjamin-FR.pdf">Télécharger le CV (PDF)</a>
+      <a class="btn" href="media/cv/CV_Wafo_Talla_Anatole_Benjamin.%201.pdf" target="_blank" rel="noopener">Voir mon CV</a>
+      <a class="btn" href="media/cv/CV_Wafo_Talla_Anatole_Benjamin.%201.pdf" download="CV-WAFO-TALLA-Anatole-Benjamin-FR.pdf">Télécharger mon CV</a>
     </div>
     <p class="note">Une version anglaise pourra être ajoutée ultérieurement.</p>
   </div>
@@ -546,13 +1923,30 @@ details.proj[open] summary{margin-bottom:16px}
 
 <section id="contact" class="section">
   <div class="container narrow">
-    <p class="eyebrow">Contact</p>
-    <h2 class="h2">Me contacter</h2>
-    <p class="lead">Recrutement, collaboration, demande de prestation ou de démonstration, partenariat : appelez-moi directement.</p>
+    <p class="eyebrow">Contact et rendez-vous</p>
+    <h2 class="h2">Échangeons sur votre projet</h2>
+    <p class="lead">Pour une demande de prestation, une démonstration, un partenariat ou une opportunité professionnelle, vous pouvez me contacter directement.</p>
+
     <div class="card">
       <h3>Téléphone</h3>
-      <ul class="plain"><li><a class="phone-big" href="tel:+237691801583">691 801 583</a></li><li><a class="phone-big" href="tel:+237679126746">679 126 746</a></li></ul>
-      <p class="note">Le formulaire de contact et la prise de rendez-vous en ligne nécessitent le serveur du portfolio (version complète) : ils ne sont volontairement pas simulés dans cette page autonome.</p>
+      <ul class="plain">
+        <li><a class="phone-big" href="tel:+237691801583">+237 691 80 15 83</a></li>
+        <li><a class="phone-big" href="tel:+237679126746">+237 679 12 67 46</a></li>
+      </ul>
+
+      <h3 class="spaced">E-mail</h3>
+      <p><a href="mailto:benjaminwafo21@gmail.com">benjaminwafo21@gmail.com</a></p>
+
+      <h3 class="spaced">Prendre rendez-vous</h3>
+      <p>Un échange d’environ 30 minutes peut être organisé en ligne ou en présentiel, selon les disponibilités et le lieu convenu.</p>
+      <div class="actions">
+        <a class="btn" href="https://wa.me/237691801583?text=Bonjour%20Benjamin%2C%20je%20souhaite%20prendre%20rendez-vous%20pour%20discuter%20d%E2%80%99un%20projet%20informatique." target="_blank" rel="noopener">Demander un rendez-vous sur WhatsApp</a>
+        <a class="btn btn-ghost" href="mailto:benjaminwafo21@gmail.com?subject=Demande%20de%20rendez-vous">Demander par e-mail</a>
+      </div>
+
+      <h3 class="spaced">LinkedIn</h3>
+      <p>Anatole Benjamin Wafo Talla</p>
+      <p class="note">Le lien direct vers mon profil LinkedIn sera ajouté dès que son adresse exacte sera renseignée.</p>
     </div>
   </div>
 </section>
@@ -562,22 +1956,21 @@ details.proj[open] summary{margin-bottom:16px}
     <p class="eyebrow">Informations légales</p>
     <h2 class="h2">Mentions légales et confidentialité</h2>
     <h3>Éditeur</h3>
-    <p>WAFO TALLA Anatole Benjamin, personne physique. Téléphone : 691 801 583, 679 126 746. E-mail : <span class="todo">à compléter avant la mise en ligne</span>. Directeur de la publication : WAFO TALLA Anatole Benjamin.</p>
+    <p>WAFO TALLA Anatole Benjamin, personne physique. Téléphone : +237 691 80 15 83, +237 679 12 67 46. E-mail : <a href="mailto:benjaminwafo21@gmail.com">benjaminwafo21@gmail.com</a>. Directeur de la publication : WAFO TALLA Anatole Benjamin.</p>
     <h3>Hébergement</h3>
     <p><span class="todo">À compléter avant la mise en ligne (nom et adresse de l'hébergeur).</span></p>
-    <h3>Entreprise associée</h3>
-    <p>Elimax SARL est une entreprise distincte de l'éditeur. L'éditeur n'en est pas le propriétaire juridique. Aucun logo, contrat ou nom de client n'est publié sans autorisation.</p>
     <h3>Responsabilité</h3>
     <p>Les projets présentés sont, sauf mention contraire, des prototypes de démonstration. Aucune garantie d'absence totale de faille de sécurité n'est donnée.</p>
     <h3>Données personnelles et cookies</h3>
-    <p>Cette page ne collecte aucune donnée, ne dépose aucun cookie et n'utilise aucun traceur ni service externe.</p>
+    <p>Cette page statique ne comporte pas de formulaire de collecte et ne dépose pas de cookie propre. Lorsque vous utilisez les liens de contact, vous êtes redirigé vers le service concerné ; le traitement des données dépend alors des conditions et politiques de ce service.</p>
   </div>
 </section>
 </main>
 
 <footer class="site-footer">
   <div class="container footer-bottom" style="border-top:0;margin-top:0">
-    <p class="footer-brand">WAFO TALLA Anatole Benjamin</p>
+    <p class="footer-brand">Benjamin Wafo — Conception et développement de solutions numériques</p>
+    <p class="muted">Cybersécurité • Développement full-stack • DevOps • Solutions numériques</p>
     <p class="muted">Cybersecurity, Engineering &amp; Digital Solutions</p>
     <p>© <span id="annee">2026</span> WAFO TALLA Anatole Benjamin. Tous droits réservés.</p>
   </div>
@@ -586,29 +1979,251 @@ details.proj[open] summary{margin-bottom:16px}
 <script>
 (function () {
   "use strict";
-  var y = document.getElementById("annee"); if (y) y.textContent = new Date().getFullYear();
-  var btn = document.querySelector(".nav-toggle"), menu = document.getElementById("menu");
-  function set(open) { menu.classList.toggle("is-open", open); btn.setAttribute("aria-expanded", open ? "true" : "false"); }
-  btn.addEventListener("click", function () { set(!menu.classList.contains("is-open")); });
-  document.addEventListener("keydown", function (e) { if (e.key === "Escape") set(false); });
-  menu.addEventListener("click", function (e) { if (e.target.tagName === "A") set(false); });
-  // Ouvre la fiche d'un projet quand on arrive dessus par un lien
-  function openFromHash() {
-    var el = location.hash ? document.getElementById(location.hash.slice(1)) : null;
-    if (el && el.tagName === "DETAILS") el.open = true;
+
+  var main = document.querySelector("main");
+  var btn = document.querySelector(".nav-toggle");
+  var menu = document.getElementById("menu");
+  var sections = main
+    ? Array.prototype.filter.call(main.children, function (el) {
+        return el.tagName === "SECTION" && el.id;
+      })
+    : [];
+
+  var liensMenu = Array.prototype.slice.call(
+    document.querySelectorAll(".nav-list a:not(.btn)")
+  );
+
+  var annee = document.getElementById("annee");
+  if (annee) annee.textContent = new Date().getFullYear();
+
+  function fermerMenu() {
+    if (!btn || !menu) return;
+    menu.classList.remove("is-open");
+    btn.setAttribute("aria-expanded", "false");
   }
-  window.addEventListener("hashchange", openFromHash); openFromHash();
-  // Met en évidence la rubrique visible dans le menu
-  var links = [].slice.call(document.querySelectorAll(".nav-list a:not(.btn)"));
-  if ("IntersectionObserver" in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (en.isIntersecting) links.forEach(function (a) { a.classList.toggle("active", a.getAttribute("href") === "#" + en.target.id); });
-      });
-    }, { rootMargin: "-40% 0px -55% 0px" });
-    document.querySelectorAll("main section[id]").forEach(function (s) { io.observe(s); });
+
+  if (btn && menu) {
+    btn.addEventListener("click", function () {
+      var ouvert = menu.classList.toggle("is-open");
+      btn.setAttribute("aria-expanded", ouvert ? "true" : "false");
+    });
+
+    menu.addEventListener("click", function (e) {
+      if (e.target.closest && e.target.closest("a")) fermerMenu();
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") fermerMenu();
+    });
   }
+
+  function activerDepuisHash(defilerEnHaut) {
+    var id = location.hash ? location.hash.slice(1) : "accueil";
+    var cible = document.getElementById(id);
+
+    if (!cible) {
+      cible = document.getElementById("accueil");
+    }
+
+    // Un projet ou un élément imbriqué appartient à sa rubrique principale.
+    var rubrique = cible;
+    while (
+      rubrique &&
+      !(rubrique.tagName === "SECTION" && rubrique.parentElement === main)
+    ) {
+      rubrique = rubrique.parentElement;
+    }
+
+    if (!rubrique || sections.indexOf(rubrique) === -1) {
+      rubrique = document.getElementById("accueil");
+    }
+
+    sections.forEach(function (section) {
+      section.hidden = section !== rubrique;
+    });
+
+    liensMenu.forEach(function (lien) {
+      var actif = rubrique && lien.getAttribute("href") === "#" + rubrique.id;
+      if (actif) {
+        lien.setAttribute("aria-current", "page");
+      } else {
+        lien.removeAttribute("aria-current");
+      }
+    });
+
+    // Ouvrir automatiquement la fiche si le lien cible un projet.
+    if (cible && cible.tagName === "DETAILS") {
+      cible.open = true;
+    }
+
+    fermerMenu();
+
+    if (defilerEnHaut && rubrique) {
+      window.scrollTo(0, 0);
+    }
+  }
+
+  window.addEventListener("hashchange", function () {
+    activerDepuisHash(true);
+  });
+
+  activerDepuisHash(false);
 })();
 </script>
+
+<div id="visionneuse-captures" role="dialog" aria-modal="true"
+     aria-label="Capture agrandie" hidden
+     style="position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:24px;box-sizing:border-box;">
+  <button type="button" id="fermer-visionneuse" aria-label="Fermer l’image"
+    style="position:absolute;top:16px;right:20px;font-size:30px;background:#fff;color:#111;border:0;border-radius:8px;padding:6px 16px;cursor:pointer;">×</button>
+  <img id="image-agrandie" alt=""
+    style="max-width:95vw;max-height:88vh;object-fit:contain;border-radius:8px;">
+  <p id="legende-agrandie" style="position:absolute;bottom:4px;color:#fff;text-align:center;"></p>
+</div>
+<script>
+(function () {
+  var galeries = [
+    document.getElementById("cybercare"),
+    document.getElementById("bunec"),
+    document.getElementById("fecafoot"),
+    document.getElementById("educore-gallery")
+  ].filter(Boolean);
+  var modal = document.getElementById("visionneuse-captures");
+  var grande = document.getElementById("image-agrandie");
+  var legende = document.getElementById("legende-agrandie");
+  var fermer = document.getElementById("fermer-visionneuse");
+  if (!galeries.length || !modal || !grande || !fermer) return;
+
+  function ouvrir(img) {
+    grande.src = img.src;
+    grande.alt = img.alt || "Capture du projet";
+    legende.textContent = img.alt || "";
+    modal.hidden = false;
+    modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+    fermer.focus();
+  }
+
+  function fermerModal() {
+    modal.hidden = true;
+    modal.style.display = "none";
+    grande.removeAttribute("src");
+    document.body.style.overflow = "";
+  }
+
+  galeries.forEach(function (galerie) {
+    galerie.addEventListener("click", function (e) {
+      var elementEducore = e.target.closest(".educore-gallery-item");
+      var img = elementEducore && galerie.contains(elementEducore)
+        ? elementEducore.querySelector("img")
+        : e.target.closest("img[role='button']");
+      if (img && galerie.contains(img)) ouvrir(img);
+    });
+    galerie.addEventListener("keydown", function (e) {
+      var elementEducore = e.target.closest(".educore-gallery-item");
+      var img = elementEducore && galerie.contains(elementEducore)
+        ? elementEducore.querySelector("img")
+        : e.target.closest("img[role='button']");
+      if (img && galerie.contains(img) &&
+          (e.key === "Enter" || e.key === " ")) {
+        e.preventDefault();
+        ouvrir(img);
+      }
+    });
+  });
+
+  fermer.addEventListener("click", fermerModal);
+  modal.addEventListener("click", function (e) {
+    if (e.target === modal) fermerModal();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !modal.hidden) fermerModal();
+  });
+})();
+</script>
+
+
+<script>
+/* PORTFOLIO_UN_SEUL_PROJET_OUVERT */
+(function () {
+  var projets = document.querySelectorAll("details.card.proj");
+  projets.forEach(function (projet) {
+    projet.addEventListener("toggle", function () {
+      if (!projet.open) return;
+      projets.forEach(function (autre) {
+        if (autre !== projet && autre.open) {
+          autre.open = false;
+        }
+      });
+    });
+  });
+})();
+</script>
+
+
+<script>
+/* PORTFOLIO_PROJETS_ISOLES_V1 */
+(function () {
+  "use strict";
+
+  var ids = ["cybercare", "bunec", "fecafoot", "educore"];
+  var projets = ids.map(function (id) {
+    return document.getElementById(id);
+  }).filter(Boolean);
+
+  if (!projets.length) return;
+
+  function actualiserProjets() {
+    var ouvert = projets.find(function (projet) {
+      return projet.open;
+    });
+
+    document.body.classList.toggle(
+      "portfolio-projet-actif",
+      Boolean(ouvert)
+    );
+
+    projets.forEach(function (projet) {
+      if (ouvert && projet !== ouvert) {
+        projet.hidden = true;
+      } else {
+        projet.hidden = false;
+      }
+    });
+  }
+
+  projets.forEach(function (projet) {
+    projet.addEventListener("toggle", function () {
+      if (projet.open) {
+        projets.forEach(function (autre) {
+          if (autre !== projet && autre.open) {
+            autre.open = false;
+          }
+        });
+      }
+      actualiserProjets();
+    });
+  });
+
+  actualiserProjets();
+})();
+</script>
+
 </body>
 </html>
+
+
+<!-- PORTFOLIO_BOUTONS_RETOUR_V1 -->
+<script>
+(function () {
+  "use strict";
+  document.addEventListener("click", function (event) {
+    var bouton = event.target.closest("[data-portfolio-back='projets']");
+    if (!bouton) return;
+    var fiche = bouton.closest("details");
+    if (fiche) fiche.open = false;
+    var projets = document.getElementById("projets");
+    if (projets) projets.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+})();
+</script>
